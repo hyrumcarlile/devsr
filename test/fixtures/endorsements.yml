@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  endorser_id: 1
+  endorsee_id: 1
+
+two:
+  endorser_id: 1
+  endorsee_id: 1

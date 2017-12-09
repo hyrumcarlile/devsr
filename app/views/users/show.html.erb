@@ -4,3 +4,14 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+<div>
+  <table>
+    <tbody>
+      <tr>
+        <td>Endorsements:</td>
+      </tr>
+      <%= render partial: "endorsement", collection: @endorsements unless @endorsements.empty? %>
+    </tbody>
+  </table>
+</div>

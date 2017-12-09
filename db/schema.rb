@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208015137) do
+ActiveRecord::Schema.define(version: 20171209211808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "endorsements", force: :cascade do |t|
+    t.integer  "endorser_id"
+    t.integer  "endorsee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["endorsee_id"], name: "index_endorsements_on_endorsee_id", using: :btree
+    t.index ["endorser_id", "endorsee_id"], name: "index_endorsements_on_endorser_id_and_endorsee_id", unique: true, using: :btree
+    t.index ["endorser_id"], name: "index_endorsements_on_endorser_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                          null: false
