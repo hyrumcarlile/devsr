@@ -9,9 +9,14 @@
   <table>
     <tbody>
       <tr>
-        <td>Endorsements:</td>
+        <th>Endorsements:</th>
       </tr>
-      <%= render partial: "endorsement", collection: @endorsements unless @endorsements.empty? %>
+      <%= render partial: 'endorsement', collection: @endorsements unless @endorsements.empty? %>
     </tbody>
   </table>
+</div>
+<div>
+  <% if @endorsements.empty? %>
+      This user currently has no endorsements.
+  <% end %>
 </div>

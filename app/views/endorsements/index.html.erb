@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Endorsements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @endorsements.each do |endorsement| %>
+      <tr>
+        <td><%= "#{endorsement.endorsee.email} was endorsed by #{endorsement.endorser.email}" %></td>
+        <td><%= link_to 'Show', endorsement %></td>
+        <td><%= link_to 'Edit', edit_endorsement_path(endorsement) %></td>
+        <td><%= link_to 'Destroy', endorsement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Endorsement', new_endorsement_path %>

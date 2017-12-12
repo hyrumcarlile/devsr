@@ -20,4 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      endorsement:
+        endorsee_id: ""
+        email: ""
+    errors:
+      models:
+        endorsement:
+          attributes:
+            endorsee_id:
+              blank: "No user was found with that email address"
+              exists: ""
