@@ -4,13 +4,14 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all.sort_by { |user| user.status }
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @endorsements = @user.endorsements
+    @endorsers = @user.endorsers.map(&:endorser).flatten.compact
+    @endorsees = @user.endorsees.map(&:endorsee).flatten.compact
   end
 
   # GET /users/new
@@ -71,6 +72,6 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       # params.fetch(:user, {})
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :name, :username)
     end
 end

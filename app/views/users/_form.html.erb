@@ -10,12 +10,16 @@
       </ul>
     </div>
   <% end %>
+  name:
+  <%= f.text_field :name %><br>
+  username:
+  <%= f.text_field :username %><br>
   email:
-  <%= f.text_field :email %>
+  <%= f.text_field :email %><br>
   password:
-  <%= f.text_field :password %>
+  <%= f.text_field :password %><br>
   password confirmation:
-  <%= f.text_field :password_confirmation %>
+  <%= f.text_field :password_confirmation %><br>
 
   <div class="actions">
     <%= f.submit %>

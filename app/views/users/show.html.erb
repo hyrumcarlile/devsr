@@ -1,20 +1,23 @@
-<%= @user.email %>
-
+<%= @user.email %><br>
+<%= @user.name %><br>
+<%= @user.username %><br>
+<br>
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path %><br>
+<br>
+
+<div style="float:left">
+  <th>Endorsed By:</th><br>
+  <%= render partial: 'endorsement', collection: @endorsers, as: 'e' unless @endorsers.empty? %>
+</div>
+
+<div style="float:left; padding-left: 2em;">
+  <th>Endorsed:</th><br>
+  <%= render partial: 'endorsement', collection: @endorsees, as: 'e' unless @endorsees.empty? %>
+</div>
 
 <div>
-  <table>
-    <tbody>
-      <tr>
-        <th>Endorsements:</th>
-      </tr>
-      <%= render partial: 'endorsement', collection: @endorsements unless @endorsements.empty? %>
-    </tbody>
-  </table>
-</div>
-<div>
-  <% if @endorsements.empty? %>
+  <% if @endorsers.empty? %>
       This user currently has no endorsements.
   <% end %>
 </div>
