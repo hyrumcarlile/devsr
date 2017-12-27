@@ -21,3 +21,8 @@
       This user currently has no endorsements.
   <% end %>
 </div>
+
+<div style="float:left; padding-left: 2em;">
+  <th>Notes:</th><br>
+  <%= render partial: 'note', collection: @notes, as: 'n' unless @notes.empty? %>
+</div>

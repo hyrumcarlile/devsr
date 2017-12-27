@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def show
     @endorsers = @user.endorsers.map(&:endorser).flatten.compact
     @endorsees = @user.endorsees.map(&:endorsee).flatten.compact
+    @notes = @user.notes
   end
 
   # GET /users/new

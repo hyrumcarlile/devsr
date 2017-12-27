@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :endorsees, class_name:  'Endorsement',
                        foreign_key: 'endorser_id',
                        dependent:   :destroy
+  has_many :notes,     dependent:   :destroy
 end
