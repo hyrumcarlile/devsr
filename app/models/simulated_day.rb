@@ -1,0 +1,2 @@
+class SimulatedDay < ApplicationRecord
+end
