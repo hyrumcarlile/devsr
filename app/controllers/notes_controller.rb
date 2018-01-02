@@ -7,10 +7,22 @@ class NotesController < ApplicationController
     @notes = Note.all
   end
 
+  def new_import
+    @note = Note.new
+  end
+
+  def import
+    begin
+      Note.import(params[:note][:import_file], current_user)
+      redirect_to current_user
+    rescue => exception
+      redirect_to import_new_notes_path, locals: exception
+      end
+  end
+
   # GET /notes/1
   # GET /notes/1.json
-  def show
-  end
+  def show; end
 
   # GET /notes/new
   def new
@@ -18,8 +30,7 @@ class NotesController < ApplicationController
   end
 
   # GET /notes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /notes
   # POST /notes.json

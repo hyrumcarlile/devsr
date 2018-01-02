@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all.sort_by { |user| user.status }
+    @users = User.order(status: :desc)
   end
 
   # GET /users/1

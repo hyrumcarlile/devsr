@@ -1,18 +1,19 @@
-<%= @user.email %><br>
-<%= @user.name %><br>
-<%= @user.username %><br>
+<div>
+  <%= @user.email %><br>
+  <%= @user.name %><br>
+  <%= @user.username %><br>
+</div>
 <br>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %><br>
+<%= link_to 'Edit', edit_user_path(@user) %><br>
 <br>
 
 <div style="float:left">
-  <th>Endorsed By:</th><br>
+  Endorsed By:<br>
   <%= render partial: 'endorsement', collection: @endorsers, as: 'e' unless @endorsers.empty? %>
 </div>
 
 <div style="float:left; padding-left: 2em;">
-  <th>Endorsed:</th><br>
+  Endorsed: <%= link_to '(New)', new_endorsement_path if @user == current_user %><br>
   <%= render partial: 'endorsement', collection: @endorsees, as: 'e' unless @endorsees.empty? %>
 </div>
 
@@ -23,6 +24,6 @@
 </div>
 
 <div style="float:left; padding-left: 2em;">
-  <th>Notes:</th><br>
+  Notes: <%= link_to '(New)', import_new_notes_path if @user == current_user %><br>
   <%= render partial: 'note', collection: @notes, as: 'n' unless @notes.empty? %>
 </div>

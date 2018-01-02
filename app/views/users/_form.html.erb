@@ -16,10 +16,14 @@
   <%= f.text_field :username %><br>
   email:
   <%= f.text_field :email %><br>
-  password:
-  <%= f.text_field :password %><br>
-  password confirmation:
-  <%= f.text_field :password_confirmation %><br>
+  <% if user.encrypted_password.blank? %>
+    <div>
+      password:
+      <%= f.text_field :password %><br>
+      password confirmation:
+      <%= f.text_field :password_confirmation %><br>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>
