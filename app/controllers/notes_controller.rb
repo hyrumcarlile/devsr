@@ -13,7 +13,7 @@ class NotesController < ApplicationController
 
   def import
     begin
-      Note.import(params[:note][:import_file], current_user)
+      Note.sanitize_html(Note.import(params[:note][:import_file], current_user)).save
       redirect_to current_user
     rescue => exception
       redirect_to import_new_notes_path, locals: exception
@@ -36,10 +36,11 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(note_params)
+    @note.user_id = current_user.id
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
+        format.html { redirect_to @note }
         format.json { render :show, status: :created, location: @note }
       else
         format.html { render :new }
@@ -53,7 +54,7 @@ class NotesController < ApplicationController
   def update
     respond_to do |format|
       if @note.update(note_params)
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
+        format.html { redirect_to @note}
         format.json { render :show, status: :ok, location: @note }
       else
         format.html { render :edit }
@@ -67,19 +68,20 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     respond_to do |format|
-      format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
+      format.html { redirect_to notes_url }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_note
-      @note = Note.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def note_params
-      params.require(:note).permit(:body, :title)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_note
+    @note = Note.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def note_params
+    params.require(:note).permit(:body, :title)
+  end
 end

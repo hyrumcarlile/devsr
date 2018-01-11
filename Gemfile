@@ -24,8 +24,12 @@ gem 'pry', '~> 0.10.3'
 gem 'puma', '~> 3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
+# Red carpet gem for markdown support
+gem 'redcarpet'
 # This is for progress bars in rake tasks that take forever
 gem 'ruby-progressbar'
+# Sanitize filters out harmful stuff from uploaded html files
+gem 'sanitize', '~> 4.0', '>= 4.0.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

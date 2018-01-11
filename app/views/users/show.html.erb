@@ -24,6 +24,6 @@
 </div>
 
 <div style="float:left; padding-left: 2em;">
-  Notes: <%= link_to '(New)', import_new_notes_path if @user == current_user %><br>
+  Notes: <%= link_to '(New)', new_note_path if @user == current_user %><br>
   <%= render partial: 'note', collection: @notes, as: 'n' unless @notes.empty? %>
 </div>

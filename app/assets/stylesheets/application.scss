@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+$primary-blue: #2065e5;
+$primary-font-blue: #4c83ea;
+$white: #ffffff;
+$gray-background: #d7ddea;
+$light-gray-background: #ebecec;
+$font-color: #000000;
+
+
+@import 'notes';
+
+a, a:visited {
+  color: $primary-font-blue;
+  text-decoration: none;
+}
+
+.selected, .selected:hover {
+  color: $font-color;
+}
+
+a:hover {
+  background-color: transparent;
+  color: darken($primary-font-blue, 30%);
+}
+
+body {
+  background-color: $white;
+}
+
+pre {
+  background-color: $light-gray-background;
+  padding: 1em;
+}

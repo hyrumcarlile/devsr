@@ -1,3 +1,29 @@
 // Place all the styles related to the Notes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.note-form textarea, .note-form input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  margin: 8px 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.note-form textarea {
+  height: 500px;
+}
+
+.note-form input[type=text] {
+  height: 30px;
+}
+
+.note-form textarea:focus, .note-form input[type=text]:focus {
+  border: 3px solid #555;
+}
