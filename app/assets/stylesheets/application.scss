@@ -12,17 +12,99 @@
  *
  *= require_tree .
  *= require_self
+ *= require rails_bootstrap_forms
  */
 
-$primary-blue: #2065e5;
+$blue: #2065e5;
 $primary-font-blue: #4c83ea;
-$white: #ffffff;
 $gray-background: #d7ddea;
 $light-gray-background: #ebecec;
 $font-color: #000000;
 
+$theme-colors: (
+  primary: $blue
+);
 
+$breakpoint-desktop: 768px;
+$breakpoint-tablet: 480px;
+$breakpoint-mobile: 320px;
+
+/* bootstrap must be imported AFTER declaring custom variables */
+@import "bootstrap";
 @import 'notes';
+@import 'rails_bootstrap_forms';
+
+/* ====================================== Bootstrap Overrides ====================================== */
+
+.navbar a:hover {
+  text-decoration: none;
+}
+
+.btn-lg.round {
+  border-radius: 24px;
+}
+
+.btn-lg.outline {
+  background: none;
+}
+
+.btn.outline {
+  background: none;
+}
+
+.btn-primary {
+  color: $white !important; /* Important necessary to override Bootstrap */
+}
+
+.btn-primary.outline {
+  border: 1px solid $blue;
+  color: $blue !important; /* Important necessary to override .btn-primary override */
+}
+
+.btn-primary.outline:hover {
+  background-color: $white;
+  color: $blue !important;
+}
+
+/* Don't touch these unless you want a headache */
+.navbar a {
+  color: $white !important; /* Important necessary to override Bootstrap */
+}
+
+.nav-item .nav-link:hover {
+  color: $white !important; /* Important necessary to override Bootstrap */
+  font-weight: 400;
+}
+
+#sign-in-out-btn {
+  border: 1px solid $white;
+  color: $white !important; /* Important necessary to override Bootstrap */
+  padding: 4px;
+}
+
+#sign-in-out-btn:hover {
+  color: $blue !important; /* Important necessary to override Bootstrap */
+}
+
+/* ========================================================================================== */
+
+
+.centered {
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: $breakpoint-desktop) {
+
+  .nav-float-right {
+    margin-left: auto !important;
+  }
+
+}
+
+h2, h3, h4, h5, h6 {
+  color: $gray-700
+}
 
 a, a:visited {
   color: $primary-font-blue;
@@ -36,6 +118,7 @@ a, a:visited {
 a:hover {
   background-color: transparent;
   color: darken($primary-font-blue, 30%);
+  text-decoration: none;
 }
 
 body {
@@ -45,4 +128,12 @@ body {
 pre {
   background-color: $light-gray-background;
   padding: 1em;
+}
+
+.destroy {
+  color: $red
+}
+
+.destroy:visited {
+  color: $red
 }
