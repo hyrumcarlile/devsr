@@ -8,14 +8,17 @@ namespace :simulate do
     ARGV[1].to_i.times do
       new_users = create_new_users
       new_endorsements = create_new_endorsements
+      new_notes = create_new_notes
       create_simulated_day(new_users, new_endorsements)
       counter += 1
       puts "Day #{counter}:
             New Users: #{new_users}
             New Endorsements: #{new_endorsements}
+            New Notes: #{new_notes}
             ==============================
             Total Users: #{User.count}
             Total Endorsements: #{Endorsement.count}
+            Total Notes: #{Note.count}
             **************************************************************"
     end
   end
@@ -41,6 +44,15 @@ namespace :simulate do
     endorsements_algorithm.times do
       create_endorsement
       counter += 1
+    end
+    counter
+  end
+
+  def create_new_notes
+    counter = 0
+    notes_algorithm.times do
+      create_note
+      counter+= 1
     end
     counter
   end
@@ -77,7 +89,21 @@ namespace :simulate do
       password: pw,
       password_confirmation: pw,
       name: name,
-      username: Faker::Internet.unique.user_name(name)
+      username: Faker::Internet.unique.user_name(name),
+      avatar_url: Faker::Avatar.image(name)
+    )
+  end
+
+  def create_note
+    title = Faker::Lorem.sentence(3, true, 4)
+    body = Faker::Lorem.paragraph(rand(7..15), true, rand(1..5))
+    rand(0..15).times do
+      body += "\n\n#{Faker::Lorem.paragraph(rand(7..15), true, rand(1..5))}"
+    end
+    Note.create!(
+      title: title,
+      body: body,
+      user_id: rand(1..User.count)
     )
   end
 
@@ -87,5 +113,9 @@ namespace :simulate do
 
   def endorsements_algorithm
     ((User.count / 15) * rand(0.5..1.5)).round
+  end
+
+  def notes_algorithm
+    ((User.count / 30) * rand(0.5..1.5)).round
   end
 end
