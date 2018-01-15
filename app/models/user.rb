@@ -10,4 +10,10 @@ class User < ApplicationRecord
                        foreign_key: 'endorser_id',
                        dependent:   :destroy
   has_many :notes,     dependent:   :destroy
+
+  before_save :create_avatar
+
+  def create_avatar
+    self.avatar_url = "https://robohash.org/#{email}?gravatar=yes"
+  end
 end

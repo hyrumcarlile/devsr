@@ -84,13 +84,14 @@ namespace :simulate do
   def create_user
     pw = Faker::Internet.password(6, 12)
     name = Faker::Name.name
+    email = Faker::Internet.unique.free_email(name)
     User.create!(
-      email: Faker::Internet.unique.email(name),
+      email: email,
       password: pw,
       password_confirmation: pw,
       name: name,
       username: Faker::Internet.unique.user_name(name),
-      avatar_url: Faker::Avatar.image(name)
+      avatar_url: "https://robohash.org/#{email}?gravatar=yes"
     )
   end
 

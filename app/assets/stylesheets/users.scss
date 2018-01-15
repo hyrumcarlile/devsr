@@ -1,3 +1,31 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$blue: #2065e5;
+$primary-font-blue: #4c83ea;
+$gray-background: #d7ddea;
+$light-gray-background: #ebecec;
+$font-color: #000000;
+
+.user-avatar-img {
+  width: 12em;
+  height: 12em;
+}
+
+.endorser-img-modal {
+  width: 3em;
+  height: 3em;
+}
+
+.note-card {
+  color: #000;
+}
+
+.card-title {
+  color: $primary-font-blue
+}
+
+.note-table-new-btn {
+  text-align: end;
+}

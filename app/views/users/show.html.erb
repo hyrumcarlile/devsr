@@ -1,30 +1,63 @@
-<div>
-  <img src="<%= @user.avatar_url %>"/>
-  <%= @user.email %><br>
-  <%= @user.name %><br>
-  <%= @user.username %><br>
-</div>
-<br>
-<%= link_to 'Edit', edit_user_path(@user) %><br>
-<br>
+<div class="container">
+  <%= link_to 'Edit', edit_user_path(@user) if @user == current_user %><br>
+  <div class="row pb-2">
+    <div class="col centered">
+      <img src="<%= @user.avatar_url %>" class="user-avatar-img my-3"/><br>
+      <h1><%= @user.name %></h1>
+    </div>
+  </div>
 
-<div style="float:left">
-  Endorsed By:<br>
-  <%= render partial: 'endorsement', collection: @endorsers, as: 'e' unless @endorsers.empty? %>
-</div>
+  <div class="row mb-5">
+    <div class="col centered">
+      <% if @endorsers.empty? %>
+        0 endorsers
+      <% else %>
+        <a id="endorsers-show"><%= @endorsers.count %> endorsers</a>
+      <% end %>
+    </div>
+  </div>
 
-<div style="float:left; padding-left: 2em;">
-  Endorsed: <%= link_to '(New)', new_endorsement_path if @user == current_user %><br>
-  <%= render partial: 'endorsement', collection: @endorsees, as: 'e' unless @endorsees.empty? %>
-</div>
+  <div class="row">
+    <div class="col"><h3>Recent Notes:</h3></div>
+    <div class="col note-table-new-btn"><%= button_to 'New', new_note_path, class: 'btn btn-primary' if @user == current_user %></div>
+  </div>
 
-<div>
-  <% if @endorsers.empty? %>
-      This user currently has no endorsements.
-  <% end %>
-</div>
-
-<div style="float:left; padding-left: 2em;">
-  Notes: <%= link_to '(New)', new_note_path if @user == current_user %><br>
   <%= render partial: 'note', collection: @notes, as: 'n' unless @notes.empty? %>
+
 </div>
+
+
+
+<!-- Modal -->
+<div id="endorsers-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Endorsers</h4>
+      </div>
+      <div class="modal-body">
+        <table>
+        <% @endorsers.each do |e| %>
+          <tr>
+            <td><img src="<%= e.avatar_url %>" class="endorser-img-modal"/></td>
+            <td id="user-link" style="vertical-align: middle"><a href="<%= user_path(e) %>" target="_blank"><%= e.name %></a></td>
+          </tr>
+        <% end %>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready( function(event) {
+      $('#endorsers-show').on('click', function () {
+          $('#endorsers-modal').modal('show')
+      });
+  })
+</script>
