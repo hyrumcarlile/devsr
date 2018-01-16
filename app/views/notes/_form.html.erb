@@ -1,5 +1,5 @@
 <div class="note-form">
-  <%= form_for(note) do |f| %>
+  <%= bootstrap_form_for(note) do |f| %>
     <% if note.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(note.errors.count, 'error') %> prohibited this note from being saved:</h2>
@@ -13,13 +13,11 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :body %>
-      <%= f.text_area :body %>
+      <%= f.text_field :title %>
     </div>
 
     <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= f.text_area :body %>
     </div>
 
     <div class="actions">

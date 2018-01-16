@@ -20,6 +20,8 @@ $font-color: #000000;
 
 .note-card {
   color: #000;
+  max-height: 300px;
+  overflow: hidden;
 }
 
 .card-title {

@@ -1,7 +1,24 @@
-<%= form_for @note, url: import_new_notes_path, html: { multipart: true } do |f| %>
+<div class="container">
+  <h1 class="my-3">Import HTML Note</h1>
+  <div class="row" style="margin-top: 5em;">
+    <div class="col">
+      <%= bootstrap_form_for @note, url: import_new_notes_path, html: { multipart: true } do |f| %>
 
-    <%= f.file_field :import_file %>
+        <%= f.file_field :import_file, hide_label: true %>
 
-    <%= f.submit %>
+        <%= f.submit %>
 
-<% end %>
+      <% end %>
+    </div>
+
+    <div class="col">
+      <h3>Some Things to Consider:</h3>
+      <ul>
+        <li>This feature is in alpha - use at your own risk 😅</li>
+        <li>The text shown below the title on the note card on your profile is automatically generated from the first paragraph
+          (defined as all the text before the first return or "\n" character).</li>
+        <li>You will likely need to edit the note after importing for it to look normal</li>
+      </ul>
+    </div>
+  </div>
+</div>

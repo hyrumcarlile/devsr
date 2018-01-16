@@ -5,7 +5,7 @@
     <% end %>
     <h4 class="card-title"><%= n.title.nil? ? "#{n.body[0..20]}..." : n.title %></h4>
     <div class="card-block">
-      <p class="card-text"><%= n.body.split("\n\n", 2)[0] %></p>
+      <p class="card-text"><%= n.body.split("\n", 2)[0] %></p>
     </div>
   </div>
 <% end %>
