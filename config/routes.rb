@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-
   devise_for :users
 
   authenticate :user do
     resources :users
     resources :endorsements
+    resources :skills
     resources :notes
     resources :notes do
       collection do

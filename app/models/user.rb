@@ -3,13 +3,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :endorsers, class_name:  'Endorsement',
-                       foreign_key: 'endorsee_id',
-                       dependent:   :destroy
-  has_many :endorsees, class_name:  'Endorsement',
-                       foreign_key: 'endorser_id',
-                       dependent:   :destroy
-  has_many :notes,     dependent:   :destroy
+
+  has_many :endorsers,     class_name:  'Endorsement',
+                           foreign_key: 'endorsee_id',
+                           dependent:   :destroy
+  has_many :endorsees,     class_name:  'Endorsement',
+                           foreign_key: 'endorser_id',
+                           dependent:   :destroy
+  has_many :notes,         dependent:   :destroy
+  has_many :skill_ratings, dependent:   :destroy
 
   before_save :create_avatar
 

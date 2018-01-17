@@ -4,15 +4,16 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.order(status: :desc)
+    @users = User.order(rating: :desc)
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @endorsers = @user.endorsers.map(&:endorser).flatten.compact
-    @endorsees = @user.endorsees.map(&:endorsee).flatten.compact
-    @notes = @user.notes
+    @endorsers     = @user.endorsers.map(&:endorser).flatten.compact
+    @endorsees     = @user.endorsees.map(&:endorsee).flatten.compact
+    @skill_ratings = @user.skill_ratings
+    @notes         = @user.notes
   end
 
   # GET /users/new

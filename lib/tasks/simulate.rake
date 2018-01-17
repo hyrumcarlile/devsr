@@ -68,7 +68,8 @@ namespace :simulate do
     begin
       Endorsement.create!(
           endorser_id: ([*1..User.count]).sample,
-          endorsee_id: ([*1..User.count]).sample
+          endorsee_id: ([*1..User.count]).sample,
+          skill_id: ([*1..Skill.count]).sample
       )
     # For duplicate endorsements
     rescue NameError
