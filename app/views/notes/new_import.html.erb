@@ -2,7 +2,7 @@
   <h1 class="my-3">Import HTML Note</h1>
   <div class="row" style="margin-top: 5em;">
     <div class="col">
-      <%= bootstrap_form_for @note, url: import_new_notes_path, html: { multipart: true } do |f| %>
+      <%= bootstrap_form_for @note, url: notes_import_new_path, html: { multipart: true } do |f| %>
 
         <%= f.file_field :import_file, hide_label: true %>
 

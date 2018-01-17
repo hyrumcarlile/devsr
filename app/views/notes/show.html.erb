@@ -3,6 +3,7 @@
     <h1 class="note-title col"><%= @note.title.titleize %></h1>
     <% if @note.user == current_user %>
       <%= button_to 'Edit', edit_note_path(@note),
+                    method: :get,
                     class: 'btn btn-primary col' %>
       <%= button_to 'Delete', note_path(@note),
                     method: :delete,
