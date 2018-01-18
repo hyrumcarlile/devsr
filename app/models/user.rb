@@ -18,4 +18,17 @@ class User < ApplicationRecord
   def create_avatar
     self.avatar_url = "https://robohash.org/#{email}?gravatar=yes"
   end
+
+  def skill_labels
+    # Sort the skills by rating highest to lowest
+    sr = self.skill_ratings.sort_by() { |sr| sr.rating }.reverse!
+    sr.map(&:skill).map(&:name).to_json
+  end
+
+  def skill_values
+    # Sort the skills by rating highest to lowest
+    sr = self.skill_ratings.sort_by() { |sr| sr.rating }.reverse!
+    sr = sr.map(&:rating)
+    sr.map(&:to_f)
+  end
 end

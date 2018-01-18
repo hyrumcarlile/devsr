@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     @endorsers     = @user.endorsers.map(&:endorser).flatten.compact
     @endorsees     = @user.endorsees.map(&:endorsee).flatten.compact
     @skill_ratings = @user.skill_ratings
+    @sr_labels     = @user.skill_labels
+    @sr_values     = @user.skill_values
     @notes         = @user.notes
   end
 

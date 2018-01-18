@@ -17,9 +17,7 @@
     </div>
   </div>
 
-  <div class="row">
-    <%= render partial: 'skill_rating', collection: @skill_ratings %>
-  </div>
+  <%= render partial: 'skill_rating' %>
 
   <div class="row">
     <div class="col"><h3>Recent Notes:</h3></div>
@@ -59,7 +57,7 @@
 </div>
 
 <script>
-  $(document).ready( function(event) {
+  $(document).ready( function() {
       $('#endorsers-show').on('click', function () {
           $('#endorsers-modal').modal('show')
       });
