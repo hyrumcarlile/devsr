@@ -11,10 +11,34 @@
     </div>
   <% end %>
 
-  Enter the email of the person you would like to endorse:<br>
-  <%= text_field :endorsement, :email %>
+  <div class="mt-4">Enter the email of the person you would like to endorse:</div>
+  <%= text_field :endorsement, :email, class: 'form-control' %>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="mt-4">
+    What would you like to endorse them for?
+    <%= text_field :endorsement, :skill, id: 'skill-tags' %>
+  </div>
+
+  <div class="actions mt-4">
+    <%= f.submit class: 'btn btn-secondary' %>
   </div>
 <% end %>
+
+<script>
+  $(document).ready(function() {
+      var s = <%= raw @skills.as_json %>;
+      var skills = [];
+      for (var i = 0; i < s.length; i++) {
+          skills.push({skill: s[i]})
+      }
+      $('#skill-tags').selectize({
+          maxItems: 1,
+          create: false,
+          persist: false,
+          valueField: 'skill',
+          labelField: 'skill',
+          searchField: ['skill'],
+          options: skills,
+      });
+  })
+</script>

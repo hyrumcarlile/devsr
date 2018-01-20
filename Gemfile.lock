@@ -167,6 +167,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    selectize-rails (0.12.4.1)
     slop (3.6.0)
     spring (2.0.2)
       activesupport (>= 4.2)
@@ -223,6 +224,7 @@ DEPENDENCIES
   ruby-progressbar
   sanitize (~> 4.0, >= 4.0.1)
   sass-rails (~> 5.0)
+  selectize-rails
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  *= require rails_bootstrap_forms
+  *= require selectize
+ *= require selectize.default
  */
 
 $blue: #2065e5;
@@ -20,6 +22,10 @@ $primary-font-blue: #4c83ea;
 $gray-background: #d7ddea;
 $light-gray-background: #ebecec;
 $font-color: #000000;
+
+$danger: #d9534f;
+$alert: #5bc0de;
+$success: #5cb85c;
 
 $theme-colors: (
   primary: $blue
@@ -33,6 +39,22 @@ $breakpoint-mobile: 320px;
 @import "bootstrap";
 @import 'notes';
 @import 'rails_bootstrap_forms';
+
+/* ============================================== Fonts ============================================ */
+
+@font-face {
+  font-family: 'Uni Sans';
+  src: asset-url('fonts/Uni-Sans-Heavy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Whitney';
+  src: asset-url('fonts/Whitney-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* ====================================== Bootstrap Overrides ====================================== */
 
@@ -88,6 +110,59 @@ $breakpoint-mobile: 320px;
 
 /* ========================================================================================== */
 
+//body {
+//  font-family: "Whitney";
+//}
+//
+//h1, h2, h3, h4, h5, h6 {
+//  font-family: "Whitney";
+//  font-weight: bold;
+//}
+//
+//p {
+//  font-family: "Whitney";
+//}
+
+#navbar-logo {
+  font-family: "Uni Sans";
+  color: $white;
+  font-size: 2.5em;
+  padding-top: .2em;
+}
+
+#alert {
+  width: 100%;
+  text-align: center;
+  background-color: $danger;
+  color: $white;
+  height: 3em;
+  padding-top: .7em;
+  -moz-animation: cssAnimation .25s ease-in 3s forwards;
+  /* Firefox */
+  -webkit-animation: cssAnimation .25s ease-in 3s forwards;
+  /* Safari and Chrome */
+  -o-animation: cssAnimation .25s ease-in 3s;
+  /* Opera */
+  animation: cssAnimation .25s ease-in 3s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cssAnimation {
+  to {
+    height:0;
+    padding-top: 0;
+    display: none;
+  }
+}
+
+@-webkit-keyframes cssAnimation {
+  to {
+    height:0;
+    padding-top: 0;
+    display: none;
+  }
+}
 
 .centered {
   width: 100%;

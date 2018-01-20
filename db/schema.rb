@@ -18,14 +18,13 @@ ActiveRecord::Schema.define(version: 20180117140941) do
   create_table "endorsements", force: :cascade do |t|
     t.integer  "endorser_id"
     t.integer  "endorsee_id"
+    t.integer  "skill_id"
     t.datetime "created_at",                                                 null: false
     t.datetime "updated_at",                                                 null: false
     t.decimal  "endorsement_value", precision: 10, scale: 5, default: "0.0"
-    t.integer  "skill_id"
     t.index ["endorsee_id"], name: "index_endorsements_on_endorsee_id", using: :btree
-    t.index ["endorser_id", "endorsee_id"], name: "index_endorsements_on_endorser_id_and_endorsee_id", unique: true, using: :btree
+    t.index ["endorser_id", "endorsee_id", "skill_id"], name: "index_endorsements_on_endorser_id_and_endorsee_id_and_skill_id", unique: true, using: :btree
     t.index ["endorser_id"], name: "index_endorsements_on_endorser_id", using: :btree
-    t.index ["skill_id"], name: "index_endorsements_on_skill_id", using: :btree
   end
 
   create_table "notes", force: :cascade do |t|
@@ -83,7 +82,6 @@ ActiveRecord::Schema.define(version: 20180117140941) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "endorsements", "skills"
   add_foreign_key "notes", "users"
   add_foreign_key "skill_ratings", "skills"
   add_foreign_key "skill_ratings", "users"

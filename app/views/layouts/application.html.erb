@@ -11,6 +11,10 @@
   <body>
     <%= render partial: 'layouts/navbar' %>
 
+    <% flash.each do |k, v| %>
+      <div id="<%= k %>"><%= v %></div>
+    <% end %>
+
     <%= yield %>
     <% unless user_signed_in? %>
       <%= render 'layouts/new_session_modal' %>
