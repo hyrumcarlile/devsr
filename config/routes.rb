@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-
   devise_for :users
 
   authenticate :user do
     resources :users
     resources :endorsements
+    resources :skills
     resources :notes
 
     get 'notes/import/new', to: 'notes#new_import' # import_new_notes_path

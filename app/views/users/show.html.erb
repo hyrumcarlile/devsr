@@ -17,6 +17,8 @@
     </div>
   </div>
 
+  <%= render partial: 'skill_rating' %>
+
   <div class="row">
     <div class="col"><h3>Recent Notes:</h3></div>
     <div class="col note-table-new-btn"><%= button_to 'New', new_note_path, method: :get, class: 'btn btn-primary' if @user == current_user %></div>
@@ -55,7 +57,7 @@
 </div>
 
 <script>
-  $(document).ready( function(event) {
+  $(document).ready( function() {
       $('#endorsers-show').on('click', function () {
           $('#endorsers-modal').modal('show')
       });

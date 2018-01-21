@@ -13,3 +13,24 @@ User.create!(
   password: '123456',
   password_confirmation: '123456'
 )
+
+skills = [
+    'Ruby',
+    'Rails',
+    'C++',
+    'Java',
+    'Python',
+    'Go',
+    'Django',
+    'Elixr',
+    'Swift',
+    'Vapor',
+    'MongoDB',
+    'Postgresql',
+    'MySQL',
+    'SQLite'
+]
+
+skills.each do |s|
+  Skill.create!(name: s)
+end

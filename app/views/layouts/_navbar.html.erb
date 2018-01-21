@@ -1,4 +1,9 @@
 <nav class="navbar navbar-dark bg-primary">
+  <ul class="navbar-nav nav-float-left">
+    <%= link_to root_path do %>
+      <li class="nav-item" id="navbar-logo">DEVSR</li>
+    <% end %>
+  </ul>
   <ul class="navbar-nav nav-float-right">
     <li class="nav-item">
       <% unless user_signed_in?  %>

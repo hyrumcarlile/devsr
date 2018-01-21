@@ -66,10 +66,34 @@ namespace :simulate do
 
   def create_endorsement
     begin
+      endorser_id = ([*1..User.count]).sample
+      endorsee_id = ([*1..User.count]).sample
+      endorsee = User.find(endorsee_id)
+      srs = endorsee.skill_ratings.sort_by() { |sr| sr.rating }.reverse!
+
+      # This basically says "if a user doesn't have a skill, pick a random skill."
+      # "if they do have skills, it has a 33% chance of picking their most endorsed
+      # skill, then, a 33% chance of picking their second most endorsed skill.
+      # And so on...
+
+      if srs.blank?
+        skill_id = ([*1..Skill.count]).sample
+      else
+        srs.each do |sr|
+          if ([*1..3]).sample == 1
+            skill_id = sr.skill.id
+            break
+          end
+        end
+      end
+      skill_id = ([*1..Skill.count]).sample if skill_id.nil?
+
       Endorsement.create!(
-          endorser_id: ([*1..User.count]).sample,
-          endorsee_id: ([*1..User.count]).sample
+          endorser_id: endorser_id,
+          endorsee_id: endorsee_id,
+          skill_id: skill_id
       )
+
     # For duplicate endorsements
     rescue NameError
     rescue PG::UniqueViolation

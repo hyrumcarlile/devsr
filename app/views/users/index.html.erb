@@ -13,7 +13,7 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= counter += 1 %></td>
-          <td><%= user.status %></td>
+          <td><%= user.rating.to_s %></td>
           <td><%= user.email %></td>
           <td><%= user.name %></td>
           <td><%= user.username %></td>

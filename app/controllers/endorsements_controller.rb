@@ -1,5 +1,3 @@
-require 'pry'
-
 class EndorsementsController < ApplicationController
   before_action :set_endorsement, only: [:show, :edit, :update, :destroy]
 
@@ -17,6 +15,7 @@ class EndorsementsController < ApplicationController
   # GET /endorsements/new
   def new
     @endorsement = Endorsement.new
+    @skills = Skill.all.map(&:name)
   end
 
   # GET /endorsements/1/edit
@@ -26,14 +25,23 @@ class EndorsementsController < ApplicationController
   # POST /endorsements
   # POST /endorsements.json
   def create
-    @endorsement = Endorsement.new(:endorser_id => current_user.id, :endorsee_id => User.find_by(:email => params[:endorsement][:email])&.id)
+    error = nil
+    begin
+      @endorsement = Endorsement.create(
+          :endorser_id => current_user.id,
+          :endorsee_id => User.find_by(:email => params[:endorsement][:email])&.id,
+          :skill_id => Skill.find_by(:name => params[:endorsement][:skill])&.id
+      )
+    rescue => e
+      error = 'This endorsement already exists'
+    end
 
     respond_to do |format|
-      if @endorsement.save
-        format.html { redirect_to root_path, notice: 'Endorsement was successfully created.' }
+      if error.blank?
+        format.html { redirect_to root_path }
         format.json { render :show, status: :created, location: @endorsement }
       else
-        format.html { render :new }
+        format.html { redirect_to new_endorsement_path, alert: error }
         format.json { render json: @endorsement.errors, status: :unprocessable_entity }
       end
     end
@@ -44,7 +52,7 @@ class EndorsementsController < ApplicationController
   def update
     respond_to do |format|
       if @endorsement.update(endorsement_params)
-        format.html { redirect_to @endorsement, notice: 'Endorsement was successfully updated.' }
+        format.html { redirect_to @endorsement }
         format.json { render :show, status: :ok, location: @endorsement }
       else
         format.html { render :edit }
@@ -58,7 +66,7 @@ class EndorsementsController < ApplicationController
   def destroy
     @endorsement.destroy
     respond_to do |format|
-      format.html { redirect_to endorsements_url, notice: 'Endorsement was successfully destroyed.' }
+      format.html { redirect_to endorsements_url }
       format.json { head :no_content }
     end
   end
@@ -75,6 +83,6 @@ class EndorsementsController < ApplicationController
     # end
 
     def endorsement_params
-      params.require(:endorsement).permit(:email)
+      params.require(:endorsement).permit(:email, :skill)
     end
 end
