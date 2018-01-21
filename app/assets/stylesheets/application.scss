@@ -148,6 +148,24 @@ $breakpoint-mobile: 320px;
   animation-fill-mode: forwards;
 }
 
+#notice {
+  width: 100%;
+  text-align: center;
+  background-color: $success;
+  color: $white;
+  height: 3em;
+  padding-top: .7em;
+  -moz-animation: cssAnimation .25s ease-in 3s forwards;
+  /* Firefox */
+  -webkit-animation: cssAnimation .25s ease-in 3s forwards;
+  /* Safari and Chrome */
+  -o-animation: cssAnimation .25s ease-in 3s;
+  /* Opera */
+  animation: cssAnimation .25s ease-in 3s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
 @keyframes cssAnimation {
   to {
     height:0;
