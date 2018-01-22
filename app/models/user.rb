@@ -12,6 +12,7 @@ class User < ApplicationRecord
                            dependent:   :destroy
   has_many :notes,         dependent:   :destroy
   has_many :skill_ratings, dependent:   :destroy
+  has_many :votes,         dependent:   :destroy
 
   before_save :create_avatar
 

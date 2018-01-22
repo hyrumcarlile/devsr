@@ -1,6 +1,7 @@
 require 'pry'
 class Note < ApplicationRecord
   belongs_to :user
+  has_many :votes
 
   def self.import(import_file, current_user)
     n = Note.new(
