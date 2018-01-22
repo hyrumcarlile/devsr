@@ -22,13 +22,13 @@ class User < ApplicationRecord
 
   def skill_labels
     # Sort the skills by rating highest to lowest
-    sr = self.skill_ratings.sort_by() { |sr| sr.rating }.reverse!
+    sr = skill_ratings.sort_by(rating).reverse!
     sr.map(&:skill).map(&:name).to_json
   end
 
   def skill_values
     # Sort the skills by rating highest to lowest
-    sr = self.skill_ratings.sort_by() { |sr| sr.rating }.reverse!
+    sr = skill_ratings.sort_by(rating).reverse!
     sr = sr.map(&:rating)
     sr.map(&:to_f)
   end
