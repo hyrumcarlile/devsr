@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$blue: #2065e5;
+$secondary-yellow: #FD9A1A;
+
 .note-form textarea, .note-form input[type=text] {
   width: 100%;
   padding: 12px 20px;
@@ -22,4 +25,9 @@
 
 .note-form input[type=text] {
   height: 30px;
+}
+
+#undo-upvote-btn {
+  background-color: $secondary-yellow;
+  border: none;
 }

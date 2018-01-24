@@ -9,6 +9,18 @@
                     method: :delete,
                     class: 'btn btn-danger note-delete-btn mx-2',
                     data: { confirm: 'This is non-reversible. Are you sure?'} %>
+    <% else %>
+      <% if @upvote_btn %>
+        <%= button_to '+1', note_upvote_path(@note),
+                        method: :post,
+                        class: 'btn btn-secondary',
+                        id: 'upvote-btn' %>
+        <% else %>
+          <%= button_to '+1', vote_path(@vote),
+                        method: :delete,
+                        class: 'btn btn-secondary',
+                        id: 'undo-upvote-btn' %>
+        <% end %>
     <% end %>
     <br>
   </div>
@@ -17,4 +29,3 @@
     <%= markdown @note.body %>
   </div>
 </div>
-

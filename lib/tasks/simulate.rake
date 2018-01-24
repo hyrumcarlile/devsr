@@ -9,16 +9,19 @@ namespace :simulate do
       new_users = create_new_users
       new_endorsements = create_new_endorsements
       new_notes = create_new_notes
-      create_simulated_day(new_users, new_endorsements)
+      new_votes = create_new_votes
+      create_simulated_day(new_users, new_endorsements, new_notes, new_votes)
       counter += 1
       puts "Day #{counter}:
             New Users: #{new_users}
             New Endorsements: #{new_endorsements}
             New Notes: #{new_notes}
+            New Votes: #{new_votes}
             ==============================
             Total Users: #{User.count}
             Total Endorsements: #{Endorsement.count}
             Total Notes: #{Note.count}
+            Total Votes: #{Vote.count}
             **************************************************************"
     end
   end
@@ -57,10 +60,21 @@ namespace :simulate do
     counter
   end
 
-  def create_simulated_day(new_users, new_endorsements)
+  def create_new_votes
+    counter = 0
+    votes_algorithm.times do
+      create_vote
+      counter += 1
+    end
+    counter
+  end
+
+  def create_simulated_day(new_users, new_endorsements, new_notes, new_votes)
     SimulatedDay.create!(
       num_new_users: new_users,
-      num_new_endorsements: new_endorsements
+      num_new_endorsements: new_endorsements,
+      num_new_notes: new_notes,
+      num_new_votes: new_votes
     )
   end
 
@@ -132,6 +146,15 @@ namespace :simulate do
     )
   end
 
+  def create_vote
+    return if Note.count < 1
+    Vote.create!(
+      note_id: rand(1..Note.count),
+      user_id: rand(1..User.count),
+      is_upvote?: true
+    )
+  end
+
   def users_algorithm
     ((SimulatedDay.count / 10) * rand(0.5..1.5)).round
   end
@@ -142,5 +165,9 @@ namespace :simulate do
 
   def notes_algorithm
     ((User.count / 30) * rand(0.5..1.5)).round
+  end
+
+  def votes_algorithm
+    ((User.count / 3) * rand(0.5..1.5)).round
   end
 end
