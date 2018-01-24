@@ -31,6 +31,8 @@ gem 'pry', '~> 0.10.3'
 gem 'puma', '~> 3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
+# For recacptcha in the sign up form
+gem 'recaptcha', require: 'recaptcha/rails'
 # Red carpet gem for markdown support
 gem 'redcarpet'
 # This is for progress bars in rake tasks that take forever

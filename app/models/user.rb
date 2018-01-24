@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, and :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -12,8 +12,17 @@ class User < ApplicationRecord
                            dependent:   :destroy
   has_many :notes,         dependent:   :destroy
   has_many :skill_ratings, dependent:   :destroy
+  has_many :votes,         dependent:   :destroy
 
   before_save :create_avatar
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data == session["devise.gitlab_data"] && session["devise.gitlab_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
 
   def create_avatar
     self.avatar_url = "https://robohash.org/#{email}?gravatar=yes"
@@ -21,13 +30,13 @@ class User < ApplicationRecord
 
   def skill_labels
     # Sort the skills by rating highest to lowest
-    sr = self.skill_ratings.sort_by() { |sr| sr.rating }.reverse!
+    sr = skill_ratings.sort_by(&:rating).reverse!
     sr.map(&:skill).map(&:name).to_json
   end
 
   def skill_values
     # Sort the skills by rating highest to lowest
-    sr = self.skill_ratings.sort_by() { |sr| sr.rating }.reverse!
+    sr = skill_ratings.sort_by(&:rating).reverse!
     sr = sr.map(&:rating)
     sr.map(&:to_f)
   end

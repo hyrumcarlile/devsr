@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117140941) do
+ActiveRecord::Schema.define(version: 20180124153901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20180117140941) do
     t.integer  "num_new_endorsements"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "num_new_notes"
+    t.integer  "num_new_votes"
   end
 
   create_table "skill_ratings", force: :cascade do |t|
@@ -78,8 +80,18 @@ ActiveRecord::Schema.define(version: 20180117140941) do
     t.string   "username"
     t.decimal  "rating",                 precision: 15, scale: 5, default: "0.0"
     t.text     "avatar_url"
+    t.string   "provider"
+    t.string   "uid"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.boolean  "is_upvote?"
+    t.integer  "user_id"
+    t.integer  "note_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "notes", "users"

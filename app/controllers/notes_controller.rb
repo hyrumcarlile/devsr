@@ -22,7 +22,11 @@ class NotesController < ApplicationController
 
   # GET /notes/1
   # GET /notes/1.json
-  def show; end
+  def show
+    # logic on whether or not to display the +1 button
+    @upvote_btn = @note.should_show_upvote_btn(current_user)
+    @vote = Vote.find_by(user_id: current_user.id, note_id: @note.id)
+  end
 
   # GET /notes/new
   def new
@@ -71,6 +75,12 @@ class NotesController < ApplicationController
       format.html { redirect_to current_user }
       format.json { head :no_content }
     end
+  end
+
+  def upvote
+    @note = Note.find(params[:note_id])
+    Vote.create(note_id: @note.id, is_upvote?: true, user_id: current_user.id)
+    redirect_to @note
   end
 
   private

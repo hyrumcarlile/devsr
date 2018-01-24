@@ -18,6 +18,7 @@
  */
 
 $blue: #2065e5;
+$secondary-yellow: #DF9A1A;
 $primary-font-blue: #4c83ea;
 $gray-background: #d7ddea;
 $light-gray-background: #ebecec;
@@ -137,13 +138,31 @@ $breakpoint-mobile: 320px;
   color: $white;
   height: 3em;
   padding-top: .7em;
-  -moz-animation: cssAnimation .25s ease-in 3s forwards;
+  -moz-animation: cssAnimation .25s ease-in 2s forwards;
   /* Firefox */
-  -webkit-animation: cssAnimation .25s ease-in 3s forwards;
+  -webkit-animation: cssAnimation .25s ease-in 2s forwards;
   /* Safari and Chrome */
-  -o-animation: cssAnimation .25s ease-in 3s;
+  -o-animation: cssAnimation .25s ease-in 2s;
   /* Opera */
-  animation: cssAnimation .25s ease-in 3s forwards;
+  animation: cssAnimation .25s ease-in 2s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+#notice {
+  width: 100%;
+  text-align: center;
+  background-color: $success;
+  color: $white;
+  height: 3em;
+  padding-top: .7em;
+  -moz-animation: cssAnimation .25s ease-in 2s forwards;
+  /* Firefox */
+  -webkit-animation: cssAnimation .25s ease-in 2s forwards;
+  /* Safari and Chrome */
+  -o-animation: cssAnimation .25s ease-in 2s;
+  /* Opera */
+  animation: cssAnimation .25s ease-in 2s forwards;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }

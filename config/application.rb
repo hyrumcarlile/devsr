@@ -12,6 +12,9 @@ module Silvertuna
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    # So that we can leave our devise views where they are
+    # paths.app.views << 'app/views/devise'
+
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.enabled = true
 

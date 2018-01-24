@@ -1,6 +1,7 @@
 require 'pry'
 class Note < ApplicationRecord
   belongs_to :user
+  has_many :votes
 
   def self.import(import_file, current_user)
     n = Note.new(
@@ -23,4 +24,10 @@ class Note < ApplicationRecord
     note
   end
 
+  def should_show_upvote_btn(current_user)
+    # display an inactive (or disabled) button if the user has already upvoted that note
+    return false if self.votes.map(&:user).include? current_user
+    # else, return a regular button
+    return true
+  end
 end
