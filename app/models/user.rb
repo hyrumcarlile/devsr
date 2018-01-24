@@ -16,14 +16,6 @@ class User < ApplicationRecord
 
   before_save :create_avatar
 
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if data == session["devise.gitlab_data"] && session["devise.gitlab_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
-      end
-    end
-  end
-
   def create_avatar
     self.avatar_url = "https://robohash.org/#{email}?gravatar=yes"
   end
