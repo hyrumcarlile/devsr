@@ -19,6 +19,8 @@ gem 'chart-js-rails'
 gem 'coffee-rails', '~> 4.2'
 # Use devise for authentication
 gem 'devise'
+# For icons
+gem 'font-awesome-sass', '~> 4.7.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use jquery as the JavaScript library

@@ -1,6 +1,10 @@
 <div class="container">
   <h1>Users</h1>
 
+  <% if @users.blank? %>
+      <h4>Woops! Didn't find any users. Try another search.</h4>
+  <% end %>
+
   <table>
     <thead>
       <tr>
@@ -13,6 +17,7 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= counter += 1 %></td>
+          <td><img src="<%= user.avatar_url %>" class="endorser-img-modal"/></td>
           <td><%= user.rating.to_s %></td>
           <td><%= user.email %></td>
           <td><%= user.name %></td>

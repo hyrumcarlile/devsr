@@ -16,6 +16,10 @@ class User < ApplicationRecord
 
   before_save :create_avatar
 
+  def self.search(search)
+    where("lower(name) LIKE ?", "%#{search.downcase}%")
+  end
+
   def create_avatar
     self.avatar_url = "https://robohash.org/#{email}?gravatar=yes"
   end
