@@ -8,7 +8,11 @@ class UsersController < ApplicationController
     if params[:search]
       @users = User.search(params[:search]).order("created_at DESC")
     else
-      @users = User.all.order("created_at DESC")
+      if can?(:manage, :users)
+        @users = User.all.order("created_at DESC")
+      else
+        @users = []
+      end
     end
   end
 

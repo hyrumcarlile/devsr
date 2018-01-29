@@ -19,3 +19,17 @@
 //= require Chart.min
 //= require selectize
 //= require_tree .
+
+$(document).ready(function() {
+    if ($('#search-input').val() == '') {
+        $('#search-submit').prop('disabled', true);
+    }
+    $('#search-input').keyup(function() {
+        if($(this).val() != '') {
+            $('#search-submit').prop('disabled', false);
+        }
+        else {
+            $('#search-submit').prop('disabled', true);
+        }
+    });
+});
