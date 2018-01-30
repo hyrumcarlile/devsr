@@ -4,12 +4,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.order(rating: :desc)
-    if params[:search]
-      @users = User.search(params[:search]).order("created_at DESC")
+    return if params[:search].length < 2
+    unless params[:search].blank?
+      @users = User.search(params[:search]).order("rating DESC")
     else
-      if can?(:manage, :users)
-        @users = User.all.order("created_at DESC")
+      if can?(:index, :users)
+        @users = User.all.order("rating DESC")
       else
         @users = []
       end
@@ -84,7 +84,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      # params.fetch(:user, {})
-      params.require(:user).permit(:email, :password, :password_confirmation, :name, :username)
+      params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :role)
     end
 end

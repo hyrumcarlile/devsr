@@ -1,0 +1,191 @@
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  background-color: transparent;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #e9ecef;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #e9ecef;
+}
+
+.table .table {
+  background-color: #fff;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+.table-bordered {
+  border: 1px solid #e9ecef;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #e9ecef;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+  border-bottom-width: 2px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-primary,
+.table-primary > th,
+.table-primary > td {
+  background-color: #bfe2ef;
+}
+
+.table-hover .table-primary:hover {
+  background-color: #abd9ea;
+}
+
+.table-hover .table-primary:hover > td,
+.table-hover .table-primary:hover > th {
+  background-color: #abd9ea;
+}
+
+.table-success,
+.table-success > th,
+.table-success > td {
+  background-color: #bff0df;
+}
+
+.table-hover .table-success:hover {
+  background-color: #aaebd5;
+}
+
+.table-hover .table-success:hover > td,
+.table-hover .table-success:hover > th {
+  background-color: #aaebd5;
+}
+
+.table-info,
+.table-info > th,
+.table-info > td {
+  background-color: #e4ddff;
+}
+
+.table-hover .table-info:hover {
+  background-color: #d0c4ff;
+}
+
+.table-hover .table-info:hover > td,
+.table-hover .table-info:hover > th {
+  background-color: #d0c4ff;
+}
+
+.table-warning,
+.table-warning > th,
+.table-warning > td {
+  background-color: #f7f4c7;
+}
+
+.table-hover .table-warning:hover {
+  background-color: #f4f0b1;
+}
+
+.table-hover .table-warning:hover > td,
+.table-hover .table-warning:hover > th {
+  background-color: #f4f0b1;
+}
+
+.table-danger,
+.table-danger > th,
+.table-danger > td {
+  background-color: #f8cbd1;
+}
+
+.table-hover .table-danger:hover {
+  background-color: #f5b5bd;
+}
+
+.table-hover .table-danger:hover > td,
+.table-hover .table-danger:hover > th {
+  background-color: #f5b5bd;
+}
+
+.table-dark,
+.table-dark > th,
+.table-dark > td {
+  background-color: #bfbfc1;
+}
+
+.table-hover .table-dark:hover {
+  background-color: #b2b2b4;
+}
+
+.table-hover .table-dark:hover > td,
+.table-hover .table-dark:hover > th {
+  background-color: #b2b2b4;
+}
+
+.table-active,
+.table-active > th,
+.table-active > td {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-hover .table-active:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-hover .table-active:hover > td,
+.table-hover .table-active:hover > th {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.thead-inverse th {
+  color: #fff;
+  background-color: #212529;
+}
+
+.thead-default th {
+  color: #495057;
+  background-color: #e9ecef;
+}
+
+.table-inverse {
+  color: #fff;
+  background-color: #212529;
+}
+
+.table-inverse th,
+.table-inverse td,
+.table-inverse thead th {
+  border-color: #32383e;
+}
+
+.table-inverse.table-bordered {
+  border: 0;
+}
+
+.table-inverse.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.table-inverse.table-hover tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.075);
+}

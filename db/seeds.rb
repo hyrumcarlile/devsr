@@ -10,6 +10,7 @@ User.create!(
   name: 'Hyrum Carlile',
   email: 'hcarlile12@gmail.com',
   username: 'hyrumcarlile',
+  role: 1,
   password: '123456',
   password_confirmation: '123456'
 )

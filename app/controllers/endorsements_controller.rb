@@ -4,12 +4,13 @@ class EndorsementsController < ApplicationController
   # GET /endorsements
   # GET /endorsements.json
   def index
-    @endorsements = Endorsement.all
+    can?(:manage, :endorsements) ? @endorsements = Endorsement.all : @endorsements = Endorsement.where(endorsee_id: current_user.id)
   end
 
   # GET /endorsements/1
   # GET /endorsements/1.json
   def show
+    not_found unless can?(:read, Endorsement.find(params[:id]))
   end
 
   # GET /endorsements/new

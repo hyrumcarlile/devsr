@@ -16,8 +16,15 @@ class User < ApplicationRecord
 
   before_save :create_avatar
 
+  # List of roles a user can be (for permissions)
+  enum role: [:end_user, :administrator]
+
+  def self.administrator?
+    self.role.eql? 1 ? true : false
+  end
+
   def self.search(search)
-    where("lower(name) LIKE ?", "%#{search.downcase}%")
+    where('lower(name) LIKE ?', "%#{search.downcase}%")
   end
 
   def create_avatar
@@ -35,5 +42,15 @@ class User < ApplicationRecord
     sr = skill_ratings.sort_by(&:rating).reverse!
     sr = sr.map(&:rating)
     sr.map(&:to_f)
+  end
+
+  def top_skills
+    # Returns the user's top three skills
+    skill_ratings.sort_by(&:rating).last(3).map(&:skill).map(&:name).reverse!
+  end
+
+  def recent_notes
+    # Returns the 3 most recently updated notes
+    notes.order('updated_at').last(3)
   end
 end
