@@ -1,3 +1,4 @@
+require 'faker'
 namespace :simulate do
   desc 'Simulate a day (add users, endorsements'
   task day: :environment do
