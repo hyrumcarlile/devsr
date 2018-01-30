@@ -21,6 +21,8 @@ gem 'chart-js-rails'
 gem 'coffee-rails', '~> 4.2'
 # Use devise for authentication
 gem 'devise'
+# Use Faker for test data
+gem 'faker'
 # For icons
 gem 'font-awesome-sass', '~> 4.7.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -65,8 +67,6 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  # Use Faker for test data
-  gem 'faker'
 end
 
 group :development do
