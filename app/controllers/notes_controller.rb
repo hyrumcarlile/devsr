@@ -16,7 +16,7 @@ class NotesController < ApplicationController
       Note.sanitize_html(Note.import(params[:note][:import_file], current_user)).save
       redirect_to current_user
     rescue => exception
-      redirect_to import_new_notes_path, locals: exception
+      redirect_to import_new_path, locals: exception
       end
   end
 
