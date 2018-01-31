@@ -41,6 +41,8 @@ gem 'rails', '~> 5.0.6'
 gem 'recaptcha', require: 'recaptcha/rails'
 # Red carpet gem for markdown support
 gem 'redcarpet'
+# For error reporting
+gem 'rollbar'
 # This is for progress bars in rake tasks that take forever
 gem 'ruby-progressbar'
 # Sanitize filters out harmful stuff from uploaded html files
