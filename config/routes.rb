@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resources :votes, only: [:destroy]
   end
 
+  authenticated :user do
+    root 'users#current_user_home', as: :authenticated_root
+  end
+
   root 'home#index'
 
 end

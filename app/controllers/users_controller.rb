@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def current_user_home
+    redirect_to current_user
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
