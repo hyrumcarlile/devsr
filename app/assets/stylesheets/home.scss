@@ -1,3 +1,35 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$blue: #2065e5;
+$secondary-yellow: #DF9A1A;
+$primary-font-blue: #4c83ea;
+$white: #ffffff;
+$gray-background: #d7ddea;
+$light-gray-background: #ebecec;
+$font-color: #000000;
+$dark: #343a40;
+
+$danger: #d9534f;
+$alert: #5bc0de;
+$success: #5cb85c;
+
+.jumbotron-home {
+  background-color: $dark;
+  color: $white;
+  height: 100vh;
+}
+
+.jumbotron-home h1 {
+  font-family: "Uni Sans";
+  font-size: 4em;
+}
+
+.jumbotron-home h2 {
+  color: $blue;
+}
+
+#interchangable {
+  color: $blue;
+}

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    return if params[:search].length < 2
+    return if params[:search].length < 3
     unless params[:search].blank?
       @users = User.search(params[:search]).order("rating DESC")
     else

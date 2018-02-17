@@ -21,11 +21,11 @@
 //= require_tree .
 
 $(document).ready(function() {
-    if ($('#search-input').val() == '') {
+    if ($('#search-input').val().length < 3) {
         $('#search-submit').prop('disabled', true);
     }
     $('#search-input').keyup(function() {
-        if($(this).val() != '') {
+        if($(this).val().length > 2) {
             $('#search-submit').prop('disabled', false);
         }
         else {

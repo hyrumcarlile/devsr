@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <%= render partial: 'layouts/navbar' %>
+    <%= render 'navbar'  %>
 
     <% flash.each do |k, v| %>
       <div id="<%= k %>"><%= v %></div>

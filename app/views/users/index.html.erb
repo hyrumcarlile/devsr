@@ -1,12 +1,11 @@
 <div class="container">
-  <h1>Search Results</h1>
 
   <% if @users.blank? %>
-      <h4>Woops! Didn't find any users. Try another search.</h4>
+      <h4 class="mt-4">Woops! Didn't find any users. Try another search.</h4>
   <% end %>
 
   <% unless @users.blank? %>
-    <table class="table table-links">
+    <table class="table table-links mt-4">
       <thead>
         <th></th>
         <th>Name</th>

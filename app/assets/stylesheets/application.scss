@@ -26,9 +26,11 @@
 $blue: #2065e5;
 $secondary-yellow: #DF9A1A;
 $primary-font-blue: #4c83ea;
+$white: #ffffff;
 $gray-background: #d7ddea;
 $light-gray-background: #ebecec;
 $font-color: #000000;
+$dark: #343a40;
 
 $danger: #d9534f;
 $alert: #5bc0de;
@@ -64,6 +66,12 @@ $breakpoint-mobile: 320px;
 }
 
 /* ====================================== Bootstrap Overrides ====================================== */
+
+.row {
+  /* to fix horizontal scroll bar showing up when using .row */
+  margin-left: 0px;
+  margin-right: 0px;
+}
 
 .navbar a:hover {
   text-decoration: none;
@@ -105,6 +113,11 @@ $breakpoint-mobile: 320px;
   font-weight: 400;
 }
 
+.nav-item .nav-link-home:hover {
+  background-color: $primary;
+  color: $white !important; /* Important necessary to override Bootstrap */
+}
+
 #sign-in-out-btn {
   border: 1px solid $white;
   color: $white !important; /* Important necessary to override Bootstrap */
@@ -113,6 +126,16 @@ $breakpoint-mobile: 320px;
 
 #sign-in-out-btn:hover {
   color: $blue !important; /* Important necessary to override Bootstrap */
+}
+
+#sign-in-out-btn-home {
+  border: 1px solid $primary;
+  color: $primary !important; /* Important necessary to override Bootstrap */
+  padding: 4px;
+}
+
+#sign-in-out-btn-home:hover {
+  color: $white !important; /* Important necessary to override Bootstrap */
 }
 
 .input-group-btn button {
@@ -272,4 +295,21 @@ ul li {
 
 .list-no-padding li {
   padding-top: 0;
+}
+
+.valign-parent {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.valign-child {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+  width: 100%;
+}
+
+.valign-up {
+  margin-bottom:10%;
 }
