@@ -157,8 +157,6 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rollbar (2.15.4)
-      multi_json
     ruby-progressbar (1.9.0)
     sanitize (4.5.0)
       crass (~> 1.0.2)
@@ -232,7 +230,6 @@ DEPENDENCIES
   rails (~> 5.0.6)
   recaptcha
   redcarpet
-  rollbar
   ruby-progressbar
   sanitize (~> 4.0, >= 4.0.1)
   sass-rails (~> 5.0)
