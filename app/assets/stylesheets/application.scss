@@ -37,7 +37,7 @@ $alert: #5bc0de;
 $success: #5cb85c;
 
 $theme-colors: (
-  primary: $blue
+  primary: $blue,
 );
 
 $breakpoint-desktop: 768px;
@@ -206,6 +206,8 @@ $breakpoint-mobile: 320px;
     height:0;
     padding-top: 0;
     display: none;
+    position: relative;
+    left: -9999px;
   }
 }
 
@@ -214,6 +216,9 @@ $breakpoint-mobile: 320px;
     height:0;
     padding-top: 0;
     display: none;
+    position: relative;
+    left: -9999px;
+
   }
 }
 
@@ -312,4 +317,12 @@ ul li {
 
 .valign-up {
   margin-bottom:10%;
+}
+
+.sr {
+  color: $primary;
+}
+
+.sr-secondary {
+  color: $secondary-yellow;
 }

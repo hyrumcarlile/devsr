@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row mt-5 mb-3">
     <h1 class="note-title col"><%= @note.title.titleize %></h1>
+    <%= @note.votes.count %>
     <% if @note.user == current_user %>
       <%= button_to 'Edit', edit_note_path(@note),
                     method: :get,
