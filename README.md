@@ -1,3 +1,4 @@
+
 ![devSR](./app/assets/images/logo.png)
 
 ## What is devSR?
@@ -6,7 +7,7 @@ devSR is an open source web application inteded primarily for
 users in the tech industry.
 
 The long term vision of this project is to provide soft 
-accrediation to non-formal methods of education. For example:
+accreditation to non-formal methods of education. For example:
 someone teaching themself to code using online tutorials
 or mentorship programs, a design student in an apprenticeship
 program, or an IT professional taking over a family business.
@@ -64,6 +65,7 @@ Ruby Version: 2.3.4
 ## What we Need / Next Priorities
 *Not necessarily in order of importance
 
+- <b>Security Audit</b>
 - Test Suite
 - Badges (Acheivements)
 - UX Tweaks / Improvements
