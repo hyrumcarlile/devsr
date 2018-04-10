@@ -1,4 +1,4 @@
-# ![devSR](./app/assets/images/logo.png)
+![devSR](./app/assets/images/logo.png)
 
 ## What is devSR?
 
