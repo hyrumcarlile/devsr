@@ -29,6 +29,8 @@ gem 'font-awesome-sass', '~> 4.7.0'
 gem 'jbuilder', '~> 2.5'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+# Loofah is required for sanitize, manually update to safe version
+gem 'loofah', '~> 2.2.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use pry for debugging
