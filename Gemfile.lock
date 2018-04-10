@@ -111,7 +111,7 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
-    nokogumbo (1.4.13)
+    nokogumbo (1.5.0)
       nokogiri
     orm_adapter (0.5.0)
     pg (0.21.0)
@@ -160,10 +160,10 @@ GEM
     rollbar (2.15.5)
       multi_json
     ruby-progressbar (1.9.0)
-    sanitize (4.5.0)
+    sanitize (4.6.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.4.4)
-      nokogumbo (~> 1.4.1)
+      nokogumbo (~> 1.4)
     sass (3.5.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -234,7 +234,7 @@ DEPENDENCIES
   redcarpet
   rollbar
   ruby-progressbar
-  sanitize (~> 4.0, >= 4.0.1)
+  sanitize (~> 4.6.3)
   sass-rails (~> 5.0)
   selectize-rails
   spring
