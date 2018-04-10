@@ -21,3 +21,6 @@
 
 # Ignore public/uploads (temp files)
 public/uploads
+
+# Ignore algorithms (keep them private)
+app/models/algorithms.rb
