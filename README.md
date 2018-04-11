@@ -1,5 +1,5 @@
 
-![devSR](./app/assets/images/logo.png)
+[![devSR](./app/assets/images/logo.png)](http://www.devsr.io)
 
 ## What is devSR?
 
