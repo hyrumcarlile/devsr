@@ -38,6 +38,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    raise ActionController::RoutingError.new('Not Found') unless params[:id] == User.find(1).id.to_s
   end
 
   # POST /users
