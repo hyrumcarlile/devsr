@@ -3,6 +3,132 @@
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../app/assets/stylesheets/home.scss">
+  <link rel="stylesheet" href="../app/assets/stylesheets/application.scss">
+  <style>
+
+      /* ====================================== Bootstrap Overrides ====================================== */
+
+      .row {
+          /* to fix horizontal scroll bar showing up when using .row */
+          margin-left: 0px;
+          margin-right: 0px;
+      }
+
+      .navbar a:hover {
+          text-decoration: none;
+      }
+
+      /* Don't touch these unless you want a headache */
+      .navbar a {
+          color: #2065e5 !important; /* Important necessary to override Bootstrap */
+      }
+
+      .nav-item .nav-link-home:hover {
+          background-color: #2065e5;
+          color: #2065e5 !important; /* Important necessary to override Bootstrap */
+      }
+
+      .input-group-btn button {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+      }
+
+      /* ========================================================================================== */
+
+      .jumbotron-home {
+          background-color: #292b2c;
+          color: #ffffff;
+          height: 100vh;
+      }
+
+      .jumbotron-home h1 {
+          font-size: 3em;
+      }
+
+      .jumbotron-home h2 {
+          color: #2065e5;
+      }
+
+      #interchangable {
+          color: #2065e5;
+      }
+
+      @keyframes cssAnimation {
+          to {
+              height:0;
+              padding-top: 0;
+              display: none;
+              position: relative;
+              left: -9999px;
+          }
+      }
+
+      @-webkit-keyframes cssAnimation {
+          to {
+              height:0;
+              padding-top: 0;
+              display: none;
+              position: relative;
+              left: -9999px;
+
+          }
+      }
+
+      .centered {
+          width: 100%;
+          text-align: center;
+      }
+
+      body {
+          background-color: #ffffff;
+          height: 100% !important;
+      }
+
+      pre {
+          background-color: #ebecec;
+          padding: 1em;
+      }
+
+      a:hover {
+          cursor: pointer;
+      }
+
+      p {
+          font-size: medium;
+      }
+
+      ul {
+          padding-left: 0;
+          font-size: .9em;
+      }
+
+      ul li {
+          padding-top: .5em;
+      }
+
+      .list-no-padding li {
+          padding-top: 0;
+      }
+
+      .valign-parent {
+          display: table;
+          height: 100%;
+          width: 100%;
+      }
+
+      .valign-child {
+          display: table-cell;
+          vertical-align: middle;
+          height: 100%;
+          width: 100%;
+      }
+
+      .valign-up {
+          margin-bottom:10%;
+      }
+  </style>
 </head>
 
 <body class="rails-default-error-page">
