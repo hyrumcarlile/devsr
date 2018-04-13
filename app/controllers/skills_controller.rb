@@ -1,5 +1,6 @@
 class SkillsController < ApplicationController
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
+  before_action :verify_user
 
   # GET /skills
   # GET /skills.json
@@ -70,5 +71,9 @@ class SkillsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def skill_params
       params.require(:skill).permit(:name, :description)
+    end
+
+    def verify_user
+      raise ActionController::RoutingError.new('Not Found') unless current_user.administrator?
     end
 end

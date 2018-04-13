@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_and_belongs_to_many :achievements
   has_many :endorsers,     class_name:  'Endorsement',
                            foreign_key: 'endorsee_id',
                            dependent:   :destroy

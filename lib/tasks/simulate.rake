@@ -1,16 +1,22 @@
 require 'faker'
+require 'ruby-progressbar'
 namespace :simulate do
-  desc 'Simulate a day (add users, endorsements'
+  desc 'Simulate a day (add users, endorsements, etc.)'
   task day: :environment do
     # This is to not get an error because rails will look for
     # a task for each arg in ARGV
     ARGV.each { |a| task a.to_sym do ; end }
+    ActiveRecord::Base.establish_connection
     counter = SimulatedDay.count
-    ARGV[1].to_i.times do
+    num_days = ARGV[1].to_i
+    suppress_text = (ARGV[2] == "suppress_text")
+    pbar = ProgressBar.create(total: num_days) if suppress_text
+    num_days.times do
       new_users = create_new_users
       new_endorsements = create_new_endorsements
       new_notes = create_new_notes
       new_votes = create_new_votes
+      new_achievements = create_new_achievements
       create_simulated_day(new_users, new_endorsements, new_notes, new_votes)
       counter += 1
       puts "Day #{counter}:
@@ -18,13 +24,43 @@ namespace :simulate do
             New Endorsements: #{new_endorsements}
             New Notes: #{new_notes}
             New Votes: #{new_votes}
+            New Achievementes: #{new_achievements}
             ==============================
             Total Users: #{User.count}
             Total Endorsements: #{Endorsement.count}
             Total Notes: #{Note.count}
             Total Votes: #{Vote.count}
-            **************************************************************"
+            Total Achievements: #{total_achievements}
+            **************************************************************" unless suppress_text
+      pbar.increment if pbar
     end
+  end
+
+  desc 'Simulate 7 days (add users, endorsements, etc.)'
+  task week: :environment do
+    # This is to not get an error because rails will look for
+    # a task for each arg in ARGV
+    ARGV.each { |a| task a.to_sym do ; end }
+    ARGV.push("7").push("suppress_text")
+    Rake::Task['simulate:day'].invoke
+  end
+
+  desc 'Simulate 31 days (add users, endorsements, etc.)'
+  task month: :environment do
+    # This is to not get an error because rails will look for
+    # a task for each arg in ARGV
+    ARGV.each { |a| task a.to_sym do ; end }
+    ARGV.push("31").push("suppress_text")
+    Rake::Task['simulate:day'].invoke
+  end
+
+  desc 'Simulate 365 days (add users, endorsements, etc.)'
+  task year: :environment do
+    # This is to not get an error because rails will look for
+    # a task for each arg in ARGV
+    ARGV.each { |a| task a.to_sym do ; end }
+    ARGV.push("365").push("suppress_text")
+    Rake::Task['simulate:day'].invoke
   end
 
   def create_new_users
@@ -65,6 +101,15 @@ namespace :simulate do
     counter = 0
     votes_algorithm.times do
       create_vote
+      counter += 1
+    end
+    counter
+  end
+
+  def create_new_achievements
+    counter = 0
+    achievements_algorithm.to_i.times do
+      create_achievement
       counter += 1
     end
     counter
@@ -156,6 +201,10 @@ namespace :simulate do
     )
   end
 
+  def create_achievement
+    User.find(rand(1..User.count)).achievements << Achievement.find(rand(1..Achievement.count))
+  end
+
   def users_algorithm
     ((SimulatedDay.count / 10) * rand(0.5..1.5)).round
   end
@@ -170,5 +219,13 @@ namespace :simulate do
 
   def votes_algorithm
     ((User.count / 3) * rand(0.5..1.5)).round
+  end
+
+  def achievements_algorithm
+    (User.count.to_f / 100.to_f) + (rand(1..50) == 1 ? 1 : 0)
+  end
+
+  def total_achievements
+    ActiveRecord::Base.connection.execute("SELECT COUNT(*) FROM \"achievements_users\"").values[0][0]
   end
 end
