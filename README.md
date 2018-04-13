@@ -57,4 +57,6 @@ To reset the database (Will drop all data and re-seed your local db):
 
 ### How to contribute
 
-- See this [wiki article](https://github.com/hyrumcarlile/devSR/wiki/Contributing-to-devSR)
+- First join our [slack channel](https://join.slack.com/t/devsrworkspace/shared_invite/enQtMzQ0MzM4NDY1OTM4LTk2YjNjNTVjNjU3YzEwYTU4YWU2ODJmM2I2YzNjOTM2NGU5MDMxMmQ5NzBkOTVjY2M5ZjdmYWY2NDc2NmRjY2Y)!
+
+- Then check out this [wiki article](https://github.com/hyrumcarlile/devSR/wiki/Contributing-to-devSR) for instructions.
