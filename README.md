@@ -31,13 +31,13 @@ that they can prove it. We're here to help people prove it.
 
 We need your help! Become a contributor!
 
-# Technical Details
+## Technical Details
 
 Stack: Ruby on Rails | PostgreSQL (soon: Ruby on Rails | PostgreSQL | GraphQL | React)
 
 Ruby Version: 2.3.4
 
-## Getting Set Up
+### Getting Set Up
 
 - Clone this directory
 - Download and set up Postgres
@@ -55,6 +55,6 @@ To reset the database (Will drop all data and re-seed your local db):
 - `rake db:prepare`
 - at which point you can `rake simulate:day` again (or not, whatever)
 
-## How to contribute
+### How to contribute
 
 - See this [wiki article](https://github.com/hyrumcarlile/devSR/wiki/Contributing-to-devSR)
