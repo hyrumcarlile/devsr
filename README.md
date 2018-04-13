@@ -29,15 +29,7 @@ the business of helping people find jobs. Unfortunately, in the current
 state of society, it doesn't matter that one knows something. It matters
 that they can prove it. We're here to help people prove it.
 
-## Why Open Source?
-
-We'll be very blunt when we say that we're not in this for the money.
-We won't raise money. Ever. Why? Because we don't want to be held
-accountable to venture capitalists. We want to be held accountable to
-our users. Unfortunately, that raises some challenges. We don't have
-money to pay people to build this product, so we're calling on developers
-everywhere that want to make a difference in the world to pitch in
-where they can.
+We need your help! Become a contributor!
 
 # Technical Details
 
@@ -49,26 +41,20 @@ Ruby Version: 2.3.4
 
 - Clone this directory
 - Download and set up Postgres
-- `cd silvertuna`
+- `cd devSR`
 - `bundle install`
 - `rails db:create`
 - `rails db:migrate`
 - `rails db:seed`
 
-## What Next
+(Optional) To give the db a bunch of fake data:
+- `rake simulate:day number_of_days` 
+- i.e. `rake simulate:day 100`
 
-- Pick an item from the section below, or come up with something entirely new
-- Create a branch off of master
-- Open an MR & create a card on the 'Development' board
-- Move the card into the 'Code Review' column when it's done
+To reset the database (Will drop all data and re-seed your local db):
+- `rake db:prepare`
+- at which point you can `rake simulate:day` again (or not, whatever)
 
-## What we Need / Next Priorities
-*Not necessarily in order of importance
+## How to contribute
 
-- <b>Security Audit</b>
-- Test Suite
-- Badges (Acheivements)
-- UX Tweaks / Improvements
-- Better Home Page
-- 'About Us' Page
-- Add GraphQL and React
+- See this [wiki article](https://github.com/hyrumcarlile/devSR/wiki/Contributing-to-devSR)
