@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :achievements
   devise_for :users, controllers: { registrations: 'registrations' }
 
   authenticate :user do
