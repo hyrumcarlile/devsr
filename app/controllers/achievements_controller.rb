@@ -1,16 +1,11 @@
 class AchievementsController < ApplicationController
-  before_action :set_achievement, only: [:show, :edit, :update, :destroy]
+  before_action :set_achievement, only: [:edit, :update, :destroy, :grant]
   before_action :verify_user
 
   # GET /achievements
   # GET /achievements.json
   def index
     @achievements = Achievement.all
-  end
-
-  # GET /achievements/1
-  # GET /achievements/1.json
-  def show
   end
 
   # GET /achievements/new
@@ -29,8 +24,8 @@ class AchievementsController < ApplicationController
 
     respond_to do |format|
       if @achievement.save
-        format.html { redirect_to @achievement, notice: 'Achievement was successfully created.' }
-        format.json { render :show, status: :created, location: @achievement }
+        format.html { rendirect_to achievements_url, notice: 'Achievement successfully saved.' }
+        format.json { render json: @achievement.errors, status: :unprocessable_entity }
       else
         format.html { render :new }
         format.json { render json: @achievement.errors, status: :unprocessable_entity }
@@ -41,10 +36,23 @@ class AchievementsController < ApplicationController
   # PATCH/PUT /achievements/1
   # PATCH/PUT /achievements/1.json
   def update
+    granted = false
+    built_user_params[:id].each do |user_id|
+      unless user_id.empty?
+        u = User.find_by(id: user_id)
+        if u.achievements.include? @achievement
+          @achievement.users.delete(u)
+        else
+          @achievement.users << u
+          granted = true
+        end
+      end
+    end
+
     respond_to do |format|
       if @achievement.update(achievement_params)
-        format.html { redirect_to @achievement, notice: 'Achievement was successfully updated.' }
-        format.json { render :show, status: :ok, location: @achievement }
+        format.html { redirect_to achievements_url, notice: "Achievement successfully #{granted ? 'granted.' : 'updated.'}" }
+        format.json { render json: @achievement.errors, status: :unprocessable_entity }
       else
         format.html { render :edit }
         format.json { render json: @achievement.errors, status: :unprocessable_entity }
@@ -62,15 +70,24 @@ class AchievementsController < ApplicationController
     end
   end
 
+  def grant
+    @built_user = @achievement.users.build
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_achievement
+      return @achievement = Achievement.find(params[:achievement_id]) if params[:achievement_id]
       @achievement = Achievement.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def achievement_params
       params.fetch(:achievement, {})
+    end
+
+    def built_user_params
+      params.require(:user).permit(id: [])
     end
 
     def verify_user

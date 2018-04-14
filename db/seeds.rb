@@ -10,7 +10,7 @@ User.create!(
   name: 'Admin',
   email: 'admin@admin.com',
   username: 'admin',
-  role: 0,
+  role: 1,
   password: 'password',
   password_confirmation: 'password'
 )

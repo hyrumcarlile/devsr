@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     resources :users
     resources :endorsements
     resources :skills
-    resources :achievements
+    resources :achievements do
+      get 'grant'
+    end
     resources :votes, only: [:destroy]
     resources :notes do
       post 'upvote'

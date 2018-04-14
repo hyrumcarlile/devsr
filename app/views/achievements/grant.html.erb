@@ -1,0 +1,9 @@
+<div class="container">
+  <%= form_for(@achievement) do |f| %>
+    <%= fields_for(@built_user) do |built_user| %>
+      <%= built_user.label 'Select users to give this achievement to:' %>
+      <%= built_user.collection_select(:id, User.all.sort_by { |u| u.name }, :id, :name, {}, { multiple: true, class: 'form-control mb-2', id: 'grant-achievement-select' }) %>
+    <% end %>
+    <%= f.submit 'Grant', class: 'btn btn-primary' %>
+  <% end %>
+</div>
