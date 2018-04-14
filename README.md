@@ -1,6 +1,8 @@
 
 [![devSR](./app/assets/images/logo.png)](http://www.devsr.io)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/741c953417d0e201f20b/maintainability)](https://codeclimate.com/github/hyrumcarlile/devSR/maintainability)
+
 ## What is devSR?
 
 devSR is an open source web application inteded primarily for 
