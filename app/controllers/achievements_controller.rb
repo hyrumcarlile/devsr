@@ -36,18 +36,7 @@ class AchievementsController < ApplicationController
   # PATCH/PUT /achievements/1
   # PATCH/PUT /achievements/1.json
   def update
-    granted = false
-    built_user_params[:id].each do |user_id|
-      unless user_id.empty?
-        u = User.find_by(id: user_id)
-        if u.achievements.include? @achievement
-          @achievement.users.delete(u)
-        else
-          @achievement.users << u
-          granted = true
-        end
-      end
-    end
+    granted = add_users
 
     respond_to do |format|
       if @achievement.update(achievement_params)
@@ -88,6 +77,22 @@ class AchievementsController < ApplicationController
 
     def built_user_params
       params.require(:user).permit(id: [])
+    end
+
+    def add_users
+      granted = false
+      built_user_params[:id].each do |user_id|
+        unless user_id.empty?
+          u = User.find_by(id: user_id)
+          if u.achievements.include? @achievement
+            @achievement.users.delete(u)
+          else
+            @achievement.users << u
+            granted = true
+          end
+        end
+      end
+      return granted
     end
 
     def verify_user
