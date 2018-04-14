@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_and_belongs_to_many :achievements
+  has_one :achievement_criterium
   has_many :endorsers,     class_name:  'Endorsement',
                            foreign_key: 'endorsee_id',
                            dependent:   :destroy
@@ -52,5 +54,30 @@ class User < ApplicationRecord
   def recent_notes
     # Returns the 3 most recently updated notes
     notes.order('updated_at').last(3)
+  end
+
+  def after_database_authentication
+    check_for_consecutive_logins
+  end
+
+  private
+
+  def check_for_consecutive_logins
+    if last_sign_in_at.blank?
+      self.number_of_sign_ins += 1
+    else
+      self.number_of_sign_ins += 1 if current_sign_in_at.to_date > last_sign_in_at.to_date
+    end
+    add_login_achievement
+  end
+
+  def add_login_achievement
+    if number_of_sign_ins > 1000
+      self.achievements << Achievement.find_by(name: 'Party Wizard')
+    elsif number_of_sign_ins > 100
+      self.achievements << Achievement.find_by(name: 'Party Corgi')
+    elsif number_of_sign_ins > 10
+      self.achievements << Achievement.find_by(name: 'Party Parrot')
+    end
   end
 end

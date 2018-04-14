@@ -12,7 +12,9 @@
     <%= render 'navbar'  %>
 
     <% flash.each do |k, v| %>
-      <div id="<%= k %>"><%= v %></div>
+      <% unless v.blank? %>
+        <div id="<%= k %>"><%= v %></div>
+      <% end %>
     <% end %>
 
     <%= yield %>

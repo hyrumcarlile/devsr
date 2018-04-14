@@ -2,6 +2,7 @@ class Endorsement < ApplicationRecord
   before_save :calculate_endorsement_value
   before_save :increment_rating
   before_destroy :decrement_rating
+
   # These are optional because endorser_id and endorsee_id are required.
   # This will prevent multiple error messages for the same issue.
   belongs_to :endorser, class_name: 'User', optional: true

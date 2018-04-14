@@ -8,6 +8,16 @@ $gray-background: #d7ddea;
 $light-gray-background: #ebecec;
 $font-color: #000000;
 
+.badge-icon {
+  display:inline-block;
+  max-height: 20px;
+}
+
+.badge-icon img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
 .user-avatar-img {
   width: 16em;
   height: 16em;

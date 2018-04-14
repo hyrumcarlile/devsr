@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129133243) do
+ActiveRecord::Schema.define(version: 20180414145655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "achievement_criteria", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "consecutive_logins"
+    t.datetime "last_login"
+    t.boolean  "has_founder"
+    t.boolean  "has_lightbulb"
+    t.boolean  "has_pest_control"
+    t.boolean  "has_lifesaver"
+    t.boolean  "has_party_parrot"
+    t.boolean  "has_party_corgi"
+    t.boolean  "has_party_wizard"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["user_id"], name: "index_achievement_criteria_on_user_id", using: :btree
+  end
+
+  create_table "achievements", force: :cascade do |t|
+    t.text     "name"
+    t.text     "description"
+    t.text     "icon_name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "achievements_users", id: false, force: :cascade do |t|
+    t.integer "achievement_id", null: false
+    t.integer "user_id",        null: false
+    t.index ["achievement_id", "user_id"], name: "index_achievements_users_on_achievement_id_and_user_id", unique: true, using: :btree
+    t.index ["user_id", "achievement_id"], name: "index_achievements_users_on_user_id_and_achievement_id", unique: true, using: :btree
+  end
 
   create_table "endorsements", force: :cascade do |t|
     t.integer  "endorser_id"
@@ -83,6 +114,7 @@ ActiveRecord::Schema.define(version: 20180129133243) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "role",                                            default: 0
+    t.integer  "number_of_sign_ins",                              default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -95,6 +127,7 @@ ActiveRecord::Schema.define(version: 20180129133243) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "achievement_criteria", "users"
   add_foreign_key "notes", "users"
   add_foreign_key "skill_ratings", "skills"
   add_foreign_key "skill_ratings", "users"

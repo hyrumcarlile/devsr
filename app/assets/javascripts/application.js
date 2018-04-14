@@ -21,6 +21,10 @@
 //= require_tree .
 
 $(document).ready(function() {
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
     if ($('#search-input').val().length < 3) {
         $('#search-submit').prop('disabled', true);
     }

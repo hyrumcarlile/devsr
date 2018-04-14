@@ -29,6 +29,7 @@ class UsersController < ApplicationController
     @sr_labels     = @user.skill_labels
     @sr_values     = @user.skill_values
     @notes         = @user.notes
+    @achievements  = @user.achievements
   end
 
   # GET /users/new

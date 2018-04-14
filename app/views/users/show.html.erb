@@ -1,10 +1,16 @@
 <div class="container">
   <%= link_to 'Edit', edit_user_path(@user) if @user == current_user %><br>
-  <div class="row pb-2">
+  <div class="row">
     <div class="col centered">
       <img src="<%= @user.avatar_url %>" class="user-avatar-img my-3"/><br>
       <h1><%= @user.name %></h1>
     </div>
+  </div>
+
+  <div class="centered mb-2">
+    <% @achievements.each do |a| %>
+      <%= image_tag("badges/#{a.icon_name}", class: 'badge-icon', title: "<b>#{a.name}</b><br>#{a.description}", data: { toggle: 'tooltip', placement: 'top', html: 'true' })  %>
+    <% end %>
   </div>
 
   <div class="row mb-5">
