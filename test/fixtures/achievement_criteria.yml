@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  consecutive_logins: 1
+  last_login: 2018-04-14 06:46:18
+  has_founder: false
+  has_lightbulb: false
+  has_pest_control: false
+  has_lifesaver: false
+  has_party_parrot: false
+  has_party_corgi: false
+  has_party_wizard: false
+
+two:
+  user: two
+  consecutive_logins: 1
+  last_login: 2018-04-14 06:46:18
+  has_founder: false
+  has_lightbulb: false
+  has_pest_control: false
+  has_lifesaver: false
+  has_party_parrot: false
+  has_party_corgi: false
+  has_party_wizard: false

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_and_belongs_to_many :achievements
+  has_one :achievement_criterium
   has_many :endorsers,     class_name:  'Endorsement',
                            foreign_key: 'endorsee_id',
                            dependent:   :destroy
@@ -53,5 +54,9 @@ class User < ApplicationRecord
   def recent_notes
     # Returns the 3 most recently updated notes
     notes.order('updated_at').last(3)
+  end
+
+  def after_database_authentication
+    # Check for consecutive logins here
   end
 end

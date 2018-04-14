@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413035325) do
+ActiveRecord::Schema.define(version: 20180414124618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "achievement_criteria", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "consecutive_logins"
+    t.datetime "last_login"
+    t.boolean  "has_founder"
+    t.boolean  "has_lightbulb"
+    t.boolean  "has_pest_control"
+    t.boolean  "has_lifesaver"
+    t.boolean  "has_party_parrot"
+    t.boolean  "has_party_corgi"
+    t.boolean  "has_party_wizard"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["user_id"], name: "index_achievement_criteria_on_user_id", using: :btree
+  end
 
   create_table "achievements", force: :cascade do |t|
     t.text     "name"
@@ -110,6 +126,7 @@ ActiveRecord::Schema.define(version: 20180413035325) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "achievement_criteria", "users"
   add_foreign_key "notes", "users"
   add_foreign_key "skill_ratings", "skills"
   add_foreign_key "skill_ratings", "users"
