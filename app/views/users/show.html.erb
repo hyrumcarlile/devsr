@@ -9,7 +9,7 @@
 
   <div class="centered mb-2">
     <% @achievements.each do |a| %>
-      <%= image_tag("badges/#{a.icon_name}", class: 'badge-icon', title: "#{a.name}:<br>#{a.description}", data: { toggle: 'tooltip', placement: 'top', html: 'true' })  %>
+      <%= image_tag("badges/#{a.icon_name}", class: 'badge-icon', title: "<b>#{a.name}</b><br>#{a.description}", data: { toggle: 'tooltip', placement: 'top', html: 'true' })  %>
     <% end %>
   </div>
 

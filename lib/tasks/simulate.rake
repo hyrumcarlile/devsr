@@ -54,6 +54,15 @@ namespace :simulate do
     Rake::Task['simulate:day'].invoke
   end
 
+  desc 'Simulate 90 days (add users, endorsements, etc.)'
+  task quarter: :environment do
+    # This is to not get an error because rails will look for
+    # a task for each arg in ARGV
+    ARGV.each { |a| task a.to_sym do ; end }
+    ARGV.push("90").push("suppress_text")
+    Rake::Task['simulate:day'].invoke
+  end
+
   desc 'Simulate 365 days (add users, endorsements, etc.)'
   task year: :environment do
     # This is to not get an error because rails will look for
@@ -202,7 +211,13 @@ namespace :simulate do
   end
 
   def create_achievement
-    User.find(rand(1..User.count)).achievements << Achievement.find(rand(1..Achievement.count))
+    begin
+      User.find(rand(1..User.count)).achievements << Achievement.find(rand(1..Achievement.count))
+    # For duplicate achievements
+    rescue NameError
+    rescue PG::UniqueViolation
+    rescue ActiveRecord::RecordNotUnique
+    end
   end
 
   def users_algorithm
