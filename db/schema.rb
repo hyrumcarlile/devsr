@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20180414145655) do
   create_table "achievements_users", id: false, force: :cascade do |t|
     t.integer "achievement_id", null: false
     t.integer "user_id",        null: false
-    t.index ["achievement_id", "user_id"], name: "index_achievements_users_on_achievement_id_and_user_id", using: :btree
-    t.index ["user_id", "achievement_id"], name: "index_achievements_users_on_user_id_and_achievement_id", using: :btree
+    t.index ["achievement_id", "user_id"], name: "index_achievements_users_on_achievement_id_and_user_id", unique: true, using: :btree
+    t.index ["user_id", "achievement_id"], name: "index_achievements_users_on_user_id_and_achievement_id", unique: true, using: :btree
   end
 
   create_table "endorsements", force: :cascade do |t|

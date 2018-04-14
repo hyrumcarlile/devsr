@@ -33,9 +33,9 @@ skills = [
 ]
 
 acheivements = [
-    {name: 'Party Parrot', description: '10 Consecutive Daily Logins', icon_name: 'bronze-min.png'},
-    {name: 'Party Corgi', description: '100 Consecutive Daily Logins', icon_name: 'silver-min.png'},
-    {name: 'Party Wizard', description: '1000 Consecutive Daily Logins (do you need a hobby?)', icon_name: 'gold-min.png'},
+    {name: 'Party Parrot', description: '10 Unique (not on the same day) Logins', icon_name: 'bronze-min.png'},
+    {name: 'Party Corgi', description: '100 Unique (not on the same day) Logins', icon_name: 'silver-min.png'},
+    {name: 'Party Wizard', description: '1000 Unique (not on the same day) Logins', icon_name: 'gold-min.png'},
     {name: 'Pest Control', description: 'Resolved an issue labeled \"Bug\" on GitHub', icon_name: 'bug-min.png'},
     {name: 'Founder', description: 'One of the first 100 contributers to devSR', icon_name: 'goblet-min.png'},
     {name: 'Lifesaver', description: 'Resolved an issue labeled \"Urgent\" on GitHub', icon_name: 'lifesaver-min.png'},
