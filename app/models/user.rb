@@ -57,6 +57,27 @@ class User < ApplicationRecord
   end
 
   def after_database_authentication
-    # Check for consecutive logins here
+    check_for_consecutive_logins
+  end
+
+  private
+
+  def check_for_consecutive_logins
+    if last_sign_in_at.blank?
+      self.number_of_sign_ins += 1
+    else
+      self.number_of_sign_ins += 1 if current_sign_in_at.to_date > last_sign_in_at.to_date
+    end
+    add_login_achievement
+  end
+
+  def add_login_achievement
+    if number_of_sign_ins > 1000
+      self.achievements << Achievement.find_by(name: 'Party Wizard')
+    elsif number_of_sign_ins > 100
+      self.achievements << Achievement.find_by(name: 'Party Corgi')
+    elsif number_of_sign_ins > 10
+      self.achievements << Achievement.find_by(name: 'Party Parrot')
+    end
   end
 end
