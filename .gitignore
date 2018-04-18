@@ -24,3 +24,6 @@ public/uploads
 
 # Ignore algorithms (keep them private)
 app/models/algorithms.rb
+
+# Ignore output of simplecov
+coverage
