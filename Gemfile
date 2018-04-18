@@ -75,6 +75,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   # factorybot for test data
   gem 'factory_bot_rails', '~> 4.0'
+  # simplecov analyzes test coverage; necessary for code climate test coverage feature
+  gem 'simplecov', require: false
 end
 
 group :development do
