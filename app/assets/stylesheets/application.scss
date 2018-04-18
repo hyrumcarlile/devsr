@@ -318,14 +318,49 @@ ul li {
   width: 100%;
 }
 
-.valign-up {
-  margin-bottom:10%;
-}
-
 .sr {
   color: $primary;
 }
 
 .sr-secondary {
   color: $secondary-yellow;
+}
+
+.txt-primary {
+  color: $primary;
+}
+
+.txt-primary-font {
+  color: $primary-font-blue;
+}
+
+.txt-heading {
+  font-family: "Uni Sans";
+  font-weight: lighter !important;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .txt-heading {
+    font-size: 4em;
+  }
+
+  .centered-image {
+    width: 60%;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .txt-heading {
+    font-size: xx-large;
+  }
+
+  .centered-image {
+    width: 100%;
+  }
+}
+
+.centered-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -15,6 +15,10 @@ $danger: #d9534f;
 $alert: #5bc0de;
 $success: #5cb85c;
 
+$breakpoint-desktop: 768px;
+$breakpoint-tablet: 480px;
+$breakpoint-mobile: 320px;
+
 .jumbotron-home {
   background-color: $dark;
   color: $white;
@@ -33,3 +37,35 @@ $success: #5cb85c;
 #interchangable {
   color: $blue;
 }
+
+.valign-up {
+  margin-bottom:10%;
+  margin-top: 0;
+}
+
+.footer {
+  background-color: $dark;
+  color: $white;
+  font-weight: lighter;
+}
+
+@media (max-width: $breakpoint-tablet) {
+  // styles for non-desktop browsers
+  .jumbotron-home h1 {
+    font-size: xx-large;
+  }
+
+  .valign-up {
+    margin-bottom: 0;
+    margin-top: 10%;
+  }
+
+  .sign-up-header {
+    font-size: large;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+}
+
+
