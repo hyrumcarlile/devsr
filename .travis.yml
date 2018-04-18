@@ -1,17 +1,26 @@
 language: ruby
+cache:
+- bundler
 rvm:
-  - 2.3.4
+- 2.3.4
 env:
   global:
-    - CC_TEST_REPORTER_ID=23873bc8aee722ae9dcccaeeb18b97f0a830b50ba16d6d25ec0f67619902b5ef
+  - CC_TEST_REPORTER_ID=23873bc8aee722ae9dcccaeeb18b97f0a830b50ba16d6d25ec0f67619902b5ef
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 script:
-  - bundle exec rails db:create RAILS_ENV=test
-  - bundle exec rails db:migrate RAILS_ENV=test
-  - bundle exec rspec
+- bundle exec rails db:create RAILS_ENV=test
+- bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rspec
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+deploy:
+  provider: heroku
+  api_key:
+    secure: ih/mpxZcGqVroGpd1zlIkF5LW8vUjQtlkCwwEWxR5Pyo2/AbzAktsKBBcxL2MFOk/pVqW8kBsA9KDjmkydwcnG2kr4yVDIfyCQXQca5MTVvqa6lhnH2DAICovhH9BSsvJ10viMWu2DdoJSLCtbMHelTzJaFFPPFNypeyoj5D6FZI0Zf70qnBdfMwP3/r2+PY/s/qtenJMH6Nx1m+gXRWzTyNS5iFvo2tkdD6EIFQzgNlzMevIFl6GPQJsQKhbYCt4tbeNpD5Gj1GnoSNgcRpEgi3oefZAjBNwQarpA3xsQ/IH0EZLJDUJC8q+mMY4OnN1GW78vmIO5sPqawTeYIi9hmlLF1lqwVT2mxTRt57aqTwLqCmCbB3U1EDdQuqOuqCN2vlZrdCKUqW1V/nUjNL1NN+TIll+xTM/cpgDSiXzVrmvcE3zoIM7weHJw6OvgGd+85jk0THiDa9GJ4hCLrWECKetszKlyabw8Px6dImB1T5a1CZzyy+VRVeUfGQsKiu8ASaZvcbchaEfVick+6LUWCd64x8scacPpl6QBnW4iYLRT1NZjiZ7fiL0hpQZycofdWCSQ1fC8D4U9o30PgP6MXYsAD3EEBU4jQT5ZTHfP+B6w6RsX96DvRJ67oypMtiM7WflQPWJSf0yCpou9cEMCZoKdyd3t1IC6qG3ecCWUM=
+  app: silvertuna-staging
+  on:
+    repo: hyrumcarlile/devSR

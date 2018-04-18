@@ -51,6 +51,8 @@ gem 'sanitize', '~> 4.6.3'
 gem 'sass-rails', '~> 5.0'
 # Selectize for UI tags
 gem 'selectize-rails'
+# travis CI to automate deploys
+gem 'travis'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Use Uglifier as compressor for JavaScript assets
