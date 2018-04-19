@@ -1,7 +1,9 @@
 
 [![devSR](./app/assets/images/logo.png)](http://www.devsr.io)
 
+[![Build Status](https://travis-ci.org/hyrumcarlile/devSR.svg?branch=master)](https://travis-ci.org/hyrumcarlile/devSR)
 [![Maintainability](https://api.codeclimate.com/v1/badges/741c953417d0e201f20b/maintainability)](https://codeclimate.com/github/hyrumcarlile/devSR/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/741c953417d0e201f20b/test_coverage)](https://codeclimate.com/github/hyrumcarlile/devSR/test_coverage)
 
 ## What is devSR?
 

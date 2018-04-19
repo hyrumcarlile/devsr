@@ -24,3 +24,5 @@ deploy:
   app: silvertuna-staging
   on:
     repo: hyrumcarlile/devSR
+notifications:
+  email: false
