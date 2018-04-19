@@ -50,6 +50,8 @@ Ruby Version: 2.3.4
 - `rails db:create`
 - `rails db:migrate`
 - `rails db:seed`
+- Run the server: `rails server`
+- Then go to `localhost:3000` in your browser
 
 (Optional) To give the db a bunch of fake data:
 - `rake simulate:day number_of_days` 
