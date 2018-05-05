@@ -15,10 +15,10 @@ class GraphqlController < ApplicationController
       # current_user: current_user,
     }
     result = DevsrSchema.execute(
-        query,
-        variables: variables,
-        context: context,
-        operation_name: operation_name
+      query,
+      variables: variables,
+      context: context,
+      operation_name: operation_name
     )
     render json: result
   end
