@@ -1,3 +1,5 @@
+# This allows us to seperate out GraphQL queries into separate
+# files.
 module Utils
   class FieldCombiner
     def self.combine(query_types)
