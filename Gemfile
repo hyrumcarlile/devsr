@@ -39,6 +39,8 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
+# react, baby
+gem 'react-rails', '~> 1.7', '>= 1.7.1'
 # For recacptcha in the sign up form
 gem 'recaptcha', require: 'recaptcha/rails'
 # Red carpet gem for markdown support
@@ -59,6 +61,8 @@ gem 'travis'
 gem 'turbolinks', '~> 5'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+# Webpacker for use with react
+gem 'webpacker', '~> 3.5', '>= 3.5.3'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

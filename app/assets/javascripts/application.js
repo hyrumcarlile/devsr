@@ -18,13 +18,12 @@
 //= require bootstrap
 //= require Chart.min
 //= require selectize
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
 
 $(document).ready(function() {
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-
     if ($('#search-input').val().length < 3) {
         $('#search-submit').prop('disabled', true);
     }
