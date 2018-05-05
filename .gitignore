@@ -26,4 +26,8 @@ public/uploads
 app/models/algorithms.rb
 
 # Ignore output of simplecov
-coverage
+coverage/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity

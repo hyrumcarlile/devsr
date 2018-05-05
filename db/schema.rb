@@ -49,12 +49,11 @@ ActiveRecord::Schema.define(version: 20180414145655) do
   create_table "endorsements", force: :cascade do |t|
     t.integer  "endorser_id"
     t.integer  "endorsee_id"
-    t.integer  "skill_id"
     t.datetime "created_at",                                                 null: false
     t.datetime "updated_at",                                                 null: false
     t.decimal  "endorsement_value", precision: 10, scale: 5, default: "0.0"
+    t.integer  "skill_id"
     t.index ["endorsee_id"], name: "index_endorsements_on_endorsee_id", using: :btree
-    t.index ["endorser_id", "endorsee_id", "skill_id"], name: "index_endorsements_on_endorser_id_and_endorsee_id_and_skill_id", unique: true, using: :btree
     t.index ["endorser_id"], name: "index_endorsements_on_endorser_id", using: :btree
   end
 
