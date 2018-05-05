@@ -41,6 +41,8 @@ gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.6'
 # react, baby
 gem 'react-rails', '~> 1.7', '>= 1.7.1'
+# Upgrade manually to 1.0.4 for security reasons
+gem 'rails-html-sanitizer', '~> 1.0.4'
 # For recacptcha in the sign up form
 gem 'recaptcha', require: 'recaptcha/rails'
 # Red carpet gem for markdown support
