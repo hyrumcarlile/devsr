@@ -25,6 +25,8 @@ gem 'devise'
 gem 'faker'
 # For icons
 gem 'font-awesome-sass', '~> 4.7.0'
+# GraphQL for API
+gem 'graphql'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use jquery as the JavaScript library
@@ -92,3 +94,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'graphiql-rails', group: :development
