@@ -24,5 +24,7 @@ deploy:
   app: silvertuna-staging
   on:
     repo: hyrumcarlile/devSR
+  run: "rake db:migrate"
+  skip_cleanup: true
 notifications:
   email: false
