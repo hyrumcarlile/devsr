@@ -4,11 +4,7 @@ module HomeHelper
   end
 
   def resource
-    begin
-      @resource ||= User.new
-    rescue ActionView::TemplateError
-      Rails.logger.info('Could not create resource for devise partial')
-    end
+    @resource ||= User.new
   end
 
   def devise_mapping
