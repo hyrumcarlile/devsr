@@ -27,7 +27,7 @@ Rails.application.configure do
 
   # Compile assets for heroku (required for images to display)
   config.assets.compile = true
-  config.assets.initialize_on_precompile = false
+  # config.assets.initialize_on_precompile = false
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
