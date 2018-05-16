@@ -1,0 +1,8 @@
+exclude_patterns:
+  - "app/assets/javascripts/particles.js"
+  - "lib/"
+  - "node_modules/"
+  - "public/"
+  - "vendor/"
+  - "db/schema.rb"
+  - "db/migrate/"
