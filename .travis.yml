@@ -1,4 +1,6 @@
 language: ruby
+services:
+- postgresql
 cache:
 - bundler
 rvm:
