@@ -6,3 +6,4 @@ exclude_patterns:
   - "vendor/"
   - "db/schema.rb"
   - "db/migrate/"
+  - "spec/"

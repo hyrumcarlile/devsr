@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+    resources :achievements
+    resources :achievement_criteria
+    resources :endorsements
+    resources :notes
+    resources :simulated_days
+    resources :skills
+    resources :skill_ratings
+    resources :votes
+
+    root to: "users#index"
+  end
+
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end

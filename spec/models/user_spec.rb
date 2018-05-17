@@ -1,20 +1,13 @@
 require 'rails_helper'
-require 'faker'
 
 RSpec.describe User, type: :model do
 
-  name = Faker::Name.name
-  email = Faker::Internet.unique.free_email(name)
-  search_user = User.create( name: name,
-                             email: email,
-                             password: '123456',
-                             password_confirmation: '123456',
-                             role: 'end_user')
+  search_user = FactoryBot.create(:user, :with_role, role_name: 'end_user')
 
   describe '.administrator?' do
     context 'when given an administrator' do
       it 'should return true' do
-        expect(build(:admin).administrator?)
+        expect(build(:user, :with_role, role_name: 'administrator').administrator?)
             .to eql(true)
       end
     end
@@ -23,7 +16,7 @@ RSpec.describe User, type: :model do
   describe '.administrator?' do
     context 'when given a user' do
       it 'should return false' do
-        expect(build(:user).administrator?)
+        expect(build(:user, :with_role, role_name: 'end_user').administrator?)
             .to eql(false)
       end
     end

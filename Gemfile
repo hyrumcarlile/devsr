@@ -8,11 +8,13 @@ end
 # Explicitly declare the ruby version
 ruby '2.3.4'
 
+# For the admin dashboard
+gem 'administrate'
 # Bootstrap for styling
 gem 'bootstrap', '~> 4.0.0.beta3'
-gem "bootstrap_form",
-    git: "https://github.com/bootstrap-ruby/rails-bootstrap-forms.git",
-    branch: "master"
+gem 'bootstrap_form',
+    git: 'https://github.com/bootstrap-ruby/rails-bootstrap-forms.git',
+    branch: 'master'
 # For authorization
 gem 'cancancan', '~> 2.0'
 # Chart.JS for javascript charts
