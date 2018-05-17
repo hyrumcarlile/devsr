@@ -29,18 +29,18 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-    current_user ||= User.new
-    if current_user.administrator?
+    user ||= User.new
+    if user.administrator?
       can :manage, :all
     else
-      can :read, User, id: current_user.id
-      can :update, User, id: current_user.id
+      can :read, User, id: user.id
+      can :update, User, id: user.id
       can :read, :notes
-      can :update, Note, user_id: current_user.id
-      can :create, Note, user_id: current_user.id
-      can :destroy, Note, user_id: current_user.id
+      can :update, Note, user_id: user.id
+      can :create, Note, user_id: user.id
+      can :destroy, Note, user_id: user.id
       can :create, :endorsements
-      can :destroy, Endorsement, { endorsee_id: current_user.id, endorser_id: current_user.id }
+      can :destroy, Endorsement, { endorsee_id: user.id, endorser_id: user.id }
     end
 
   end
