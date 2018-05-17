@@ -26,6 +26,8 @@ class SimulatedDayDashboard < Administrate::BaseDashboard
     :id,
     :num_new_users,
     :num_new_endorsements,
+    :num_new_notes,
+    :num_new_votes,
     :created_at,
   ].freeze
 
