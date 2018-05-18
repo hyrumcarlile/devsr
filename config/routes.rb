@@ -10,14 +10,14 @@ Rails.application.routes.draw do
     resources :skill_ratings
     resources :votes
 
-    root to: "users#index"
+    root to: 'users#index'
   end
 
   if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+    mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
   end
 
-  post "/graphql", to: "graphql#execute"
+  post '/graphql', to: 'graphql#execute'
   devise_for :users, controllers: { registrations: 'registrations' }
 
   authenticate :user do
@@ -31,6 +31,9 @@ Rails.application.routes.draw do
     resources :notes do
       post 'upvote'
     end
+
+    # After sign-up form
+    get 'new-user/:id', to: 'users#new_user', as: :new_user_form
 
     # For the html importer
     get 'import/new', to: 'notes#new_import' # import_new_notes_path
