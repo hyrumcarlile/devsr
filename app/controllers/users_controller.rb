@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :new_user]
+
+  # GET /new-user/1
+  def new_user
+    raise ActionController::RoutingError.new('Not Found') unless params[:id] == current_user.id.to_s
+  end
 
   # GET /users
   # GET /users.json
@@ -39,7 +44,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    raise ActionController::RoutingError.new('Not Found') unless params[:id] == User.find(1).id.to_s
+    raise ActionController::RoutingError.new('Not Found') unless params[:id] == current_user.id.to_s
   end
 
   # POST /users
