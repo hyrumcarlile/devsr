@@ -59,7 +59,17 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "silvertuna_#{Rails.env}"
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching     = false
+  config.action_mailer.default_url_options = { host: ENV["MAILER_HOST"] || 'localhost', port: ENV["MAILER_PORT"] || 3000 }
+  config.action_mailer.smtp_settings = {
+      address:              "smtp.sendgrid.net",
+      port:                 587,
+      enable_starttls_auto: true,
+      user_name:            "devsr",
+      password:             ENV["SENDGRID_API_KEY"],
+      authentication:       "login",
+      domain:               ENV["SENDGRID_DOMAIN"]
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
