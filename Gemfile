@@ -57,6 +57,8 @@ gem 'ruby-progressbar'
 gem 'sanitize', '~> 4.6.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# Use sendgrid for emails
+gem 'sendgrid-ruby'
 # Selectize for UI tags
 gem 'selectize-rails'
 # travis CI to automate deploys
