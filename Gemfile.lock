@@ -78,6 +78,13 @@ GEM
     chart-js-rails (0.1.4)
       railties (> 3.1)
     coderay (1.1.2)
+    coffee-rails (4.2.2)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
     crass (1.0.4)
@@ -335,6 +342,7 @@ DEPENDENCIES
   bootstrap_form!
   cancancan (~> 2.0)
   chart-js-rails
+  coffee-rails
   devise
   factory_bot_rails (~> 4.0)
   faker

@@ -15,6 +15,7 @@ gem 'bootstrap_form',
     branch: 'master'
 gem 'cancancan', '~> 2.0'
 gem 'chart-js-rails'
+gem 'coffee-rails'
 gem 'devise'
 gem 'faker'
 gem 'friendly_id', '~> 5.1.0'
