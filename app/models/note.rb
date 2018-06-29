@@ -1,6 +1,17 @@
 class Note < ApplicationRecord
+  extend FriendlyId
+
   belongs_to :user
   has_many :votes
+
+  validates_presence_of :title
+  validates_presence_of :body
+
+  friendly_id :title, use: [:slugged, :history, :finders]
+
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
 
   def self.import(import_file, current_user)
     n = Note.new(
