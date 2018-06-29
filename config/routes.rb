@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       get 'grant'
     end
     resources :votes, only: [:destroy]
-    resources :notes do
+    resources :notes, except: [:show] do
       post 'upvote'
     end
 
@@ -40,6 +40,8 @@ Rails.application.routes.draw do
     post 'import/new', to: 'notes#import' # import_notes_path
 
   end
+
+  resources :notes, only: [:show]
 
   authenticated :user do
     root 'users#current_user_home', as: :authenticated_root
