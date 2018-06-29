@@ -49,6 +49,8 @@ $breakpoint-mobile: 320px;
 @import 'notes';
 @import 'rails_bootstrap_forms';
 
+
+
 /* ============================================== Fonts ============================================ */
 
 @font-face {
@@ -63,6 +65,10 @@ $breakpoint-mobile: 320px;
   src: asset-url('fonts/Whitney-Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+
+* {
+  font-family: 'Ubuntu', sans-serif;
 }
 
 /* ====================================== Bootstrap Overrides ====================================== */
@@ -319,10 +325,12 @@ ul li {
 }
 
 .sr {
+  font-family: 'Uni Sans';
   color: $primary;
 }
 
 .sr-secondary {
+  font-family: 'Uni Sans';
   color: $dark;
 }
 
