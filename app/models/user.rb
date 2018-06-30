@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  extend FriendlyId
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, and :timeoutable
   devise :database_authenticatable, :registerable,
@@ -16,10 +18,18 @@ class User < ApplicationRecord
   has_many :skill_ratings, dependent:   :destroy
   has_many :votes,         dependent:   :destroy
 
+  friendly_id :slug_candidates, use: [:slugged, :history, :finders]
+
+  validates_uniqueness_of :username
+
   before_save :create_avatar
 
   # List of roles a user can be (for permissions)
   enum role: [:end_user, :administrator]
+
+  def should_generate_new_friendly_id?
+    username_changed?
+  end
 
   def self.administrator?
     self.role.eql? 1 ? true : false
@@ -61,6 +71,13 @@ class User < ApplicationRecord
   end
 
   private
+
+  def slug_candidates
+    [
+      :username,
+      :name
+    ]
+  end
 
   def check_for_consecutive_logins
     if last_sign_in_at.blank?
