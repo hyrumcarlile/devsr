@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def current_user_home
-    redirect_to current_user
+    redirect_to "/users/#{current_user.slug}"
   end
 
   # GET /users/1
