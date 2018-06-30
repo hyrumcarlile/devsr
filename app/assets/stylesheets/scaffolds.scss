@@ -1,16 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i');
+
+
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300 !important;
+  line-height: 200%;
   margin: 33px;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+ol, ul, td {
   margin: 33px;
 }
 
@@ -65,7 +65,6 @@ div {
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
-    font-size: 12px;
     margin: -7px;
     margin-bottom: 0;
     background-color: #c00;
@@ -73,7 +72,6 @@ div {
   }
 
   ul li {
-    font-size: 12px;
     list-style: square;
   }
 }

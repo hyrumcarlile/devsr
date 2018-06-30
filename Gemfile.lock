@@ -67,13 +67,13 @@ GEM
       execjs (~> 2.0)
     backports (3.11.3)
     bcrypt (3.1.11)
-    bindex (0.5.0)
+    bootsnap (1.3.0)
+      msgpack (~> 1.0)
     bootstrap (4.0.0.beta3)
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.3, < 2)
       sass (>= 3.5.2)
     builder (3.2.3)
-    byebug (9.1.0)
     cancancan (2.0.0)
     chart-js-rails (0.1.4)
       railties (> 3.1)
@@ -116,6 +116,8 @@ GEM
     ffi (1.9.18)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     gh (0.15.1)
       addressable (~> 2.4.0)
       backports
@@ -167,6 +169,7 @@ GEM
     minitest (5.10.3)
     momentjs-rails (2.20.1)
       railties (>= 3.1)
+    msgpack (1.2.4)
     multi_json (1.12.2)
     multipart-post (2.0.0)
     mustermann (1.0.2)
@@ -188,8 +191,8 @@ GEM
     pusher-client (0.6.2)
       json
       websocket (~> 1.0)
-    rack (2.0.3)
-    rack-protection (2.0.1)
+    rack (2.0.5)
+    rack-protection (2.0.3)
       rack
     rack-proxy (0.6.4)
       rack
@@ -279,10 +282,10 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sinatra (2.0.1)
+    sinatra (2.0.3)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.1)
+      rack-protection (= 2.0.3)
       tilt (~> 2.0)
     slop (3.6.0)
     spring (2.0.2)
@@ -320,11 +323,6 @@ GEM
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
       rack (>= 1.0)
-    web-console (3.5.1)
-      actionview (>= 5.0)
-      activemodel (>= 5.0)
-      bindex (>= 0.4.0)
-      railties (>= 5.0)
     webpacker (3.5.3)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
@@ -339,16 +337,17 @@ PLATFORMS
 
 DEPENDENCIES
   administrate
+  bootsnap
   bootstrap (~> 4.0.0.beta3)
   bootstrap_form!
-  byebug
   cancancan (~> 2.0)
   chart-js-rails
-  coffee-rails (~> 4.2)
+  coffee-rails
   devise
   factory_bot_rails (~> 4.0)
   faker
   font-awesome-sass (~> 4.7.0)
+  friendly_id (~> 5.1.0)
   graphiql-rails
   graphql
   jbuilder (~> 2.5)
@@ -371,17 +370,17 @@ DEPENDENCIES
   selectize-rails
   sendgrid-ruby
   simplecov
+  sinatra (~> 2.0.2)
   spring
   spring-watcher-listen (~> 2.0.0)
   travis
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
-  web-console (>= 3.3.0)
   webpacker (~> 3.5, >= 3.5.3)
 
 RUBY VERSION
    ruby 2.3.4p301
 
 BUNDLED WITH
-   1.16.0
+   1.16.2

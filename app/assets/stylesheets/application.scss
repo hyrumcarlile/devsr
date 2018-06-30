@@ -49,6 +49,8 @@ $breakpoint-mobile: 320px;
 @import 'notes';
 @import 'rails_bootstrap_forms';
 
+
+
 /* ============================================== Fonts ============================================ */
 
 @font-face {
@@ -65,12 +67,20 @@ $breakpoint-mobile: 320px;
   font-style: normal;
 }
 
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 /* ====================================== Bootstrap Overrides ====================================== */
 
 .row {
   /* to fix horizontal scroll bar showing up when using .row */
   margin-left: 0px;
   margin-right: 0px;
+}
+
+.navbar {
+  padding: 0;
 }
 
 .navbar a:hover {
@@ -278,19 +288,6 @@ a:hover {
   cursor: pointer;
 }
 
-p {
-  font-size: medium;
-}
-
-ul {
-  padding-left: 0;
-  font-size: .9em;
-}
-
-ul li {
-  padding-top: .5em;
-}
-
 .table-links .user-row:hover {
   cursor: pointer;
   background-color: darken($white, 5%);
@@ -319,11 +316,13 @@ ul li {
 }
 
 .sr {
+  font-family: 'Uni Sans';
   color: $primary;
 }
 
 .sr-secondary {
-  color: $secondary-yellow;
+  font-family: 'Uni Sans';
+  color: $dark;
 }
 
 .txt-primary {

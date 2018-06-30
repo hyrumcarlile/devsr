@@ -4,6 +4,7 @@
 
 $blue: #2065e5;
 $secondary-yellow: #FD9A1A;
+$breakpoint-tablet: 480px;
 
 .note-form textarea, .note-form input[type=text] {
   width: 100%;
@@ -34,4 +35,25 @@ $secondary-yellow: #FD9A1A;
 
 .note-new-body {
   font-family: 'Consolas', 'Inconsolata', 'Droid Sans Mono', 'Monaco', monospace;
+}
+
+#upvote-counter {
+  padding: 1em;
+}
+
+.note-body {
+  max-width: 60rem;
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .note-title {
+    font-size: 2em;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .note-title {
+    display: inline-block;
+    max-width: 40rem;
+  }
 }

@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row mt-5 mb-3">
-    <h1 class="note-title col"><%= @note.title.titleize %></h1>
-    <%= @note.votes.count %>
-    <% if @note.user == current_user %>
+    <h1 class="note-title"><%= @note.title.titleize %></h1>
+    <span id="upvote-counter"><%= pluralize @note.votes.count, 'upvote' %></span>
+    <% if @note.user == current_user  %>
       <%= button_to 'Edit', edit_note_path(@note),
                     method: :get,
                     class: 'btn btn-primary col' %>
@@ -22,11 +22,11 @@
                         class: 'btn btn-secondary',
                         id: 'undo-upvote-btn' %>
         <% end %>
-    <% end %>
+    <% end if @buttons_visible %>
     <br>
   </div>
 
-  <div>
+  <div class="note-body">
     <%= markdown @note.body %>
   </div>
 </div>

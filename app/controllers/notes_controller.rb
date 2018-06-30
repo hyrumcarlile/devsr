@@ -24,8 +24,9 @@ class NotesController < ApplicationController
   # GET /notes/1.json
   def show
     # logic on whether or not to display the +1 button
+    @buttons_visible = !current_user.blank?
     @upvote_btn = @note.should_show_upvote_btn(current_user)
-    @vote = Vote.find_by(user_id: current_user.id, note_id: @note.id)
+    @vote = Vote.find_by(user_id: current_user.id, note_id: @note.id) unless current_user.blank?
   end
 
   # GET /notes/new
@@ -78,19 +79,17 @@ class NotesController < ApplicationController
   end
 
   def upvote
-    @note = Note.find(params[:note_id])
+    @note = Note.friendly.find(params[:note_id])
     Vote.create(note_id: @note.id, is_upvote?: true, user_id: current_user.id)
     redirect_to @note
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_note
-    @note = Note.find(params[:id])
+    @note = Note.friendly.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def note_params
     params.require(:note).permit(:body, :title)
   end
