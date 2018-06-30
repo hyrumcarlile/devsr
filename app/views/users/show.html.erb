@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <%= render partial: 'skill_rating' %>
+  <%= render partial: 'skill_rating' unless @user.endorsers.blank? %>
 
   <div class="row">
     <div class="col"><h3>Recent Notes:</h3></div>
