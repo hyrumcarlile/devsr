@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-5 mb-3">
-    <h1 class="note-title col"><%= @note.title.titleize %></h1>
+    <h1 class="note-title"><%= @note.title.titleize %></h1>
     <span id="upvote-counter"><%= pluralize @note.votes.count, 'upvote' %></span>
     <% if @note.user == current_user  %>
       <%= button_to 'Edit', edit_note_path(@note),
@@ -26,7 +26,7 @@
     <br>
   </div>
 
-  <div>
+  <div class="note-body">
     <%= markdown @note.body %>
   </div>
 </div>

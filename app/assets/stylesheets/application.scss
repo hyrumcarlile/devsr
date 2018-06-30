@@ -79,6 +79,10 @@ $breakpoint-mobile: 320px;
   margin-right: 0px;
 }
 
+.navbar {
+  padding: 0;
+}
+
 .navbar a:hover {
   text-decoration: none;
 }
@@ -282,10 +286,6 @@ pre {
 
 a:hover {
   cursor: pointer;
-}
-
-ul li {
-  padding-top: .5em;
 }
 
 .table-links .user-row:hover {
