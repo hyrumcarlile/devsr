@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   # GET /new-user/1
   def new_user
-    raise ActionController::RoutingError.new('Not Found') unless params[:id] == current_user.id.to_s
+    authorize_user
   end
 
   # GET /users
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def current_user_home
-    redirect_to current_user
+    redirect_to "/users/#{current_user.slug}"
   end
 
   # GET /users/1
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    raise ActionController::RoutingError.new('Not Found') unless params[:id] == current_user.id.to_s
+    authorize_user
   end
 
   # POST /users
@@ -96,5 +96,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :role)
+    end
+
+    def authorize_user
+      raise ActionController::RoutingError.new('Not Found') unless (params[:id] == current_user.id.to_s || params[:id] == current_user.slug)
     end
 end
