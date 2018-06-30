@@ -8,10 +8,10 @@ namespace :slugs do
   end
 
   desc "Adds slugs to existing notes"
-  task add_slug_to_existing_users: :environment do
+  task add_slug_to_existing_notes: :environment do
     Note.find_each do |note|
       title = ::Faker::Lorem.sentence(3, true, 4)
-      user.update(title: title)
+      note.update(title: title)
     end
   end
 end
