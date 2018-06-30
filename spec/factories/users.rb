@@ -7,6 +7,7 @@ FactoryBot.define do
       password "Password1"
       password_confirmation "Password1"
       name { ::Faker::Name.name }
+      username { ::Faker::Internet.unique.user_name }
 
       trait :with_role do
         transient do
