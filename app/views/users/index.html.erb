@@ -15,15 +15,15 @@
       <tbody>
         <% counter = 0 %>
         <% @users.each do |user| %>
-          <%= link_to user do %>
+          <%= link_to "/users/#{user.slug}" do %>
             <tr>
               <td>
-                <%= link_to user do %>
+                <%= link_to "/users/#{user.slug}" do %>
                   <img src="<%= user.avatar_url %>" class="endorser-img-index"/></td>
                 <% end %>
               </td>
               <td>
-                <%= link_to user do %>
+                <%= link_to "/users/#{user.slug}" do %>
                   <%= user.name %>
                 <% end %>
               </td>
@@ -39,13 +39,6 @@
                   <% end %>
                 </ul>
               </td>
-              <% if can?(:manage, :users) %>
-                <td><%= counter += 1 %></td>
-                <td><%= user.rating.to_s %></td>
-                <td><%= link_to 'Show', user %></td>
-                <td><%= link_to 'Edit', edit_user_path(user) %></td>
-                <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'destroy' %></td>
-              <% end %>
             </tr>
           <% end %>
         <% end %>

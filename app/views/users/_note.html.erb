@@ -1,4 +1,4 @@
-<%= link_to n do %>
+<%= link_to "/notes/#{n.slug}" do %>
   <div class="card note-card my-3 p-3">
     <% unless n.image_url.blank? %>
       <img class="card-img-top" src="<%= n.image_url %>" alt="<%= n.image_url %>">
