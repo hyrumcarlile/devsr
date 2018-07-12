@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :notes,         dependent:   :destroy
   has_many :skill_ratings, dependent:   :destroy
   has_many :votes,         dependent:   :destroy
+  has_many :comments
 
   friendly_id :slug_candidates, use: [:slugged, :history, :finders]
 

@@ -1,0 +1,24 @@
+.user-comment-avatar-img {
+    max-height: 2em;
+    max-width: 2em;
+    border-radius: 50%;
+}
+
+.comment-card {
+    border: 1px solid lightgray;
+    border-radius: 3px;
+}
+
+.comment-card-user-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-card-user-container div {
+    font-size: .9em;
+    margin-left: 1em;
+}
+
+.note-date-container {
+    margin-top: .2em;
+}

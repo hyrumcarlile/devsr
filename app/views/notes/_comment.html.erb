@@ -1,0 +1,10 @@
+<div class="comment-card my-3 p-3">
+  <div class="comment-card-user-container">
+    <%= link_to comment.user do %><img src="<%= comment.user.avatar_url %>" class="user-comment-avatar-img"/><% end %>
+    <div>
+      <%= link_to comment.user do %><div><%= comment.user.name %></div><% end %>
+      <div class="note-date-container"><%= comment.created_at.strftime('%b %e') %></div>
+    </div>
+  </div>
+  <div class="card-block mt-3"><%= comment.message %></div>
+</div>
