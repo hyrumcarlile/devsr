@@ -302,19 +302,6 @@ a:hover {
   padding-top: 0;
 }
 
-.valign-parent {
-  display: table;
-  height: 100%;
-  width: 100%;
-}
-
-.valign-child {
-  display: table-cell;
-  vertical-align: middle;
-  height: 100%;
-  width: 100%;
-}
-
 .sr {
   font-family: 'Uni Sans';
   color: $primary;

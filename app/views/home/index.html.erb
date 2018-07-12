@@ -5,73 +5,83 @@
 </script>
 
 <div class="jumbotron-fluid jumbotron-home" id="particles-js">
-  <div id="particles-js">
-    <div class="row" style="height: 100%; width: 100%; position:absolute">
-      <div class="col-md-8 col-sm-12 centered">
-        <div class="valign-parent">
-          <div class="valign-child">
-            <h1 class="valign-up">The community for <span id="interchangable">Developers</span></h1>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-12">
-        <div class="valign-parent">
-          <div class="valign-child">
-            <div class="valign-up">
-              <%= render 'sign_up' %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="centered">
+    <h1>Level Up Your Career</h1>
+    <h3 class="mt-3">devSR makes it easy for you to share your knowledge - <br>and get recognized for it</h3>
+    <button type="button" class="btn btn-primary round mt-3" id="sign-up-button-main" data-toggle="modal" data-target="#signup-modal">Sign Up For Free</button>
   </div>
 </div>
 
-<div class="container">
-  <div class="row centered">
-    <div class="col">
-      <h2 class="txt-primary txt-heading mt-5">What is devSR?</h2>
-      <hr>
-    </div>
-  </div>
-  <div class="row">
-    <div>
-      devSR is an open source web application inteded primarily for users in the tech industry.<br>
-      <br>
-      The long term vision of this project is to provide soft accreditation to non-formal methods
-      of education. For example: someone teaching themself to code using online tutorials or mentorship
-      programs, a design student in an apprenticeship program, or an IT professional taking over a family
-      business.
-    </div>
-  </div>
-  <%= image_tag 'intro-image-1-min.jpg', class: 'centered-image', data: { aos: 'fade-up' } %>
-  <div class="row centered">
-    <div class="col">
-      <h2 class="txt-primary txt-heading mt-5">How will we do that?</h2>
-      <hr>
-    </div>
-  </div>
-  <div class="row">
-    <div>
-      This will obviously be a huge task, and we don't expect we'll get it right the first time
-      (or possibly the hundredth time). Right now, we have a system in place where users can endorse
-      other users on particular skills. An algorithm (which will be kept secret to sway people from
-      'abusing the system') gives an amount of 'Skill Rating', or 'SR' to the receiver of the endorsement,
-      or endorsee. Eventually, we would like to integrate with online learning platforms, such as Udemy,
-      Udacity, Pluralsight, Lynda.com, Coursera,and even YouTube, to assign SR to a user based on the courses
-      they've taken.<br>
-      <br>
-      Lots of people have covered the business of educating people. We're in the business of helping people
-      find jobs. Unfortunately, in the current state of society, it doesn't matter that one knows something.
-      It matters that they can prove it. We're here to help people prove it.<br>
-      <br>
-      We need your help! <a href="https://github.com/hyrumcarlile/devSR">Become a contributor!</a>
-    </div>
-  </div>
-</div>
-
-<div class="row mt-5 footer centered">
+<div class="row footer centered">
   <div class="p-1 centered">
     &copy; Hyrum Carlile 2018
+  </div>
+</div>
+
+<div id="login-modal" class="modal fade" role="dialog">Y
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Log in</h2>
+      </div>
+      <div class="modal-body">
+        <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.email_field :email, autofocus: true %>
+
+            <%= f.password_field :password, autocomplete: 'off' %>
+
+            <% if devise_mapping.rememberable? -%>
+                <%= f.check_box :remember_me %>
+            <% end -%>
+
+            <div class="actions centered">
+              <%= f.submit 'Log in', class: 'btn btn-primary' %>
+            </div>
+        <% end %>
+
+        <%= render 'devise/shared/links' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="signup-modal" class="modal fade" role="dialog">Y
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Sign Up</h2>
+      </div>
+      <div class="modal-body">
+        <%= devise_error_messages! %>
+
+        <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="field">
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: 'off', hide_label: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: 'off', hide_label: true %>
+          </div>
+          <div class="my-3 centered">
+            <%= recaptcha_tags %>
+          </div>
+
+          <div class="actions centered">
+            <%= f.submit 'Sign up', style: 'width: 100%;' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

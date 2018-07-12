@@ -28,9 +28,6 @@
     <% end %>
 
     <%= yield %>
-    <% unless user_signed_in? %>
-      <%= render 'layouts/new_session_modal' %>
-    <% end %>
 
   </body>
 
