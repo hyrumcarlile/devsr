@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark">
   <ul class="navbar-nav nav-float-left">
     <%= link_to root_path do %>
       <li class="nav-item" id="navbar-logo">DEV<span class="sr">SR</span></li>
@@ -30,6 +30,7 @@
       <% unless user_signed_in?  %>
         <% unless params[:controller].eql?('devise/sessions') && params[:action].eql?('new') %>
           <button type="button" class="btn btn-primary round outline nav-link-home" id="sign-in-out-btn-home" data-toggle="modal" data-target="#login-modal">Log In</button>
+          <button type="button" class="btn btn-primary round nav-link-home" id="sign-up-button" data-toggle="modal" data-target="#signup-modal">Sign Up</button>
         <% end %>
       <% end %>
       <% if user_signed_in? %>
