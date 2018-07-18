@@ -90,11 +90,11 @@ class User < ApplicationRecord
 
   def add_login_achievement
     if number_of_sign_ins > 1000
-      self.achievements << Achievement.find_by(name: 'Party Wizard') unless self.achievements.inlclude? Achievement.find_by(name: 'Party Wizard')
+      self.achievements << Achievement.find_by(name: 'Party Wizard') unless self.achievements.include? Achievement.find_by(name: 'Party Wizard')
     elsif number_of_sign_ins > 100
-      self.achievements << Achievement.find_by(name: 'Party Corgi') unless self.achievements.inlclude? Achievement.find_by(name: 'Party Corgi')
+      self.achievements << Achievement.find_by(name: 'Party Corgi') unless self.achievements.include? Achievement.find_by(name: 'Party Corgi')
     elsif number_of_sign_ins > 10
-      self.achievements << Achievement.find_by(name: 'Party Parrot') unless self.achievements.inlclude? Achievement.find_by(name: 'Party Parrot')
+      self.achievements << Achievement.find_by(name: 'Party Parrot') unless self.achievements.include? Achievement.find_by(name: 'Party Parrot')
     end
   end
 end
