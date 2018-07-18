@@ -41,10 +41,6 @@ $breakpoint-tablet: 480px;
   padding: 1em;
 }
 
-.note-body {
-  max-width: 60rem;
-}
-
 @media (max-width: $breakpoint-tablet) {
   .note-title {
     font-size: 2em;
