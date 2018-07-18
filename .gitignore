@@ -23,9 +23,6 @@
 public/uploads
 public/packs
 
-# Ignore algorithms (keep them private)
-app/models/algorithms.rb
-
 # Ignore output of simplecov
 coverage/
 coverage/public/packs
