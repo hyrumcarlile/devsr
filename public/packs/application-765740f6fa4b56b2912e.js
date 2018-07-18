@@ -1,3 +1,77 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/packs/";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/*!*********************************************!*\
+  !*** ./app/javascript/packs/application.js ***!
+  \*********************************************/
+/*! dynamic exports provided */
+/*! all exports used */
+/***/ (function(module, exports) {
+
 /* eslint no-console:0 */
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
@@ -7,7 +81,7 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-(function(funcName, baseObj) {
+(function (funcName, baseObj) {
     // The public function name defaults to window.docReady
     // but you can pass in your own object and own function name and those will be used
     // if you want to put them in a different namespace
@@ -38,7 +112,7 @@
     }
 
     function readyStateChange() {
-        if ( document.readyState === "complete" ) {
+        if (document.readyState === "complete") {
             ready();
         }
     }
@@ -47,18 +121,20 @@
     // docReady(fn, context);
     // the context argument is optional - if present, it will be passed
     // as an argument to the callback
-    baseObj[funcName] = function(callback, context) {
+    baseObj[funcName] = function (callback, context) {
         if (typeof callback !== "function") {
             throw new TypeError("callback for docReady(fn) must be a function");
         }
         // if ready has already fired, then just schedule the callback
         // to fire asynchronously, but right away
         if (readyFired) {
-            setTimeout(function() {callback(context);}, 1);
+            setTimeout(function () {
+                callback(context);
+            }, 1);
             return;
         } else {
             // add the function and context to the list
-            readyList.push({fn: callback, ctx: context});
+            readyList.push({ fn: callback, ctx: context });
         }
         // if document already ready to go, schedule the ready function to run
         if (document.readyState === "complete") {
@@ -77,34 +153,32 @@
             }
             readyEventHandlersInstalled = true;
         }
-    }
+    };
 })("docReady", window);
 
-docReady(function() {
-    var show = function (elem) {
+docReady(function () {
+    var show = function show(elem) {
         elem.style.display = 'inline-block';
     };
-    var hide = function (elem) {
+    var hide = function hide(elem) {
         elem.style.display = 'none';
     };
-    var toggle = function (elem) {
+    var toggle = function toggle(elem) {
         if (window.getComputedStyle(elem).display === 'inline-block') {
             hide(elem);
-        } else { 
+        } else {
             show(elem);
         }
     };
-    hide(document.getElementById('hideResponses'));
-    hide(document.getElementById('responsesContainer'));
-    show(document.getElementById('showResponses'));
-    document.getElementById('showResponses').addEventListener('click', function(){
+    document.getElementById('hideResponses').hide();
+    document.getElementById('showResponses').addEventListener('click', function () {
         toggle(document.getElementById('hideResponses'));
-        toggle(document.getElementById('showResponses'));
-        toggle(document.getElementById('responsesContainer'));
     });
-    document.getElementById('hideResponses').addEventListener('click', function(){
+    document.getElementById('hideResponses').addEventListener('click', function () {
         toggle(document.getElementById('showResponses'));
-        toggle(document.getElementById('hideResponses'));
-        toggle(document.getElementById('responsesContainer'));
     });
-})
+});
+
+/***/ })
+/******/ ]);
+//# sourceMappingURL=application-765740f6fa4b56b2912e.js.map

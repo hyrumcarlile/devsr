@@ -30,34 +30,16 @@
     <%= markdown @note.body %>
   </div>
 
-  <div class="comments-container">
-    <%= render partial: 'comment', collection: @comments, as: :comment %>
+  <div class="centered">
+    <div>
+      <button class="btn btn-primary" id="showResponses">Show Responses</button>
+      <button class="btn btn-primary" id="hideResponses">Hide Responses</button>
+    </div>
   </div>
 
   <div class="centered">
-    <button class="btn btn-primary" id="showResponses">Show Responses</button>
-    <button class="btn btn-primary" id="hideResponses">Hide Responses</button>
+    <div id="responsesContainer">
+      <%= render partial: 'comment', collection: @comments, as: :comment %>
+    </div>
   </div>
-
-  <div id="disqus_thread"></div>
-  <script>
-
-  var disqus_config = function () {
-  this.page.url = "<%= "https://devsr.io/notes/#{@note.slug}" %>";
-  this.page.identifier = "<%= "#{@note.user.username}/#{@note.slug}" %>";
-  };
-  (function() {
-  var d = document, s = d.createElement('script');
-  s.src = 'https://devsr.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-  })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-
-<script>
-    $('#hideResponses').hide();
-    $('#disqus_thread').hide();
-    $('#showResponses').show();
-</script>
