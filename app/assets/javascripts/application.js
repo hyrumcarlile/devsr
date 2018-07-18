@@ -21,6 +21,7 @@
 //= require react_ujs
 //= require components
 //= require particles
+//= require prism
 //= require turbolinks
 //= require_tree .
 

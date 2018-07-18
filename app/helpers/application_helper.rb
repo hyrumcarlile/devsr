@@ -4,6 +4,8 @@ module ApplicationHelper
 
     extensions = {}
 
+    text = ::Algorithms.format_code(text)
+
     renderer = Redcarpet::Render::HTML.new(options)
     markdown = Redcarpet::Markdown.new(renderer, extensions)
 
