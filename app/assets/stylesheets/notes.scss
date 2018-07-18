@@ -6,6 +6,8 @@ $blue: #2065e5;
 $secondary-yellow: #FD9A1A;
 $breakpoint-tablet: 480px;
 
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+
 .note-form textarea, .note-form input[type=text] {
   width: 100%;
   padding: 12px 20px;
@@ -33,8 +35,8 @@ $breakpoint-tablet: 480px;
   border: none;
 }
 
-.note-new-body {
-  font-family: 'Consolas', 'Inconsolata', 'Droid Sans Mono', 'Monaco', monospace;
+.note-new-body textarea{
+  font-family: 'Ubuntu Mono', monospace;
 }
 
 #upvote-counter {

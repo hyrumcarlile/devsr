@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180629124724) do
+ActiveRecord::Schema.define(version: 20180718142115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,11 +72,12 @@ ActiveRecord::Schema.define(version: 20180629124724) do
   create_table "notes", force: :cascade do |t|
     t.text     "body"
     t.text     "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "user_id"
     t.text     "image_url"
     t.string   "slug"
+    t.boolean  "comments_enabled"
     t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
   end
 
@@ -141,6 +142,8 @@ ActiveRecord::Schema.define(version: 20180629124724) do
   end
 
   add_foreign_key "achievement_criteria", "users"
+  add_foreign_key "comments", "notes"
+  add_foreign_key "comments", "users"
   add_foreign_key "notes", "users"
   add_foreign_key "skill_ratings", "skills"
   add_foreign_key "skill_ratings", "users"

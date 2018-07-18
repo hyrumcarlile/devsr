@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-5 mb-3">
-    <h1 class="note-title"><%= @note.title.titleize %></h1>
+    <h1 class="note-title"><%= @note.title %></h1>
     <span id="upvote-counter"><%= pluralize @note.votes.count, 'upvote' %></span>
     <% if @note.user == current_user  %>
       <%= button_to 'Edit', edit_note_path(@note),
@@ -30,20 +30,21 @@
     <%= markdown @note.body %>
   </div>
 
-  <hr class="m-5">
-
-  <div id="disqus_thread"></div>
-  <script>
-    var disqus_config = function () {
-    this.page.url = "<%= request.original_url %>";  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = "<%= @note.slug %>"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://devsr.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <% if @note.comments_enabled %>
+    <hr class="m-5">
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+      this.page.url = "<%= request.original_url %>";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "<%= @note.slug %>"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://devsr.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <% end %>
 </div>

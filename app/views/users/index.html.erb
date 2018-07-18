@@ -35,7 +35,7 @@
               <td>
                 <ul class="list-unstyled list-no-padding">
                   <% user.recent_notes.each do |n| %>
-                    <li><%= link_to n.title.titleize, n %></li>
+                    <li><%= link_to n.title, n %></li>
                   <% end %>
                 </ul>
               </td>
