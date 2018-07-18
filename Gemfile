@@ -39,7 +39,6 @@ gem 'sendgrid-ruby'
 gem 'selectize-rails'
 gem 'sinatra', '~> 2.0.2'
 gem 'travis'
-gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 3.5', '>= 3.5.3'
 
