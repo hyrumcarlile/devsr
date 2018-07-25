@@ -6,26 +6,9 @@ body {
   color: #333;
   font-family: 'Ubuntu', sans-serif;
   font-weight: 300 !important;
-  line-height: 200%;
+  line-height: normal !important;
   margin: 33px;
 }
-
-ol, ul, td {
-  margin: 33px;
-}
-
-//a {
-//  color: #000;
-//
-//  &:visited {
-//    color: #666;
-//  }
-//
-//  &:hover {
-//    color: #fff;
-//    background-color: #000;
-//  }
-//}
 
 th {
   padding-bottom: 5px;
