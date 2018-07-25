@@ -37,6 +37,10 @@ $danger: #d9534f;
 $alert: #5bc0de;
 $success: #5cb85c;
 
+$topnav-height: 60px;
+$topnav-width: 100vw;
+$topnav-font-size: 2.5em;
+
 $theme-colors: (
   primary: $blue,
 );
@@ -50,7 +54,96 @@ $breakpoint-mobile: 320px;
 @import 'notes';
 @import 'rails_bootstrap_forms';
 
+.topnav {
+  background-color: $blue;
+  width: $topnav-width;
+  height: $topnav-height;
+  position: relative;
+  z-index: 2;
+}
 
+.topnav-item {
+  height: $topnav-height*(2/3);
+}
+
+.topnav > div {
+  display: inline-block;
+}
+
+.topnav .topnav-left {
+  height: $topnav-height;
+  width: $topnav-width/2;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.topnav .topnav-right {
+  height: $topnav-height;
+  width: $topnav-width/2;
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.topnav .topnav-right .topnav-item {
+  margin-right: 16px;
+}
+
+#navbar-logo {
+  font-family: "Uni Sans";
+  color: $white;
+  font-size: $topnav-font-size;
+  margin-left: 8px;
+}
+
+.topnav-right .topnav-item {
+  display: inline-block;
+}
+
+.icon {
+  font-size: $topnav-font-size;
+  color: #fff;
+}
+
+@media screen and (min-width: 600px) {
+  .topnav .icon {display: none;}
+}
+
+@media screen and (max-width: 600px) {
+  .topnav-right .topnav-item {display: none;}
+  .topnav-right .icon {
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+    height: auto;
+  }
+  .icon {
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    z-index: 2
+  }
+  .topnav.responsive .topnav-item {
+    float: none;
+    display: block;
+    text-align: left;
+    margin: 8px;
+  }
+}
+
+.overlay {
+  background-color: rgba(0,0,0,0.5);
+  position:fixed;
+  left:0;
+  top: 0;
+  width:100%;
+  height:100%;
+  z-index: 1;
+}
 
 /* ============================================== Fonts ============================================ */
 
@@ -80,14 +173,6 @@ $breakpoint-mobile: 320px;
   margin-right: 0px;
 }
 
-.navbar {
-  padding: 0;
-}
-
-.navbar a:hover {
-  text-decoration: none;
-}
-
 .btn-lg.round {
   border-radius: 24px;
 }
@@ -101,52 +186,38 @@ $breakpoint-mobile: 320px;
 }
 
 .btn-primary {
-  color: $white !important; /* Important necessary to override Bootstrap */
+  color: $white;
 }
 
 .btn-primary.outline {
   border: 1px solid $blue;
-  color: $blue !important; /* Important necessary to override .btn-primary override */
+  color: $blue;
 }
 
 .btn-primary.outline:hover {
   background-color: $white;
-  color: $blue !important;
-}
-
-/* Don't touch these unless you want a headache */
-.navbar a {
-  color: $white !important; /* Important necessary to override Bootstrap */
-}
-
-.nav-item .nav-link:hover {
-  color: $white !important; /* Important necessary to override Bootstrap */
-  font-weight: 400;
-}
-
-.nav-item .nav-link-home:hover {
-  background-color: $primary;
-  color: $white !important; /* Important necessary to override Bootstrap */
+  color: $blue;
 }
 
 #sign-in-out-btn {
   border: 1px solid $white;
-  color: $white !important; /* Important necessary to override Bootstrap */
+  color: $white;
   padding: 4px;
 }
 
 #sign-in-out-btn:hover {
-  color: $blue !important; /* Important necessary to override Bootstrap */
+  color: $blue;
 }
 
 #sign-in-out-btn-home {
   border: 1px solid $primary;
-  color: $primary !important; /* Important necessary to override Bootstrap */
+  color: $primary;
   padding: 4px;
 }
 
 #sign-in-out-btn-home:hover {
-  color: $white !important; /* Important necessary to override Bootstrap */
+  color: $white;
+  background-color: $blue;
 }
 
 .input-group-btn button {
@@ -155,26 +226,6 @@ $breakpoint-mobile: 320px;
 }
 
 /* ========================================================================================== */
-
-//body {
-//  font-family: "Whitney";
-//}
-//
-//h1, h2, h3, h4, h5, h6 {
-//  font-family: "Whitney";
-//  font-weight: bold;
-//}
-//
-//p {
-//  font-family: "Whitney";
-//}
-
-#navbar-logo {
-  font-family: "Uni Sans";
-  color: $white;
-  font-size: 2.5em;
-  padding-top: .2em;
-}
 
 #alert {
   width: 100%;
@@ -238,14 +289,6 @@ $breakpoint-mobile: 320px;
   text-align: center;
 }
 
-@media (min-width: $breakpoint-desktop) {
-
-  .nav-float-right {
-    margin-left: auto !important;
-  }
-
-}
-
 h2, h3, h4, h5, h6 {
   color: $gray-700
 }
@@ -266,15 +309,6 @@ a:hover {
   background-color: transparent;
   color: darken($primary-font-blue, 30%);
   text-decoration: none;
-}
-
-body {
-  background-color: $white;
-}
-
-pre {
-  background-color: $light-gray-background;
-  padding: 1em;
 }
 
 .destroy {
@@ -308,7 +342,11 @@ a:hover {
   color: $primary;
 }
 
-.sr-secondary {
+#dev-primary {
+  font-family: 'Uni Sans';
+}
+
+#sr-secondary {
   font-family: 'Uni Sans';
   color: $dark;
 }
