@@ -1,0 +1,37 @@
+<nav class="topnav">
+  <div class="topnav-left">
+    <%= link_to root_path, id: 'navbar-logo', class: 'topnav-item' do %>
+      DEV<span id="sr-secondary">SR</span>
+    <% end %>
+  </div>
+  <div class="topnav-right" id="topnavResponsive">
+    <span class="topnav-item"><%= link_to 'Home', user_path(current_user) %></span>
+    <span class="topnav-item"><%= link_to 'Settings', edit_user_path(current_user) %></span>
+    <span class="topnav-item"><%= render partial: 'search_form' %></span>
+    <span class="topnav-item"><%= render partial: 'session_buttons' %></span>
+  </div>
+  <span class="icon" href="javascript:void(0);" onclick="mobileMenuOnClickHandler()">
+    <i id="menuIconBars" class="fa fa-bars"></i>
+    <i id="menuIconTimes" style="display:none;" class="fa fa-times"></i>
+  </span>
+</nav>
+
+<div class="overlay" style="display:none;"></div>
+
+<script>
+    function mobileMenuOnClickHandler() {
+        const overlay = $('.overlay');
+        const topnav = document.getElementById("topnavResponsive");
+        if (topnav.className === "topnav-right") {
+            topnav.className = "topnav responsive";
+        } else {
+            topnav.className = "topnav-right";
+        }
+        
+        const bars = $('#menuIconBars');
+        const times = $('#menuIconTimes');
+        bars.toggle();
+        times.toggle();
+        overlay.toggle();
+    }
+</script>
