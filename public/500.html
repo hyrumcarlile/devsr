@@ -1,66 +1,147 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>Something went wrong on our end. (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../app/assets/stylesheets/home.scss">
+  <link rel="stylesheet" href="../app/assets/stylesheets/application.scss">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+      /* ====================================== Bootstrap Overrides ====================================== */
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+      .row {
+          /* to fix horizontal scroll bar showing up when using .row */
+          margin-left: 0px;
+          margin-right: 0px;
+      }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+      .navbar a:hover {
+          text-decoration: none;
+      }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+      /* Don't touch these unless you want a headache */
+      .navbar a {
+          color: #2065e5 !important; /* Important necessary to override Bootstrap */
+      }
+
+      .nav-item .nav-link-home:hover {
+          background-color: #2065e5;
+          color: #2065e5 !important; /* Important necessary to override Bootstrap */
+      }
+
+      .input-group-btn button {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+      }
+
+      /* ========================================================================================== */
+
+      .jumbotron-home {
+          background-color: #292b2c;
+          color: #ffffff;
+          height: 100vh;
+      }
+
+      .jumbotron-home h1 {
+          font-size: 3em;
+      }
+
+      .jumbotron-home h2 {
+          color: #2065e5;
+      }
+
+      #interchangable {
+          color: #2065e5;
+      }
+
+      @keyframes cssAnimation {
+          to {
+              height:0;
+              padding-top: 0;
+              display: none;
+              position: relative;
+              left: -9999px;
+          }
+      }
+
+      @-webkit-keyframes cssAnimation {
+          to {
+              height:0;
+              padding-top: 0;
+              display: none;
+              position: relative;
+              left: -9999px;
+
+          }
+      }
+
+      .centered {
+          width: 100%;
+          text-align: center;
+      }
+
+      body {
+          background-color: #ffffff;
+          height: 100% !important;
+      }
+
+      pre {
+          background-color: #ebecec;
+          padding: 1em;
+      }
+
+      a:hover {
+          cursor: pointer;
+      }
+
+      p {
+          font-size: medium;
+      }
+
+      ul {
+          padding-left: 0;
+          font-size: .9em;
+      }
+
+      ul li {
+          padding-top: .5em;
+      }
+
+      .list-no-padding li {
+          padding-top: 0;
+      }
+
+      .valign-parent {
+          display: table;
+          height: 100%;
+          width: 100%;
+      }
+
+      .valign-child {
+          display: table-cell;
+          vertical-align: middle;
+          height: 100%;
+          width: 100%;
+      }
+
+      .valign-up {
+          margin-bottom:10%;
+      }
   </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
-</body>
+    <body class="rails-default-error-page">
+        <div class="jumbotron-fluid jumbotron-home">
+            <div class="row" style="height: 100%;">
+                <div class="col centered">
+                    <div class="valign-parent">
+                        <div class="valign-child">
+                            <h1 class="valign-up">Something went wrong on our end. <span id="interchangable">(500)</span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
