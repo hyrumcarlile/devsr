@@ -4,7 +4,8 @@
 
 $blue: #2065e5;
 $secondary-yellow: #FD9A1A;
-$breakpoint-tablet: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 480px;
 
 @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
 
@@ -45,6 +46,12 @@ $breakpoint-tablet: 480px;
   background-size: cover;
 }
 
+.image-header-preview {
+  background: transparent no-repeat center;
+  background-size: cover;
+  margin-bottom: 16px;
+}
+
 .note-header-title {
   text-align: center;
   height: 100%;
@@ -79,13 +86,28 @@ $breakpoint-tablet: 480px;
   font-size: 12px;
 }
 
-@media (max-width: $breakpoint-tablet) {
+@media screen and (max-width: $breakpoint-tablet) {
   .note-title {
     font-size: 2em;
+  }
+  .image-header-preview {
+    height: 100px;
+  }
+  .note-header-title {
+    margin-bottom: 16px;
+  }
+}
+
+@media screen and (max-width: $breakpoint-mobile) {
+  .image-header-frame {
+    height: 200px;
   }
 }
 
 @media (min-width: $breakpoint-tablet) {
+  .image-header-preview {
+    height: 200px;
+  }
   .note-title {
     display: inline-block;
     max-width: 40rem;

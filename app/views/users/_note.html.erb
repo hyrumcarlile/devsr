@@ -1,9 +1,12 @@
 <%= link_to "/notes/#{note.slug}" do %>
   <div class="card note-card my-3 p-3">
     <% unless note.image_url.blank? %>
-      <img class="card-img-top" src="<%= note.image_url %>" alt="<%= note.image_url %>">
+      <div class="image-header-preview" style="background-image: url('<%= note.image_url %>');"></div>
     <% end %>
-    <h4 class="card-title"><%= note.title.nil? ? "#{note.body[0..20]}..." : note.title %></h4>
+    <div class="card-title">
+      <b><%= note.title %></b>
+      <% if note.is_private %><span class="badge badge-dark">Private</span><% end %>
+    </div>
     <div class="card-block">
       <p class="card-text"><%= note.subtitle %></p>
     </div>

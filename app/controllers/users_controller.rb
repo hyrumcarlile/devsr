@@ -33,8 +33,12 @@ class UsersController < ApplicationController
     @skill_ratings = @user.skill_ratings
     @sr_labels     = @user.skill_labels
     @sr_values     = @user.skill_values
-    @notes         = @user.notes.order('created_at DESC')
     @achievements  = @user.achievements
+    if @user == current_user
+      @notes = @user.notes.order('created_at DESC')
+    else
+      @notes = @user.notes.where.not(is_private: true).order('created_at DESC')
+    end
   end
 
   # GET /users/new

@@ -8,7 +8,7 @@
 
   <%= render partial: 'buttons' %>
 
-  <% if @note.comments_enabled %>
+  <% unless @note.comments_disabled %>
     <hr class="m-5">
     <div id="disqus_thread"></div>
     <script>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180726040810) do
+ActiveRecord::Schema.define(version: 20180726153733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,13 +83,14 @@ ActiveRecord::Schema.define(version: 20180726040810) do
   create_table "notes", force: :cascade do |t|
     t.text     "body"
     t.text     "title"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "user_id"
     t.text     "image_url"
     t.string   "slug"
-    t.boolean  "comments_enabled"
+    t.boolean  "comments_disabled"
     t.text     "subtitle"
+    t.boolean  "is_private"
     t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
   end
 
