@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180718142115) do
+ActiveRecord::Schema.define(version: 20180726040810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(version: 20180718142115) do
     t.index ["user_id", "achievement_id"], name: "index_achievements_users_on_user_id_and_achievement_id", unique: true, using: :btree
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text     "title"
+    t.text     "body"
+    t.integer  "note_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_id"], name: "index_comments_on_note_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
   create_table "endorsements", force: :cascade do |t|
     t.integer  "endorser_id"
     t.integer  "endorsee_id"
@@ -78,6 +89,7 @@ ActiveRecord::Schema.define(version: 20180718142115) do
     t.text     "image_url"
     t.string   "slug"
     t.boolean  "comments_enabled"
+    t.text     "subtitle"
     t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
   end
 
