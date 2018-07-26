@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
   authenticate :user do
-    resources :users
+    resources :users, except: [:show]
     resources :endorsements
     resources :skills
     resources :achievements do
@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   end
 
   resources :notes, only: [:show]
+  resources :users, only: [:show]
 
   authenticated :user do
     root 'users#current_user_home', as: :authenticated_root
