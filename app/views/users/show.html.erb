@@ -14,9 +14,7 @@
 
   <div class="row mb-5">
     <div class="col centered">
-      <% if @endorsers.empty? %>
-        0 endorsers
-      <% else %>
+      <% unless @endorsers.empty? %>
         <a id="endorsers-show"><%= @endorsers.count %> endorsers</a>
       <% end %>
     </div>
