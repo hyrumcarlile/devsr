@@ -19,17 +19,17 @@
 <script>
     function mobileMenuOnClickHandler() {
         const overlay = $('.overlay');
-        const x = document.getElementById("topnavResponsive");
-        if (x.className === "topnav-right") {
-            x.className = "topnav responsive";
+        const topnav = document.getElementById("topnavResponsive");
+        if (topnav.className === "topnav-right") {
+            topnav.className = "topnav responsive";
         } else {
-            x.className = "topnav-right";
+            topnav.className = "topnav-right";
         }
         
-        const y = $('#menuIconBars');
-        const z = $('#menuIconTimes');
-        y.toggle();
-        z.toggle();
+        const bars = $('#menuIconBars');
+        const times = $('#menuIconTimes');
+        bars.toggle();
+        times.toggle();
         overlay.toggle();
     }
 </script>
