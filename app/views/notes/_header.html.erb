@@ -1,0 +1,13 @@
+<div class="row mt-5 mb-3">
+  <div class="col-md">
+    <div class="note-header-title">
+      <h1 class="note-title"><%= @note.title %></h1>
+      <%= render partial: 'subheader' %>
+    </div>
+  </div>
+  <% if @note.image_url.present? %>
+    <div class="col-md">
+      <div class="image-header-frame" style="background-image: url('<%= @note.image_url %>');"></div>
+    </div>
+  <% end %>
+</div>

@@ -16,12 +16,27 @@
       <%= f.text_field :title %>
     </div>
 
+    <div class="field">
+      <%= f.text_field :subtitle %>
+    </div>
+
+    <%= f.label 'Image URL' %>
+    <span class="fa fa-question-circle" title="This is the image that will be shown on the link to this article" data-toggle="tooltip" data-placement="top"></span>
+
+    <div class="field">
+      <%= f.text_field :image_url, hide_label: true %>
+    </div>
+
     <div class="field note-new-body">
       <%= f.text_area :body %>
     </div>
 
     <div class="field">
-      <%= f.check_box :comments_enabled %>
+      <%= f.check_box :comments_disabled %>
+    </div>
+
+    <div class="field">
+      <%= f.check_box :is_private %>
     </div>
 
     <div class="actions">

@@ -1,5 +1,4 @@
 <div class="container">
-  <%= link_to 'Edit', edit_user_path(@user) if @user == current_user %><br>
   <div class="row">
     <div class="col centered">
       <img src="<%= @user.avatar_url %>" class="user-avatar-img my-3"/><br>
@@ -30,7 +29,7 @@
     <div class="col note-table-new-btn"><%= button_to 'New', new_note_path, method: :get, class: 'btn btn-primary' if @user == current_user %></div>
   </div>
 
-  <%= render partial: 'note', collection: @notes, as: 'n' unless @notes.empty? %>
+  <%= render partial: 'note', collection: @notes, as: 'note' unless @notes.empty? %>
 
 </div>
 

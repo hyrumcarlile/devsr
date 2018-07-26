@@ -25,6 +25,10 @@
 //= require_tree .
 
 $(document).ready(function() {
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+
     if ($('#search-input').val() === undefined) {
         // do nothing
     } else if ($('#search-input').val().length < 3) {
@@ -38,6 +42,7 @@ $(document).ready(function() {
             $('#search-submit').prop('disabled', true);
         }
     });
+    
     const particlesConfig = {
         "particles": {
             "number": {

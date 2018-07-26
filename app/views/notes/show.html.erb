@@ -1,36 +1,18 @@
 <div class="container">
-  <div class="row mt-5 mb-3">
-    <h1 class="note-title"><%= @note.title %></h1>
-    <span id="upvote-counter"><%= pluralize @note.votes.count, 'upvote' %></span>
-    <% if @note.user == current_user  %>
-      <%= button_to 'Edit', edit_note_path(@note),
-                    method: :get,
-                    class: 'btn btn-primary col' %>
-      <%= button_to 'Delete', note_path(@note),
-                    method: :delete,
-                    class: 'btn btn-danger note-delete-btn mx-2',
-                    data: { confirm: 'This is non-reversible. Are you sure?'} %>
-    <% else %>
-      <% if @upvote_btn %>
-        <%= button_to '+1', note_upvote_path(@note),
-                        method: :post,
-                        class: 'btn btn-secondary',
-                        id: 'upvote-btn' %>
-        <% else %>
-          <%= button_to '+1', vote_path(@vote),
-                        method: :delete,
-                        class: 'btn btn-secondary',
-                        id: 'undo-upvote-btn' %>
-        <% end %>
-    <% end if @buttons_visible %>
-    <br>
+  
+  <%= render partial: 'header' %>
+
+  <div class="centered my-2">
+    <i><%= @note.subtitle %></i>
   </div>
 
   <div class="note-body">
     <%= markdown @note.body %>
   </div>
 
-  <% if @note.comments_enabled %>
+  <%= render partial: 'buttons' %>
+
+  <% unless @note.comments_disabled %>
     <hr class="m-5">
     <div id="disqus_thread"></div>
     <script>

@@ -9,6 +9,16 @@ class Note < ApplicationRecord
 
   friendly_id :title, use: [:slugged, :history, :finders]
 
+  def created_at_display
+    if created_at.to_date == Time.now.to_date
+      num_hours = ((Time.now - created_at) / 1.hours).to_i
+      return "#{ActionController::Base.helpers.pluralize(num_hours, 'hour')} ago"
+    else
+      num_days = (Time.now.to_date - created_at.to_date).to_i
+      return "#{ActionController::Base.helpers.pluralize(num_days, 'day')} ago"
+    end
+  end
+
   def should_generate_new_friendly_id?
     title_changed?
   end

@@ -36,12 +36,12 @@ $font-color: #000000;
 
 .note-card {
   color: #000;
-  max-height: 300px;
   overflow: hidden;
 }
 
 .card-title {
-  color: $primary-font-blue
+  color: $primary-font-blue;
+  font-size: 24px;
 }
 
 .note-table-new-btn {

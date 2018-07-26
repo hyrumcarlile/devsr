@@ -91,6 +91,6 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:body, :title, :comments_enabled)
+    params.require(:note).permit(:body, :title, :subtitle, :image_url, :comments_disabled, :is_private)
   end
 end

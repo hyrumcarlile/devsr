@@ -100,7 +100,17 @@ $breakpoint-mobile: 320px;
 }
 
 .topnav-right .topnav-item {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topnav-right,.topnav .topnav-item a {
+  color: #fff;
+}
+
+.topnav-right .topnav-item a:hover {
+  font-weight: 400;
 }
 
 .icon {
@@ -108,11 +118,11 @@ $breakpoint-mobile: 320px;
   color: #fff;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: $breakpoint-desktop) {
   .topnav .icon {display: none;}
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: $breakpoint-desktop) {
   .topnav-right .topnav-item {display: none;}
   .topnav-right .icon {
     display: block;
@@ -166,6 +176,14 @@ $breakpoint-mobile: 320px;
 }
 
 /* ====================================== Bootstrap Overrides ====================================== */
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
 
 .row {
   /* to fix horizontal scroll bar showing up when using .row */
