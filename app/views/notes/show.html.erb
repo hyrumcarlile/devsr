@@ -2,6 +2,10 @@
   
   <%= render partial: 'header' %>
 
+  <div class="centered my-2">
+    <i><%= @note.subtitle %></i>
+  </div>
+
   <div class="note-body">
     <%= markdown @note.body %>
   </div>
