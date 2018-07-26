@@ -167,6 +167,14 @@ $breakpoint-mobile: 320px;
 
 /* ====================================== Bootstrap Overrides ====================================== */
 
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
 .row {
   /* to fix horizontal scroll bar showing up when using .row */
   margin-left: 0px;
