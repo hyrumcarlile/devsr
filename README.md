@@ -37,7 +37,7 @@ We need your help! Become a contributor!
 
 ## Technical Details
 
-Stack: Ruby on Rails | PostgreSQL (soon: Ruby on Rails | PostgreSQL | GraphQL | React)
+Stack: Ruby on Rails | PostgreSQL | GraphQL | React
 
 Ruby Version: 2.3.4
 
