@@ -40,6 +40,12 @@ $breakpoint-tablet: 992px;
   overflow: hidden;
 }
 
+@media screen and (max-width: $breakpoint-tablet) {
+  .note-card {
+    max-height: 300px;
+  }
+}
+
 @media screen and (min-width: $breakpoint-tablet) {
   .note-card {
     height: 300px;
