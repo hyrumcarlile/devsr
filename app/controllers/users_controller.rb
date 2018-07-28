@@ -28,8 +28,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @endorsers     = @user.endorsers.map(&:endorser).flatten.compact
-    @endorsees     = @user.endorsees.map(&:endorsee).flatten.compact
+    @endorsers     = @user.endorsers
+    @endorsees     = @user.endorsees
+    @followers     = @user.followers
+    @relationship  = @user.follower_relationships.where(follower: current_user).first
     @skill_ratings = @user.skill_ratings
     @sr_labels     = @user.skill_labels
     @sr_values     = @user.skill_values

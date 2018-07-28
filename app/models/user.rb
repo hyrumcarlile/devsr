@@ -6,17 +6,33 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :following_relationships,     class_name:  'Relationship',
+                                        foreign_key: 'follower_id',
+                                        dependent:   :destroy
+  has_many :follower_relationships,     class_name:  'Relationship',
+                                        foreign_key: 'followed_id',
+                                        dependent:   :destroy
+  has_many :endorser_relationships,     class_name:  'Endorsement',
+                                        foreign_key: 'endorsee_id',
+                                        dependent:   :destroy
+  has_many :endorsee_relationships,     class_name:  'Endorsement',
+                                        foreign_key: 'endorser_id',
+                                        dependent:   :destroy
+
   has_and_belongs_to_many :achievements
   has_one :achievement_criterium
-  has_many :endorsers,     class_name:  'Endorsement',
-                           foreign_key: 'endorsee_id',
-                           dependent:   :destroy
-  has_many :endorsees,     class_name:  'Endorsement',
-                           foreign_key: 'endorser_id',
-                           dependent:   :destroy
+  has_many :endorsers,     through:     :endorser_relationships,
+                           source:      :endorser
+  has_many :endorsees,     through:     :endorsee_relationships,
+                           source:      :endorsee
+  has_many :following,     through:     :following_relationships,
+                           source:      :followed
+  has_many :followers,     through:     :follower_relationships,
+                           source:      :follower
   has_many :notes,         dependent:   :destroy
   has_many :skill_ratings, dependent:   :destroy
   has_many :votes,         dependent:   :destroy
+
 
   friendly_id :slug_candidates, use: [:slugged, :history, :finders]
 
@@ -68,6 +84,18 @@ class User < ApplicationRecord
 
   def after_database_authentication
     check_for_consecutive_logins
+  end
+
+  def follow(other_user)
+    following << other_user
+  end
+  
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+  
+  def following?(other_user)
+    following.include?(other_user)
   end
 
   private
