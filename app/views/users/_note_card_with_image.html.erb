@@ -1,0 +1,12 @@
+<%= link_to "/notes/#{note.slug}", class: 'm-2 col-sm note-col' do %>
+  <div class="card note-card p-3">
+    <div class="image-header-preview" style="background-image: url('<%= note.image_url %>');"></div>
+    <div class="card-title mb-1">
+      <b><%= note.title %></b>
+      <% if note.is_private %><span class="badge badge-dark">Private</span><% end %>
+    </div>
+    <div class="card-block">
+      <i><%= note.subtitle %></i>
+    </div>
+  </div>
+<% end %>

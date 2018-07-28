@@ -1,19 +1,5 @@
-<%= link_to "/notes/#{note.slug}", class: 'm-2 col-sm note-col' do %>
-  <div class="card note-card p-3">
-    <% unless note.image_url.blank? %>
-      <div class="image-header-preview" style="background-image: url('<%= note.image_url %>');"></div>
-    <% end %>
-    <div class="card-title">
-      <b><%= note.title %></b>
-      <% if note.is_private %><span class="badge badge-dark">Private</span><% end %>
-    </div>
-    <div class="card-block">
-      <p class="card-text"><%= note.subtitle %></p>
-    </div>
-    <% if note.image_url.blank? %>
-      <div class="note-card-body">
-        <%= markdown note.body %>
-      </div>
-    <% end %>
-  </div>
+<% if note.image_url.present? %>
+  <%= render partial: 'note_card_with_image', locals: {note: note} %>
+<% else %>
+  <%= render partial: 'note_card_without_image', locals: {note: note} %>
 <% end %>

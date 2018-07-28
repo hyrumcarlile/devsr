@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $blue: #2065e5;
+$primary-font-blue: #4c83ea;
 $secondary-yellow: #FD9A1A;
 $breakpoint-desktop: 991px;
 $breakpoint-tablet: 768px;
@@ -102,6 +103,26 @@ $breakpoint-mobile: 480px;
   flex-basis: 300px;
   width: 300px;
   flex-grow: 1;
+}
+
+.note-card-no-image:before {
+  content:'';
+  width:100%;
+  height:30%;    
+  position:absolute;
+  left:0;
+  bottom:0;
+  background:linear-gradient(transparent, white 80%);
+}
+
+.card-title {
+  color: $primary-font-blue;
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.note-table-new-btn {
+  text-align: end;
 }
 
 @media screen and (max-width: $breakpoint-tablet) {
