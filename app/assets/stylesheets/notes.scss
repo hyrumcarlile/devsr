@@ -4,6 +4,7 @@
 
 $blue: #2065e5;
 $secondary-yellow: #FD9A1A;
+$breakpoint-desktop: 991px;
 $breakpoint-tablet: 768px;
 $breakpoint-mobile: 480px;
 
@@ -86,15 +87,38 @@ $breakpoint-mobile: 480px;
   font-size: 12px;
 }
 
+.note-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.note-row a {
+  flex-basis: 300px;
+  width: 300px;
+  flex-grow: 1;
+}
+
+.flex-wrap-placeholder {
+  flex-basis: 300px;
+  width: 300px;
+  flex-grow: 1;
+}
+
 @media screen and (max-width: $breakpoint-tablet) {
   .note-title {
     font-size: 2em;
   }
   .image-header-preview {
-    height: 100px;
+    height: 200px;
   }
   .note-header-title {
     margin-bottom: 16px;
+  }
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+  .note-col {
+    min-width: 400px;
   }
 }
 

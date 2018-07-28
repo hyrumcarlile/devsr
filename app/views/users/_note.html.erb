@@ -1,5 +1,5 @@
-<%= link_to "/notes/#{note.slug}" do %>
-  <div class="card note-card my-3 p-3">
+<%= link_to "/notes/#{note.slug}", class: 'm-2 col-sm note-col' do %>
+  <div class="card note-card p-3">
     <% unless note.image_url.blank? %>
       <div class="image-header-preview" style="background-image: url('<%= note.image_url %>');"></div>
     <% end %>
@@ -10,5 +10,10 @@
     <div class="card-block">
       <p class="card-text"><%= note.subtitle %></p>
     </div>
+    <% if note.image_url.blank? %>
+      <div class="note-card-body">
+        <%= markdown note.body %>
+      </div>
+    <% end %>
   </div>
 <% end %>

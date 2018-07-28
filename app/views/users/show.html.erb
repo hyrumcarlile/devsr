@@ -22,12 +22,19 @@
 
   <%= render partial: 'skill_rating' unless @user.endorsers.blank? %>
 
-  <div class="row">
-    <div class="col"><h3>Recent Notes:</h3></div>
-    <div class="col note-table-new-btn"><%= button_to 'New', new_note_path, method: :get, class: 'btn btn-primary' if @user == current_user %></div>
-  </div>
+  <% unless @user != current_user && @notes.empty? %>
+    <div class="row">
+      <div class="col"><h3>Recent Notes:</h3></div>
+      <div class="col note-table-new-btn"><%= button_to 'New', new_note_path, method: :get, class: 'btn btn-primary' if @user == current_user %></div>
+    </div>
+  <% end %>
 
-  <%= render partial: 'note', collection: @notes, as: 'note' unless @notes.empty? %>
+  <div class="note-row">
+    <%= render partial: 'note', collection: @notes, as: 'note' unless @notes.empty? %>
+    <% if @notes.count.odd? %>
+      <div class="flex-wrap-placeholder m-2"></a>
+    <% end %>
+  </div>
 
 </div>
 
