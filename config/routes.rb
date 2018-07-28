@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :users, except: [:show]
     resources :endorsements
+    resources :relationships, only: [:create, :destroy]
     resources :skills
     resources :achievements do
       get 'grant'

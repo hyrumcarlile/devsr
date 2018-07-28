@@ -1,0 +1,15 @@
+<div class="mb-2">
+  <span id="followers"><%= @followers.count %></span> followers
+</div>
+
+<div class="mb-2">
+  <div id="follow-form">
+    <% unless @user == current_user %>
+      <% if current_user.following? @user %>
+        <%= render partial: 'unfollow' %>
+      <% else %>
+        <%= render partial: 'follow' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

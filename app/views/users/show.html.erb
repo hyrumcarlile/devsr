@@ -6,10 +6,16 @@
     </div>
   </div>
 
+  <% if @achievements.any? %>
+    <div class="centered mb-2">
+      <% @achievements.each do |a| %>
+        <%= image_tag("badges/#{a.icon_name}", class: 'badge-icon', title: "<b>#{a.name}</b><br>#{a.description}", data: { toggle: 'tooltip', placement: 'top', html: 'true' })  %>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="centered mb-2">
-    <% @achievements.each do |a| %>
-      <%= image_tag("badges/#{a.icon_name}", class: 'badge-icon', title: "<b>#{a.name}</b><br>#{a.description}", data: { toggle: 'tooltip', placement: 'top', html: 'true' })  %>
-    <% end %>
+    <%= render partial: 'followers' if user_signed_in? %>
   </div>
 
   <div class="row mb-5">
