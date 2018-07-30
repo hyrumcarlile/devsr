@@ -40,13 +40,14 @@ Rails.application.routes.draw do
     get 'import/new', to: 'notes#new_import' # import_new_notes_path
     post 'import/new', to: 'notes#import' # import_notes_path
 
+    get 'home', to: 'users#feed'
   end
 
   resources :notes, only: [:show]
   resources :users, only: [:show]
 
   authenticated :user do
-    root 'users#current_user_home', as: :authenticated_root
+    root 'users#feed', as: :authenticated_root
   end
 
   root 'home#index'

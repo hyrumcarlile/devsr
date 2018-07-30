@@ -42,6 +42,10 @@ class UsersController < ApplicationController
       @notes = @user.notes.where.not(is_private: true).order('created_at DESC')
     end
   end
+  
+  def feed
+    @notes = Note.where(user_id: current_user.following.pluck(:id) + [current_user.id], is_private: false).order(created_at: :desc)
+  end
 
   # GET /users/new
   def new

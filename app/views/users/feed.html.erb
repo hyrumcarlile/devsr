@@ -1,0 +1,19 @@
+<% if @notes.empty? %>
+  <div class="container whole-page">
+    <div class="flex-centered">
+      <div class="centered">
+        <h1>There's nothing here!</h1>
+        Follow more users to see their notes here.
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="container">
+    <div class="note-row">
+      <%= render partial: 'users/note', collection: @notes, as: 'note' unless @notes.empty? %>
+      <% if @notes.count.odd? %>
+        <div class="flex-wrap-placeholder m-2"></a>
+      <% end %>
+    </div>
+  </div>
+<% end %>

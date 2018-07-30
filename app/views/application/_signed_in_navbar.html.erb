@@ -5,7 +5,8 @@
     <% end %>
   </div>
   <div class="topnav-right" id="topnavResponsive">
-    <span class="topnav-item"><%= link_to 'Home', user_path(current_user) %></span>
+    <span class="topnav-item"><%= link_to 'Home', home_path %></span>  
+    <span class="topnav-item"><%= link_to 'Profile', user_path(current_user) %></span>
     <span class="topnav-item"><%= link_to 'Settings', edit_user_path(current_user) %></span>
     <span class="topnav-item"><%= render partial: 'search_form' %></span>
     <span class="topnav-item"><%= render partial: 'session_buttons' %></span>
