@@ -50,4 +50,23 @@ class Note < ApplicationRecord
     # else, return a regular button
     return true
   end
+
+  def self.paged page, user
+    return note_page_array(user).first if (page.negative? || page.zero?)
+    note_page_array(user)[page - 1]
+  end
+
+  def self.last_page? page, user
+    return true if page == num_pages(user) - 1
+  end
+
+  def self.num_pages user
+    note_page_array(user).length
+  end
+
+  private
+
+  def self.note_page_array user
+    Note.where(user_id: user.following.pluck(:id) + [user.id], is_private: false).order(created_at: :desc).to_a.each_slice(20).to_a
+  end
 end

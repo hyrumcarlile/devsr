@@ -12,8 +12,9 @@
     <div class="note-row">
       <%= render partial: 'users/note', collection: @notes, as: 'note' unless @notes.empty? %>
       <% if @notes.count.odd? %>
-        <div class="flex-wrap-placeholder m-2"></a>
+        <div class="flex-wrap-placeholder m-2"></div>
       <% end %>
     </div>
+    <%= render partial: 'pagination_buttons' %>
   </div>
 <% end %>

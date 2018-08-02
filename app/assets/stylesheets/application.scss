@@ -167,6 +167,16 @@ $breakpoint-mobile: 320px;
   top: 0;
 }
 
+.flex-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-right {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 /* ============================================== Fonts ============================================ */
 
 @font-face {

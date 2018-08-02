@@ -44,7 +44,13 @@ class UsersController < ApplicationController
   end
   
   def feed
-    @notes = Note.where(user_id: current_user.following.pluck(:id) + [current_user.id], is_private: false).order(created_at: :desc)
+    if params[:page].present?
+      @page = (params[:page].to_i.negative? || params[:page].to_i.zero?) ? 1 : params[:page].to_i
+      @page = Note.num_pages(current_user) if @page > Note.num_pages(current_user)
+    else 
+      @page = 1
+    end
+    @notes = Note.paged(@page, current_user)
   end
 
   # GET /users/new
@@ -106,6 +112,10 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :role)
+    end
+    
+    def page_params
+      params.permit(:page)
     end
 
     def authorize_user
