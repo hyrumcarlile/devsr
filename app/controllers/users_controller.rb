@@ -44,13 +44,13 @@ class UsersController < ApplicationController
   end
   
   def feed
-    if params[:page].present?
-      @page = (params[:page].to_i.negative? || params[:page].to_i.zero?) ? 1 : params[:page].to_i
-      @page = Note.num_pages(current_user) if @page > Note.num_pages(current_user)
-    else 
-      @page = 1
-    end
+    params[:page].present? ? set_page : @page = 1
     @notes = Note.paged(@page, current_user)
+  end
+
+  def set_page
+    @page = (params[:page].to_i.negative? || params[:page].to_i.zero?) ? 1 : params[:page].to_i
+    @page = Note.num_pages(current_user) if @page > Note.num_pages(current_user)
   end
 
   # GET /users/new
