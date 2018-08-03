@@ -34,7 +34,7 @@ class EndorsementsController < ApplicationController
           :skill_id => Skill.find_by(:name => params[:endorsement][:skill])&.id
       )
     rescue => e
-      error = 'This endorsement already exists'
+      error = 'An error occurred. Please try again.'
     end
 
     respond_to do |format|

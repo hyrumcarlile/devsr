@@ -4,6 +4,10 @@ class Note < ApplicationRecord
   belongs_to :user
   has_many :votes
 
+  has_many :user_endorsements,  class_name:  'Endorsement',
+                                foreign_key: 'note_id',
+                                dependent:   :destroy
+
   validates_presence_of :title
   validates_presence_of :body
 
@@ -62,6 +66,12 @@ class Note < ApplicationRecord
 
   def self.num_pages user
     note_page_array(user).length
+  end
+
+  def sort_endorsements
+    endorsements = self.user_endorsements
+    skill_ids = endorsements.pluck(:skill_id).uniq
+    skill_ids.map{ |skill_id| [Skill.find(skill_id), Endorsement.where(skill_id: skill_id, note_id: self.id).count] }.to_h
   end
 
   private

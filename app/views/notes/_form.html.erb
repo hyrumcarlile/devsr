@@ -39,8 +39,32 @@
       <%= f.check_box :is_private %>
     </div>
 
+    <div class="mt-4">
+      What technologies are in this note?
+      <%= text_field :note, :skill, id: 'skill-tags' %>
+    </div>
+
     <div class="actions">
       <%= f.submit %>
     </div>
   <% end %>
 </div>
+
+<script>
+  $(document).ready(function() {
+      var s = <%= raw @skills.as_json %>;
+      var skills = [];
+      for (var i = 0; i < s.length; i++) {
+          skills.push({skill: s[i]})
+      }
+      $('#skill-tags').selectize({
+          maxItems: 3,
+          create: false,
+          persist: false,
+          valueField: 'skill',
+          labelField: 'skill',
+          searchField: ['skill'],
+          options: skills,
+      });
+  })
+</script>

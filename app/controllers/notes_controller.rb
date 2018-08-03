@@ -24,6 +24,7 @@ class NotesController < ApplicationController
   # GET /notes/1.json
   def show
     raise ActionController::RoutingError.new('Not Found') if (@note.is_private && @note.user != current_user)
+    @endorsements = @note.sort_endorsements
     @buttons_visible = !current_user.blank?
     @upvote_btn = @note.should_show_upvote_btn(current_user)
     @vote = Vote.find_by(user_id: current_user.id, note_id: @note.id) unless current_user.blank?

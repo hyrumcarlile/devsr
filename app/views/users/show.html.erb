@@ -18,15 +18,7 @@
     <%= render partial: 'followers' if user_signed_in? %>
   </div>
 
-  <div class="row mb-5">
-    <div class="col centered">
-      <% unless @endorsers.empty? %>
-        <a id="endorsers-show"><%= @endorsers.count %> endorsers</a>
-      <% end %>
-    </div>
-  </div>
-
-  <%= render partial: 'skill_rating' unless @user.endorsers.blank? %>
+  <%= render partial: 'skill_rating' unless @user.endorsements.blank? %>
 
   <% unless @user != current_user && @notes.empty? %>
     <div class="row px-4">
@@ -49,41 +41,9 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
-    });
-</script>
 
-
-
-<!-- Modal -->
-<div id="endorsers-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Endorsers</h4>
-      </div>
-      <div class="modal-body">
-        <table>
-        <% @endorsers.each do |e| %>
-          <tr>
-            <td><img src="<%= e.avatar_url %>" class="endorser-img-modal"/></td>
-            <td id="user-link" style="vertical-align: middle"><a href="<%= user_path(e) %>" target="_blank"><%= e.name %></a></td>
-          </tr>
-        <% end %>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-  $(document).ready( function() {
-      $('#endorsers-show').on('click', function () {
-          $('#endorsers-modal').modal('show')
-      });
-  })
+        $('#endorsers-show').on('click', function () {
+            $('#endorsers-modal').modal('show')
+        });
+    })
 </script>

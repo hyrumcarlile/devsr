@@ -13,6 +13,8 @@ class Endorsement < ApplicationRecord
 
   validate :you_cannot_endorse_yourself
 
+  validates_uniqueness_of :endorser_id, scope: [:endorsee_id, :skill_id, :note_id]
+
   def you_cannot_endorse_yourself
     if endorsee_id == endorser_id
       errors.add(:email, 'You cannot endorse yourself')

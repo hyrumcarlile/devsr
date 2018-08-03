@@ -1,5 +1,3 @@
-<span id="upvote-counter"><%= pluralize @note.votes.count, 'upvote' %></span>
-
 <% if @note.user == current_user  %>
   <%= link_to 'Edit', edit_note_path(@note),
                 method: :get,
@@ -8,16 +6,13 @@
                 method: :delete,
                 class: 'btn btn-danger note-delete-btn',
                 data: { confirm: 'This is non-reversible. Are you sure?'} %>
-<% else %>
-  <% if @upvote_btn %>
-    <%= link_to '+1', note_upvote_path(@note),
-                    method: :post,
-                    class: 'btn btn-secondary',
-                    id: 'upvote-btn' %>
-  <% else %>
-    <%= link_to '+1', vote_path(@vote),
-                    method: :delete,
-                    class: 'btn btn-secondary',
-                    id: 'undo-upvote-btn' %>
+<% end %>
+
+<div class="endorsement-container">
+  <% @endorsements.each do |skill, count| %>
+  <div>
+    <%= skill.name %>
+    <%= count %>
+  </div>
   <% end %>
-<% end if @buttons_visible %>
+</div>
