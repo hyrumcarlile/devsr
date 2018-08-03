@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180729162632) do
+ActiveRecord::Schema.define(version: 20180803212241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,8 +64,10 @@ ActiveRecord::Schema.define(version: 20180729162632) do
     t.datetime "updated_at",                                                 null: false
     t.decimal  "endorsement_value", precision: 10, scale: 5, default: "0.0"
     t.integer  "skill_id"
+    t.integer  "note_id"
     t.index ["endorsee_id"], name: "index_endorsements_on_endorsee_id", using: :btree
     t.index ["endorser_id"], name: "index_endorsements_on_endorser_id", using: :btree
+    t.index ["note_id"], name: "index_endorsements_on_note_id", using: :btree
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -128,6 +130,7 @@ ActiveRecord::Schema.define(version: 20180729162632) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.text     "image_url"
   end
 
   create_table "users", force: :cascade do |t|
@@ -167,6 +170,7 @@ ActiveRecord::Schema.define(version: 20180729162632) do
   add_foreign_key "achievement_criteria", "users"
   add_foreign_key "comments", "notes"
   add_foreign_key "comments", "users"
+  add_foreign_key "endorsements", "notes"
   add_foreign_key "notes", "users"
   add_foreign_key "skill_ratings", "skills"
   add_foreign_key "skill_ratings", "users"
