@@ -51,7 +51,6 @@ $breakpoint-mobile: 320px;
 
 /* bootstrap must be imported AFTER declaring custom variables */
 @import "bootstrap";
-@import 'notes';
 @import 'rails_bootstrap_forms';
 
 .topnav {
@@ -153,6 +152,28 @@ $breakpoint-mobile: 320px;
   width:100%;
   height:100%;
   z-index: 1;
+}
+
+.flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.container.whole-page {
+  height: 90vh;
+  top: 0;
+}
+
+.flex-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-right {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 /* ============================================== Fonts ============================================ */

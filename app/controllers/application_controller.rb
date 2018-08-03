@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     # use exception.path to extract the path information
     # This does not work for partials
     # For now, however, we're just going to display an error message:
-    render text: 'There was an internal error. Please refresh and try again.'
+    render plain: 'There was an internal error. Please refresh and try again.'
   end
 
   def not_found

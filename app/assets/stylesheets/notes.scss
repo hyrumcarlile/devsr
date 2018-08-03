@@ -5,6 +5,7 @@
 $blue: #2065e5;
 $primary-font-blue: #4c83ea;
 $secondary-yellow: #FD9A1A;
+$note-background: #f9f9f9;
 $breakpoint-desktop: 991px;
 $breakpoint-tablet: 768px;
 $breakpoint-mobile: 480px;
@@ -72,7 +73,7 @@ $breakpoint-mobile: 480px;
 
 .subheader-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -93,16 +94,27 @@ $breakpoint-mobile: 480px;
   flex-wrap: wrap;
 }
 
-.note-row a {
+.flex-wrap-placeholder {
   flex-basis: 300px;
   width: 300px;
   flex-grow: 1;
 }
 
-.flex-wrap-placeholder {
-  flex-basis: 300px;
-  width: 300px;
-  flex-grow: 1;
+.note-card {
+  color: #000;
+  overflow: hidden;
+  position: relative;
+}
+
+.note-card-container {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #e9e9e9;
+  background-color: $note-background;
+}
+
+.note-body{
+  border-bottom: 1px solid #e9e9e9;
 }
 
 .note-card-no-image:before {
@@ -112,7 +124,7 @@ $breakpoint-mobile: 480px;
   position:absolute;
   left:0;
   bottom:0;
-  background:linear-gradient(transparent, white 80%);
+  background:linear-gradient(transparent, $note-background);
 }
 
 .card-title {
@@ -151,7 +163,7 @@ $breakpoint-mobile: 480px;
 
 @media (min-width: $breakpoint-tablet) {
   .image-header-preview {
-    height: 200px;
+    height: 400px;
   }
   .note-title {
     display: inline-block;

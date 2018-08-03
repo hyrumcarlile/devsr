@@ -1,0 +1,12 @@
+<div class="row mt-4 mb-4 px-4">
+  <div class="col flex-left">
+    <% if @page > 1 %>
+      <%= link_to '< Newer Notes', home_path(params: { page: @page - 1 }), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+  <div class="col flex-right">
+    <% if @page < (Note.num_pages current_user) %>
+      <%= link_to 'Older Notes >', home_path(params: { page: @page + 1 }), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

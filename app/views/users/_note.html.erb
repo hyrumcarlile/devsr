@@ -1,5 +1,12 @@
-<% if note.image_url.present? %>
-  <%= render partial: 'note_card_with_image', locals: {note: note} %>
-<% else %>
-  <%= render partial: 'note_card_without_image', locals: {note: note} %>
-<% end %>
+<div class="note-card-container mt-4">
+  <div class="note-body">
+    <% if note.image_url.present? %>
+      <%= render partial: 'note_card_with_image', locals: { note: note } %>
+    <% else %>
+      <%= render partial: 'note_card_without_image', locals: { note: note } %>
+    <% end %>
+  </div>
+  <div>
+    <%= render partial: 'note_author', locals: { note: note } %>
+  </div>
+</div>

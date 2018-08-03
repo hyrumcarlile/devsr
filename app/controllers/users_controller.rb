@@ -42,6 +42,16 @@ class UsersController < ApplicationController
       @notes = @user.notes.where.not(is_private: true).order('created_at DESC')
     end
   end
+  
+  def feed
+    params[:page].present? ? set_page : @page = 1
+    @notes = Note.paged(@page, current_user)
+  end
+
+  def set_page
+    @page = (params[:page].to_i.negative? || params[:page].to_i.zero?) ? 1 : params[:page].to_i
+    @page = Note.num_pages(current_user) if @page > Note.num_pages(current_user)
+  end
 
   # GET /users/new
   def new
@@ -102,6 +112,10 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :role)
+    end
+    
+    def page_params
+      params.permit(:page)
     end
 
     def authorize_user
