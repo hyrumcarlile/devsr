@@ -1,0 +1,11 @@
+<div class="m-3">
+  <div class="subheader-container">
+    <%= link_to note.user do %>
+      <img src="<%= note.user.avatar_url %>" class="note-user-avatar"/>
+    <% end %>
+    <div class="subheader-author-container">
+      <div><%= note.user.name %></div>
+      <div><i><%= note.created_at_display %></i></div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
-<%= link_to "/notes/#{note.slug}", class: 'm-2 col-sm note-col' do %>
-  <div class="card note-card pt-3 px-3 note-card-no-image">
+<%= link_to "/notes/#{note.slug}", class: 'mt-2 col-sm note-col' do %>
+  <div class="note-card pt-3 px-3 note-card-no-image">
     <div class="card-title mb-1">
       <b><%= note.title %></b>
       <% if note.is_private %><span class="badge badge-dark">Private</span><% end %>
@@ -10,6 +10,5 @@
     <div class="note-card-body">
        <%= markdown note.body %>
     </div>
-    <div class="note-overlay"></div>
   </div>
 <% end %>

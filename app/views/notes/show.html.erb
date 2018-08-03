@@ -6,7 +6,7 @@
     <i><%= @note.subtitle %></i>
   </div>
 
-  <div class="note-body">
+  <div>
     <%= markdown @note.body %>
   </div>
 
@@ -17,10 +17,10 @@
     <div id="disqus_thread"></div>
     <script>
       var disqus_config = function () {
-      this.page.url = "<%= request.original_url %>";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "<%= @note.slug %>"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "<%= request.original_url %>";  
+      this.page.identifier = "<%= @note.slug %>"; 
       };
-      (function() { // DON'T EDIT BELOW THIS LINE
+      (function() {
       var d = document, s = d.createElement('script');
       s.src = 'https://devsr.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());

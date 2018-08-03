@@ -51,7 +51,6 @@ $breakpoint-mobile: 320px;
 
 /* bootstrap must be imported AFTER declaring custom variables */
 @import "bootstrap";
-@import 'notes';
 @import 'rails_bootstrap_forms';
 
 .topnav {
