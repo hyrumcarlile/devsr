@@ -1,0 +1,23 @@
+<div class="endorse-container">
+  <%= form_for(note.user_endorsements.build, remote: true, html: {id: "new-endorsement-#{skill.id}"}) do |form| %>
+    <%= hidden_field_tag :endorser_id, current_user.id %>
+    <%= hidden_field_tag :endorsee_id, note.user.id %>
+    <%= hidden_field_tag :skill_id, skill.id %>
+    <%= hidden_field_tag :note_id, note.id %>
+    <%= hidden_field_tag :ajax, true %>
+    <input class="skill-button endorse"
+          type="image" 
+          alt="<%= skill.name %>" 
+          src="<%= skill.image_url %>" 
+          name="commit" 
+          value="<% skill.name %>" 
+          class="btn btn-primary"
+          data-disable-with="<%= skill.name %>"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="<%= skill.name %>">
+  <% end %>
+  <div class="flex-centered">
+    <%= count %>
+  </div>
+</div>

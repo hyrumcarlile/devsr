@@ -8,12 +8,15 @@ class Endorsement < ApplicationRecord
   belongs_to :endorser, class_name: 'User', optional: true
   belongs_to :endorsee, class_name: 'User', optional: true
 
+  belongs_to :skill
+  belongs_to :note
+
   validates :endorser_id, :presence => true
   validates :endorsee_id, :presence => true
 
   validate :you_cannot_endorse_yourself
 
-  validates_uniqueness_of :endorser_id, scope: [:endorsee_id, :skill_id, :note_id]
+  # validates_uniqueness_of :endorser_id, scope: [:endorsee_id, :skill_id, :note_id]
 
   def you_cannot_endorse_yourself
     if endorsee_id == endorser_id

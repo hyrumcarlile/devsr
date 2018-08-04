@@ -1,0 +1,22 @@
+<div class="endorse-container">
+  <% if note.user_endorsements.find_by(skill: skill, endorser: current_user).present? %>
+    <%= form_for(note.user_endorsements.find_by(skill: skill, endorser: current_user),
+            html: { method: :delete },
+            remote: true) do |form| %>
+      <input class="skill-button unendorse"
+            type="image" 
+            alt="<%= skill.name %>" 
+            src="<%= skill.image_url %>" 
+            name="commit" 
+            value="<%= skill.name %>" 
+            class="btn btn-primary" 
+            data-disable-with="<%= skill.name %>"
+            data-toggle="tooltip"
+            data-placement="top"
+           title="<%= skill.name %>">
+    <% end %>
+  <% end %>
+  <div class="flex-centered">
+    <%= count %>
+  </div>
+</div>

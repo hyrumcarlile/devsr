@@ -26,25 +26,45 @@ class EndorsementsController < ApplicationController
   # POST /endorsements
   # POST /endorsements.json
   def create
-    error = nil
-    begin
-      @endorsement = Endorsement.create(
-          :endorser_id => current_user.id,
-          :endorsee_id => User.find_by(:email => params[:endorsement][:email])&.id,
-          :skill_id => Skill.find_by(:name => params[:endorsement][:skill])&.id
-      )
-    rescue => e
-      error = 'An error occurred. Please try again.'
-    end
-
-    respond_to do |format|
-      if error.blank?
-        format.html { redirect_to root_path }
-        format.json { render :show, status: :created, location: @endorsement }
-      else
-        format.html { redirect_to new_endorsement_path, alert: error }
-        format.json { render json: @endorsement.errors, status: :unprocessable_entity }
+    if params[:ajax]
+      create_by_ajax
+    else
+      error = nil
+      begin
+        @endorsement = Endorsement.create(
+            :endorser_id => current_user.id,
+            :endorsee_id => User.find_by(:email => params[:endorsement][:email])&.id,
+            :skill_id => Skill.find_by(:name => params[:endorsement][:skill])&.id
+        )
+      rescue => e
+        error = 'An error occurred. Please try again.'
       end
+
+      respond_to do |format|
+        if error.blank?
+          format.html { redirect_to root_path }
+          format.json { render :show, status: :created, location: @endorsement }
+        else
+          format.html { redirect_to new_endorsement_path, alert: error }
+          format.json { render json: @endorsement.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
+
+  def create_by_ajax
+    @endorsement = Endorsement.create(
+      skill_id: params[:skill_id],
+      note_id: params[:note_id],
+      endorser_id: params[:endorser_id],
+      endorsee_id: params[:endorsee_id]
+    )
+    @skill = Skill.find(@endorsement.skill_id)
+    @note = @endorsement.note
+    @endorsement_count = @note.user_endorsements.where(skill: @skill).count
+    respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript'}
+      format.html { redirect_to Note.find(note_id) }
     end
   end
 
@@ -65,23 +85,23 @@ class EndorsementsController < ApplicationController
   # DELETE /endorsements/1
   # DELETE /endorsements/1.json
   def destroy
+    @skill = Skill.find(@endorsement.skill_id)
+    @note = @endorsement.note
+    @endorsement_count = @note.user_endorsements.where(skill: @skill).count - 1
     @endorsement.destroy
+    
     respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript'}
       format.html { redirect_to endorsements_url }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_endorsement
       @endorsement = Endorsement.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    # def endorsement_params
-    #   params.fetch(:endorsement, {})
-    # end
 
     def endorsement_params
       params.require(:endorsement).permit(:email, :skill)

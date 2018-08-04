@@ -10,9 +10,12 @@
 
 <div class="endorsement-container">
   <% @endorsements.each do |skill, count| %>
-  <div>
-    <%= skill.name %>
-    <%= count %>
-  </div>
+    <span id="endorsement-form-<%= skill.id %>">
+      <% if @note.user_endorsements.find_by(skill: skill, endorser: current_user).present? %>
+        <%= render partial: 'endorsed', locals: {note: @note, skill: skill, current_user: current_user, count: count} %>
+      <% else %>
+        <%= render partial: 'endorse', locals: {note: @note, skill: skill, current_user: current_user, count: count} %>
+      <% end %>
+    </span>
   <% end %>
 </div>

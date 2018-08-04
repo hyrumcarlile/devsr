@@ -26,7 +26,10 @@
 
 $(document).ready(function() {
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="tooltip"]').on('click', function () {
+            $(this).tooltip('hide')
+        })
     });
 
     if ($('#search-input').val() === undefined) {
