@@ -1,4 +1,4 @@
-<div class="m-3">
+<div class="m-3 flex-container">
   <div class="subheader-container">
     <%= link_to note.user do %>
       <img src="<%= note.user.avatar_url %>" class="note-user-avatar"/>
@@ -8,4 +8,6 @@
       <div><i><%= note.created_at_display %></i></div>
     </div>
   </div>
+  <div class="flex-spacer"></div>
+  <%= render partial: 'notes/buttons', locals: { note: note, endorsements: note.sort_endorsements } %>
 </div>

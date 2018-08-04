@@ -1,20 +1,10 @@
-<% if @note.user == current_user  %>
-  <%= link_to 'Edit', edit_note_path(@note),
-                method: :get,
-                class: 'btn btn-primary' %>
-  <%= link_to 'Delete', note_path(@note),
-                method: :delete,
-                class: 'btn btn-danger note-delete-btn',
-                data: { confirm: 'This is non-reversible. Are you sure?'} %>
-<% end %>
-
 <div class="endorsement-container">
-  <% @endorsements.each do |skill, count| %>
+  <% endorsements.each do |skill, count| %>
     <span id="endorsement-form-<%= skill.id %>">
-      <% if @note.user_endorsements.find_by(skill: skill, endorser: current_user).present? %>
-        <%= render partial: 'endorsed', locals: {note: @note, skill: skill, current_user: current_user, count: count} %>
+      <% if note.user_endorsements.find_by(skill: skill, endorser: current_user).present? %>
+        <%= render partial: 'notes/endorsed', locals: {note: note, skill: skill, current_user: current_user, count: count} %>
       <% else %>
-        <%= render partial: 'endorse', locals: {note: @note, skill: skill, current_user: current_user, count: count} %>
+        <%= render partial: 'notes/endorse', locals: {note: note, skill: skill, current_user: current_user, count: count} %>
       <% end %>
     </span>
   <% end %>
