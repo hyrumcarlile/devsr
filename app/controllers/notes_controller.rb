@@ -33,10 +33,13 @@ class NotesController < ApplicationController
   # GET /notes/new
   def new
     @note = Note.new
+    @skills = Skill.all.map(&:name)
   end
 
   # GET /notes/1/edit
-  def edit; end
+  def edit
+    @skills = Skill.all.map(&:name)
+  end
 
   # POST /notes
   # POST /notes.json

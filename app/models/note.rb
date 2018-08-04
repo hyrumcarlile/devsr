@@ -1,6 +1,8 @@
 class Note < ApplicationRecord
   extend FriendlyId
 
+  attr_accessor :skills
+
   belongs_to :user
   has_many :votes
 
