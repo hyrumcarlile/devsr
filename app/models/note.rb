@@ -1,8 +1,15 @@
 class Note < ApplicationRecord
   extend FriendlyId
 
+  attr_accessor :skills
+
   belongs_to :user
   has_many :votes
+  has_many :noteskills
+
+  has_many :user_endorsements,  class_name:  'Endorsement',
+                                foreign_key: 'note_id',
+                                dependent:   :destroy
 
   validates_presence_of :title
   validates_presence_of :body
@@ -10,8 +17,9 @@ class Note < ApplicationRecord
   friendly_id :title, use: [:slugged, :history, :finders]
 
   def created_at_display
-    if created_at.to_date == Time.now.to_date
+    if created_at.to_date == Time.zone.now.to_date
       num_hours = ((Time.now - created_at) / 1.hours).to_i
+      return 'Just Now' if num_hours.zero?
       return "#{ActionController::Base.helpers.pluralize(num_hours, 'hour')} ago"
     else
       num_days = (Time.now.to_date - created_at.to_date).to_i
@@ -62,6 +70,16 @@ class Note < ApplicationRecord
 
   def self.num_pages user
     note_page_array(user).length
+  end
+
+  def sort_endorsements
+    endorsements = self.user_endorsements
+    skill_ids = endorsements.pluck(:skill_id).uniq
+    skill_ids.map{ |skill_id| [Skill.find(skill_id), Endorsement.where(skill_id: skill_id, note_id: self.id).count] }.to_h
+  end
+
+  def skills
+    self.noteskills.map(&:skill)
   end
 
   private

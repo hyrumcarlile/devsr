@@ -1,3 +1,38 @@
-// Place all the styles related to the Skills controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$blue: #2065e5;
+
+.skill-button.endorse {
+    border: 1px solid #e0e0e0;
+}
+
+.skill-button:disabled:hover {
+    border: 1px solid #e0e0e0;
+}
+
+.skill-button {
+    height: 32px;
+    width: 32px;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.skill-button.unendorse {
+    background-color: #e1eafc;
+    border: 1px solid #adc6f5;
+}
+
+.skill-button:hover {
+    border-color: $blue;
+}
+
+.skill-button:focus {
+    outline: none;
+}
+
+.endorsement-container {
+    margin-top: 12px;
+}
+
+.endorse-container {
+    display: inline-block;
+    margin-right: 8px;
+}

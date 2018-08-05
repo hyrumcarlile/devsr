@@ -137,6 +137,10 @@ $breakpoint-mobile: 480px;
   text-align: end;
 }
 
+.endorse-description-container {
+  margin-top: 24px;
+}
+
 @media screen and (max-width: $breakpoint-tablet) {
   .note-title {
     font-size: 2em;

@@ -1,30 +1,24 @@
 class User < ApplicationRecord
   extend FriendlyId
   
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, and :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :following_relationships,     class_name:  'Relationship',
+  has_many :following_relationships,    class_name:  'Relationship',
                                         foreign_key: 'follower_id',
                                         dependent:   :destroy
   has_many :follower_relationships,     class_name:  'Relationship',
                                         foreign_key: 'followed_id',
                                         dependent:   :destroy
-  has_many :endorser_relationships,     class_name:  'Endorsement',
+  has_many :endorsements,               class_name: 'Endorsement',
                                         foreign_key: 'endorsee_id',
-                                        dependent:   :destroy
-  has_many :endorsee_relationships,     class_name:  'Endorsement',
+                                        dependent: :destroy
+  has_many :given_endorsements,         class_name: 'Endorsement',
                                         foreign_key: 'endorser_id',
-                                        dependent:   :destroy
+                                        dependent: :destroy
 
   has_and_belongs_to_many :achievements
   has_one :achievement_criterium
-  has_many :endorsers,     through:     :endorser_relationships,
-                           source:      :endorser
-  has_many :endorsees,     through:     :endorsee_relationships,
-                           source:      :endorsee
   has_many :following,     through:     :following_relationships,
                            source:      :followed
   has_many :followers,     through:     :follower_relationships,

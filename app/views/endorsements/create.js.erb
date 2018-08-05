@@ -1,0 +1,1 @@
+$("#endorsement-form-<%= @note.id %>-<%= @skill.id %>").html("<%= escape_javascript(render(partial: 'notes/endorsed', locals: {note: @note, skill: @skill, count: @endorsement_count})) %>");

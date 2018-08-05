@@ -28,8 +28,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @endorsers     = @user.endorsers
-    @endorsees     = @user.endorsees
+    @endorsements  = @user.endorsements
     @followers     = @user.followers
     @relationship  = @user.follower_relationships.where(follower: current_user).first
     @skill_ratings = @user.skill_ratings

@@ -24,6 +24,7 @@ class NotesController < ApplicationController
   # GET /notes/1.json
   def show
     raise ActionController::RoutingError.new('Not Found') if (@note.is_private && @note.user != current_user)
+    @endorsements = @note.sort_endorsements
     @buttons_visible = !current_user.blank?
     @upvote_btn = @note.should_show_upvote_btn(current_user)
     @vote = Vote.find_by(user_id: current_user.id, note_id: @note.id) unless current_user.blank?
@@ -32,16 +33,21 @@ class NotesController < ApplicationController
   # GET /notes/new
   def new
     @note = Note.new
+    @skills = Skill.all.map(&:name)
   end
 
   # GET /notes/1/edit
-  def edit; end
+  def edit
+    @skills = Skill.all.map(&:name)
+  end
 
   # POST /notes
   # POST /notes.json
   def create
     @note = Note.new(note_params)
     @note.user_id = current_user.id
+
+    create_skills
 
     respond_to do |format|
       if @note.save
@@ -57,6 +63,8 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1
   # PATCH/PUT /notes/1.json
   def update
+    create_skills
+
     respond_to do |format|
       if @note.update(note_params)
         format.html { redirect_to @note }
@@ -85,6 +93,15 @@ class NotesController < ApplicationController
   end
 
   private
+
+  def create_skills
+    skill_names = params[:note][:skills].split(',')
+    return if skill_names == @note.skills.map(&:name) || skill_names.blank?
+    @note.noteskills.destroy_all
+    skill_names.each do |skill_name|
+      ::Noteskill.create(note: @note, skill: Skill.find_by(name: skill_name))
+    end
+  end
 
   def set_note
     @note = Note.friendly.find(params[:id])
