@@ -10,8 +10,13 @@
     <%= markdown @note.body %>
   </div>
 
-  <%= render partial: 'buttons', locals: {note: @note, endorsements: @endorsements} %>
-  
+  <% if @note.skills.present? %>
+    <div class="endorse-description-container">
+      Endorse <%= @note.user.name %> on one of the skills in this note:
+      <%= render partial: 'buttons', locals: {note: @note, endorsements: @endorsements} %>
+    </div>
+  <% end %>
+
   <%= render partial: 'action_buttons' %>
 
   <% unless @note.comments_disabled %>

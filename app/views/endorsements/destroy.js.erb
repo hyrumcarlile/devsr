@@ -1,1 +1,1 @@
-$("#endorsement-form-<%= @skill.id %>").html("<%= escape_javascript(render(partial: 'notes/endorse', locals: {note: @note, skill: @skill, count: @endorsement_count})) %>");
+$("#endorsement-form-<%= @note.id %>-<%= @skill.id %>").html("<%= escape_javascript(render(partial: 'notes/endorse', locals: {note: @note, skill: @skill, count: @endorsement_count})) %>");

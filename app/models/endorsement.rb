@@ -1,6 +1,6 @@
 class Endorsement < ApplicationRecord
   before_save :calculate_endorsement_value
-  before_save :increment_rating
+  after_save :increment_rating
   before_destroy :decrement_rating
 
   # These are optional because endorser_id and endorsee_id are required.
@@ -25,7 +25,7 @@ class Endorsement < ApplicationRecord
   end
 
   def calculate_endorsement_value
-    Algorithms.calculate_endorsement_value self
+    self.endorsement_value = Algorithms.calculate_endorsement_value self
   end
 
   def increment_rating
