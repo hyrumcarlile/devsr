@@ -4,6 +4,10 @@ $blue: #2065e5;
     border: 1px solid #e0e0e0;
 }
 
+.skill-button:disabled:hover {
+    border: 1px solid #e0e0e0;
+}
+
 .skill-button {
     height: 32px;
     width: 32px;

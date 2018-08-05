@@ -47,6 +47,8 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     @note.user_id = current_user.id
 
+    create_skills
+
     respond_to do |format|
       if @note.save
         format.html { redirect_to current_user }
@@ -61,6 +63,8 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1
   # PATCH/PUT /notes/1.json
   def update
+    create_skills
+
     respond_to do |format|
       if @note.update(note_params)
         format.html { redirect_to @note }
@@ -89,6 +93,15 @@ class NotesController < ApplicationController
   end
 
   private
+
+  def create_skills
+    skill_names = params[:note][:skills].split(',')
+    return if skill_names == @note.skills.map(&:name) || skill_names.blank?
+    @note.noteskills.destroy_all
+    skill_names.each do |skill_name|
+      ::Noteskill.create(note: @note, skill: Skill.find_by(name: skill_name))
+    end
+  end
 
   def set_note
     @note = Note.friendly.find(params[:id])

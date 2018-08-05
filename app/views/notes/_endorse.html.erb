@@ -15,7 +15,8 @@
           data-disable-with="<%= skill.name %>"
           data-toggle="tooltip"
           data-placement="top"
-          title="<%= skill.name %>">
+          title="<%= skill.name %>"
+          <%= note.user == current_user ? 'disabled' : '' %>>
   <% end %>
   <div class="flex-centered">
     <%= count %>

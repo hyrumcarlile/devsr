@@ -11,6 +11,8 @@
   </div>
 
   <%= render partial: 'buttons', locals: {note: @note, endorsements: @endorsements} %>
+  
+  <%= render partial: 'action_buttons' %>
 
   <% unless @note.comments_disabled %>
     <hr class="m-5">
