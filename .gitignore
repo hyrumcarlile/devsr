@@ -13,8 +13,6 @@
 !/log/.keep
 !/tmp/.keep
 
-app/models/algorithms.rb
-
 # Ignore Byebug command history file.
 .byebug_history
 
