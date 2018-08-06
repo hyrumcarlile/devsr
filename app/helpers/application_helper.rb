@@ -9,6 +9,6 @@ module ApplicationHelper
     renderer = Redcarpet::Render::HTML.new(options)
     markdown = Redcarpet::Markdown.new(renderer, extensions)
 
-    markdown.render(text).html_safe
+    text = markdown.render(text).gsub('<em>', '_').gsub('</em>', '_').html_safe
   end
 end
