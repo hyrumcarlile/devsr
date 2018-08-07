@@ -12,7 +12,7 @@
 
   <% if @note.skills.present? %>
     <div class="endorse-description-container">
-      Endorse <%= @note.user.name %> on one of the skills in this note:
+      <strong>Endorse <%= @note.user.name %> on one of the skills in this note:</strong>
       <%= render partial: 'buttons', locals: {note: @note, endorsements: @endorsements} %>
     </div>
   <% end %>
