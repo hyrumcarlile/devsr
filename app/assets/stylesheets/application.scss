@@ -184,7 +184,11 @@ $breakpoint-mobile: 320px;
   flex-grow: 1;
 }
 
+
+
 /* ============================================== Fonts ============================================ */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i');
 
 @font-face {
   font-family: 'Uni Sans';
@@ -201,7 +205,12 @@ $breakpoint-mobile: 320px;
 }
 
 * {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+p {
+  line-height: 1.7;
 }
 
 /* ====================================== Bootstrap Overrides ====================================== */
