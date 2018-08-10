@@ -184,7 +184,9 @@ $breakpoint-mobile: 320px;
   flex-grow: 1;
 }
 
-
+pre {
+  border-radius: 5px;
+}
 
 /* ============================================== Fonts ============================================ */
 
@@ -204,7 +206,7 @@ $breakpoint-mobile: 320px;
   font-style: normal;
 }
 
-* {
+body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
